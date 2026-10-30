@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#241b35">
+  <meta name="description" content="Milo Rowley's portfolio: creative communication, service media, storytelling, and useful digital tools.">
+  <title>Milo Rowley — Supernova Portfolio</title>
+  <style>
+    :root {
+      --night: #241b35; --ink: #292436; --muted: #635b70; --cream: #fff9f1;
+      --paper: #fffdf9; --orange: #e7704e; --gold: #f4be70; --pink: #edaaae;
+      --line: #e8dfd7; --shadow: 0 22px 60px rgba(43, 27, 51, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3, .wordmark, .serif { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+    h1 { font-size: clamp(3.4rem, 7.4vw, 7.2rem); line-height: 1.015; letter-spacing: -.06em; }
+    h2 { font-size: clamp(2.25rem, 4vw, 4rem); line-height: 1.1; letter-spacing: -.045em; }
+    h3 { font-size: 1.55rem; line-height: 1.23; letter-spacing: -.025em; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+    .skip { position: absolute; top: -80px; left: 12px; z-index: 99; padding: 10px 15px; background: white; }
+    .skip:focus { top: 12px; }
+    .shell { width: min(1200px, calc(100% - 64px)); margin-inline: auto; }
+    .site-header { position: relative; z-index: 5; background: var(--night); color: #fff7ed; }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .wordmark { text-decoration: none; font-size: 1.5rem; letter-spacing: -.04em; white-space: nowrap; }
+    .wordmark span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .nav-links a { text-decoration: none; padding: 9px 16px; border-radius: 100px; color: #efe9ec; font-size: .91rem; font-weight: 650; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { background: rgba(255,255,255,.13); color: white; }
+    .nav-links .nav-contact { border: 1px solid rgba(255,255,255,.32); margin-left: 5px; }
+    .view[hidden] { display: none !important; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: .73rem; letter-spacing: .17em; text-transform: uppercase; font-weight: 800; color: #9a4a43; }
+    .eyebrow::before { content: ""; width: 23px; height: 1px; background: currentColor; }
+    .hero { position: relative; min-height: 650px; display: flex; align-items: center; isolation: isolate; overflow: hidden; background: radial-gradient(circle at 71% 76%, #f4ab86 0, #f8d5b8 27%, transparent 53%), linear-gradient(127deg, #fffaf1 3%, #f6e3d8 59%, #efb7ad 100%); }
+    .hero::after { content: ""; position: absolute; inset: auto 0 0; height: 95px; z-index: -1; background: linear-gradient(transparent,rgba(255,249,241,.65)); }
+    .hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 5%; padding-block: 95px 110px; }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero h1 { max-width: 730px; margin: 25px 0 25px; }
+    .hero h1 em { color: #b75150; font-weight: 400; }
+    .lead { max-width: 560px; font-size: clamp(1.1rem, 1.7vw, 1.3rem); line-height: 1.6; color: #4e4150; }
+    .actions { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; margin-top: 35px; }
+    .button { display: inline-flex; gap: 10px; align-items: center; justify-content: center; border: 1px solid var(--night); border-radius: 100px; padding: 13px 23px; min-height: 49px; text-decoration: none; font-size: .88rem; font-weight: 750; transition: transform .2s, background .2s, color .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { color: white; background: var(--night); }
+    .button.primary:hover { background: #473153; }
+    .button.ghost:hover { background: rgba(255,255,255,.48); }
+    .sky-art { position: relative; width: min(100%, 440px); aspect-ratio: 1; justify-self: end; }
+    .sky-art .orbit { position: absolute; inset: 2%; border: 1px solid rgba(108,58,75,.25); border-radius: 50%; }
+    .sky-art .orbit.two { inset: 14%; }
+    .sky-art .orbit.three { inset: 26%; }
+    .sun { position: absolute; inset: 29%; border-radius: 50%; background: radial-gradient(circle at 38% 31%, #fff5cf 0 15%, #ffd28d 45%, #f28a73 100%); box-shadow: 0 0 80px 18px #fff1ca9e; }
+    .sun::after { content: ""; position: absolute; inset: 15%; border: 1px solid #fff7d79c; border-radius: 50%; }
+    .horizon { position: absolute; width: 90%; height: 38%; left: 5%; bottom: 0; border-radius: 50% 50% 0 0; background: linear-gradient(180deg, transparent 0 30%, #b75566 30% 32%, #572e56 32% 34%, transparent 34% 41%, #7d405c 41% 43%, transparent 43% 51%, #3d294b 51%); opacity: .75; clip-path: circle(49% at 50% 0); }
+    .star { position: absolute; color: #aa5662; font-size: 29px; line-height: 1; }
+    .star.one { left: 10%; top: 20%; }.star.two { right: 10%; top: 18%; font-size: 16px; }.star.three { right: 16%; bottom: 26%; font-size: 22px; }
+    .art-label { position: absolute; right: 3%; bottom: 2%; color: #74495a; font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; }
+    .section { padding-block: 100px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 35px; }
+    .section-head h2 { max-width: 700px; margin: 12px 0 0; }
+    .section-head p { max-width: 390px; color: var(--muted); margin: 0; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+    #featured-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .project-card { display: flex; flex-direction: column; min-height: 390px; background: var(--paper); border: 1px solid var(--line); border-radius: 17px; overflow: hidden; box-shadow: 0 8px 24px rgba(48,29,51,.035); transition: transform .22s, box-shadow .22s; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .project-art { position: relative; min-height: 175px; overflow: hidden; display: grid; place-items: center; background: var(--art-bg); }
+    .project-art::before, .project-art::after { content: ""; position: absolute; border-radius: 50%; }
+    .project-art::before { width: 135px; height: 135px; background: var(--art-orb); box-shadow: 0 0 0 32px #ffffff29, 0 0 0 68px #ffffff1a; }
+    .project-art::after { width: 280px; height: 280px; border: 1px solid #ffffff82; transform: translate(37px,-12px); }
+    .project-art span { position: relative; z-index: 1; font: 2.1rem Georgia,serif; color: var(--art-text); }
+    .card-body { display: flex; flex: 1; flex-direction: column; padding: 22px 24px 25px; }
+    .tag { font-size: .66rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #a44e47; }
+    .project-card h3 { margin: 8px 0 9px; }
+    .project-card p { color: var(--muted); font-size: .93rem; line-height: 1.55; margin-bottom: 22px; }
+    .card-link { margin-top: auto; font-weight: 750; font-size: .88rem; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .dark-panel { background: var(--night); color: #fff8ee; }
+    .dark-panel .eyebrow { color: var(--gold); }
+    .dark-panel .section-head p { color: #dfd3df; }
+    .social-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px; }
+    .social-link { display: flex; gap: 22px; align-items: center; justify-content: space-between; padding: 21px 23px; text-decoration: none; border-radius: 12px; border: 1px solid #6b5976; background: #ffffff0a; transition: background .2s; }
+    .social-link:hover { background: #ffffff19; }
+    .social-link strong { display: block; font-size: 1rem; }
+    .social-link small { display: block; color: #e0d2de; margin-top: 3px; }
+    .social-link > span:last-child { color: var(--gold); font-size: 1.3rem; }
+    .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 11%; align-items: start; }
+    .about-grid h2 { margin: 14px 0; }
+    .about-grid p { font-size: 1.09rem; color: #554d5a; }
+    .about-grid p:first-child { margin-top: 13px; }
+    .note { padding: 25px 27px; border-left: 3px solid var(--orange); background: #f9ebe3; border-radius: 0 10px 10px 0; }
+    .note p { margin: 0; font-size: .97rem; }
+    .contact-panel { background: linear-gradient(120deg,#f8d5b8,#f7e5da 65%,#f0c3ba); border-radius: 20px; padding: clamp(34px,6vw,75px); display: flex; gap: 30px; justify-content: space-between; align-items: center; }
+    .contact-panel h2 { margin: 12px 0; }.contact-panel p { max-width: 610px; margin-bottom: 0; }
+    .site-footer { padding: 27px 0; border-top: 1px solid var(--line); }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--muted); font-size: .82rem; }
+    .footer-row a { text-underline-offset: 3px; }
+    .page-hero { padding: 90px 0 75px; background: radial-gradient(circle at 88% 20%,#f6d0bc 0,#f6d0bc00 33%),#f8eee6; }
+    .page-hero h1 { max-width: 1000px; margin: 18px 0; font-size: clamp(3.8rem,7vw,6.5rem); }
+    .page-hero p { max-width: 680px; font-size: 1.17rem; color: #554b5a; }
+    .projects-intro { max-width: 760px; color: var(--muted); margin-bottom: 37px; }
+    .case-nav { display: inline-block; margin-bottom: 40px; font-size: .89rem; font-weight: 700; text-underline-offset: 4px; }
+    .case-hero { padding: 70px 0 75px; background: linear-gradient(125deg,#fff7ec,#f8dfd6); }
+    .case-hero h1 { max-width: 970px; font-size: clamp(3.6rem,7vw,6.3rem); margin: 18px 0 15px; }
+    .case-hero p { max-width: 750px; font-size: 1.25rem; color: #574e59; }
+    .case-content { display: grid; grid-template-columns: minmax(0,1fr) 280px; gap: 12%; align-items: start; padding-block: 80px 105px; }
+    .case-content h2 { font-size: 2.5rem; margin-bottom: 17px; }
+    .case-content p { font-size: 1.07rem; max-width: 690px; color: #514a58; }
+    .case-content .draft-note { color: #6a5161; background: #f9ebe3; border-left: 3px solid var(--orange); padding: 18px 20px; font-size: .94rem; border-radius: 0 8px 8px 0; }
+    .case-side { border-top: 2px solid var(--orange); padding-top: 22px; }
+    .case-side h3 { font: 750 .72rem system-ui,sans-serif; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 13px; }
+    .case-side a { display: block; margin: 8px 0; text-underline-offset: 4px; }
+    .case-side p { font-size: .9rem; color: var(--muted); }
+    .not-found { min-height: 50vh; padding-block: 100px; }
+    .edit-button { position: fixed; z-index: 20; bottom: 20px; right: 20px; border: 1px solid #fff8; border-radius: 100px; background: var(--night); color: white; padding: 12px 19px; box-shadow: var(--shadow); font: 700 .88rem system-ui,sans-serif; cursor: pointer; }
+    .editor { width: min(760px,calc(100% - 28px)); max-height: min(88vh,900px); padding: 0; border: 0; border-radius: 16px; box-shadow: 0 28px 100px #241b3580; color: var(--ink); background: var(--paper); }
+    .editor::backdrop { background: #241b35b8; }
+    .editor-head { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 20px 25px; color: white; background: var(--night); }
+    .editor-head h2 { margin: 0; font-size: 1.6rem; }
+    .close-editor { color: white; background: transparent; border: 0; font-size: 1.8rem; line-height: 1; cursor: pointer; }
+    .editor-body { padding: 22px 26px 10px; }
+    .editor-body > p { color: var(--muted); font-size: .9rem; }
+    .editor details { border-top: 1px solid var(--line); padding: 17px 0; }
+    .editor summary { font-weight: 750; cursor: pointer; }
+    .editor-field { display: block; margin: 16px 0; font-size: .81rem; font-weight: 700; }
+    .editor-field input, .editor-field textarea { display: block; width: 100%; margin-top: 6px; padding: 11px 12px; border: 1px solid #bcb2bb; border-radius: 7px; background: white; color: var(--ink); font: 400 .93rem/1.5 system-ui,sans-serif; }
+    .editor-field textarea { resize: vertical; min-height: 85px; }
+    .editor-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+    .editor-fields .wide { grid-column: 1/-1; }
+    .editor-actions { position: sticky; bottom: 0; display: flex; gap: 10px; flex-wrap: wrap; padding: 16px 26px; background: var(--paper); border-top: 1px solid var(--line); }
+    .editor-actions button { border: 1px solid var(--night); border-radius: 100px; padding: 10px 16px; background: white; color: var(--night); font-weight: 750; cursor: pointer; }
+    .editor-actions .save-edit { background: var(--night); color: white; }
+    .editor-status { min-height: 1.6em; padding: 0 26px 15px; color: #584456; font-size: .85rem; }
+    @media(max-width: 900px) { .hero-grid { gap: 0; }.sky-art { opacity: .75; transform: scale(.88) translateX(5%); }.project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.contact-panel { align-items: start; flex-direction: column; } }
+    @media(max-width: 700px) {
+      .shell { width: min(100% - 36px, 560px); }.nav { align-items: start; flex-direction: column; justify-content: center; gap: 4px; padding-block: 15px; }.nav-links { gap: 2px; margin-left: -10px; }.nav-links a { padding: 7px 10px; font-size: .83rem; }.nav-links .nav-contact { margin-left: 0; }.editor-fields { grid-template-columns: 1fr; }.editor-fields .wide { grid-column: auto; }
+      .hero { min-height: 0; }.hero-grid { display: block; padding: 70px 0 66px; }.hero h1 { font-size: clamp(3.5rem,13vw,5.5rem); }.sky-art { width: min(72vw,340px); margin: 15px auto -75px; opacity: .7; transform: none; }.section { padding-block: 70px; }.section-head { display: block; }.section-head p { margin-top: 13px; }.project-grid,#featured-grid,.social-grid,.about-grid,.case-content { grid-template-columns: 1fr; }.project-card { min-height: 0; }.case-content { gap: 40px; padding-block: 60px 75px; }.page-hero { padding: 68px 0 54px; }.case-hero { padding: 50px 0 60px; }.footer-row { align-items: start; flex-direction: column; gap: 5px; }
+    }
+    @media(prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+    /* Third draft: the entire first screen becomes a scroll-driven sunrise. */
+    :root { --night:#101228; --ink:#f8f0ed; --muted:#c5bad0; --cream:#101329; --paper:#1b1e38; --line:#393a55; --orange:#ff9b78; --gold:#ffd393; --pink:#f5aabb; --shadow:0 20px 55px #02030c65; }
+    .site-header { position:fixed; inset:0 0 auto; z-index:30; background:#101228a8; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid #ffffff1c; }
+    .hero { display:block; min-height:0; height:235svh; background:#101329; overflow:visible; isolation:auto; }
+    .hero::after { display:none; }
+    .cosmic-sticky { --sun-y:74%; --sun-scale:1; --sun-opacity:1; --nebula-scale:.78; --nebula-opacity:0; --copy-opacity:1; --copy-shift:0px; --horizon-opacity:1; --finish:0; --halo-opacity:1; position:sticky; inset:0 auto auto; height:100svh; min-height:550px; overflow:hidden; background:#101329; }
+    .cosmic-sky { position:absolute; inset:0; overflow:hidden; background:linear-gradient(180deg,#11162f 0%,#29243e 29%,#6e3b61 55%,#ce7181 75%,#ffc38d 100%); }
+    .cosmic-sky::after { content:""; position:absolute; inset:0; z-index:6; background:radial-gradient(circle at 50% 60%,transparent 0 22%,#0e112980 65%,#0e1129 100%); opacity:var(--finish); pointer-events:none; }
+    .first-stars { position:absolute; inset:0; opacity:.65; background-image:radial-gradient(2px 2px at 12% 18%,#fff 98%,transparent),radial-gradient(2px 2px at 82% 12%,#ffd9d0 98%,transparent),radial-gradient(1px 1px at 63% 31%,#fff 98%,transparent),radial-gradient(2px 2px at 28% 38%,#fff 98%,transparent),radial-gradient(1px 1px at 92% 42%,#fff 98%,transparent),radial-gradient(1px 1px at 44% 9%,#fff 98%,transparent),radial-gradient(2px 2px at 72% 47%,#fff 98%,transparent); }
+    .sky-glow { position:absolute; inset:0; background:radial-gradient(ellipse 85% 48% at 50% 100%,#ffd69ba6,transparent 78%); opacity:var(--horizon-opacity); }
+    .sun-halo,.sun-core,.nebula-haze,.nebula-image,.nebula-light { position:absolute; left:50%; top:var(--sun-y); border-radius:50%; transform:translate(-50%,-50%); }
+    .sun-halo { width:min(74vw,900px); aspect-ratio:1; background:radial-gradient(circle,#ffe0a1a8 0%,#ffa87b69 36%,transparent 70%); filter:blur(28px); opacity:var(--halo-opacity); transform:translate(-50%,-50%) scale(var(--sun-scale)); }
+    .sun-core { z-index:2; width:min(37vw,440px); aspect-ratio:1; opacity:var(--sun-opacity); background:radial-gradient(circle at 42% 34%,#fffcec 0%,#fff1bf 24%,#ffc48d 62%,#fd8e88 100%); box-shadow:0 0 45px #ffe4af,0 0 125px #ffb586b0,inset 0 0 33px #fffde5; transform:translate(-50%,-50%) scale(var(--sun-scale)); }
+    .horizon-line { position:absolute; z-index:4; left:0; right:0; bottom:20%; height:2px; background:linear-gradient(90deg,transparent,#ffe3c8 36%,#fff4d8 50%,#ffe3c8 64%,transparent); box-shadow:0 0 35px 6px #fbd8bd; opacity:var(--horizon-opacity); }
+    .sea { position:absolute; z-index:4; inset:80% 0 0; background:linear-gradient(180deg,#b7637a 0%,#633955 44%,#211f3f 100%); opacity:var(--horizon-opacity); }
+    .sea::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(175deg,transparent 0 24px,#ffe2bd21 25px 26px,transparent 27px 48px); mask-image:linear-gradient(90deg,transparent 12%,black 50%,transparent 88%); }
+    .nebula-haze { z-index:3; width:min(110vw,1250px); aspect-ratio:1; opacity:var(--nebula-opacity); background:radial-gradient(ellipse at 50% 47%,#effaff 0 6%,#95d2f4 18%,#5e73b7a9 30%,transparent 55%),conic-gradient(from 58deg,#db795822,#ffbc64ba 18%,#3a2d5c00 35%,#c85d4f99 54%,#ffce81b0 75%,#d7635033 90%,#db795822); filter:blur(34px); transform:translate(-50%,-50%) scale(var(--nebula-scale)); }
+    .nebula-image { z-index:4; width:min(91vmin,820px); aspect-ratio:1; opacity:var(--nebula-opacity); background:url('assets/nebula-reference.jpg') center / contain no-repeat; filter:blur(3px) saturate(1.1); mix-blend-mode:screen; mask-image:radial-gradient(circle,#000 0 48%,#0009 66%,transparent 78%); transform:translate(-50%,-50%) scale(var(--nebula-scale)); }
+    .nebula-light { z-index:5; width:min(63vmin,610px); aspect-ratio:1; opacity:var(--nebula-opacity); background:radial-gradient(ellipse at 48% 50%,#ffffefbb 0 9%,#b5e1ff80 24%,#a7bafa38 46%,transparent 68%); filter:blur(24px); transform:translate(-50%,-50%) scale(var(--nebula-scale)); }
+    .afterglow { position:absolute; z-index:5; inset:0; background:linear-gradient(180deg,#10132900 0%,#101329 100%); opacity:var(--finish); }
+    .hero-copy { position:relative; z-index:7; text-align:center; padding-top:clamp(140px,21svh,230px); opacity:var(--copy-opacity); transform:translateY(var(--copy-shift)); }
+    .hero-copy .eyebrow { color:#ffe3bd; }
+    .hero h1 { max-width:950px; margin:23px auto 20px; color:#fff8f0; font-size:clamp(3.2rem,7vw,7rem); text-shadow:0 4px 35px #15102399; }
+    .hero h1 em { color:#ffd49b; }
+    .hero .lead { max-width:670px; margin-inline:auto; color:#f9eae6; text-shadow:0 2px 20px #211329; }
+    .hero .actions { justify-content:center; }
+    .hero .button.primary { background:var(--gold); border-color:var(--gold); color:#1a1830; }
+    .hero .button.primary:hover { background:#fff0c9; }
+    .hero .button.ghost { color:#fff6f1; border-color:#ffe4d1a8; background:#19172b42; }
+    .scroll-cue { position:absolute; z-index:7; bottom:30px; left:0; right:0; text-align:center; color:#fff2ea; font-size:.7rem; letter-spacing:.17em; text-transform:uppercase; font-weight:750; opacity:var(--copy-opacity); text-shadow:0 2px 12px #21142b; }
+    .scroll-cue span { display:block; margin-top:2px; font-size:1.2rem; }
+    .section-head { display:block; text-align:center; }
+    .section-head h2 { margin:12px auto 0; }
+    .section-head p { max-width:630px; margin:14px auto 0; color:var(--muted); }
+    .eyebrow { color:var(--gold); }
+    .project-card { background:var(--paper); border-color:var(--line); }
+    .project-card p,.about-grid p,.case-content p { color:var(--muted); }
+    .tag { color:var(--gold); }
+    .button.ghost { color:var(--ink); border-color:#c4b4cda6; }
+    .button.ghost:hover { background:#ffffff14; }
+    .dark-panel { background:#171a33; }
+    .dark-panel .section-head p { color:var(--muted); }
+    .social-link { border-color:#64617d; }
+    .about-grid { grid-template-columns:1fr; gap:20px; max-width:850px; text-align:center; }
+    .about-grid p { margin-inline:auto; }
+    .note { background:#272841; text-align:left; }
+    .note p { color:#eee6ed; }
+    .contact-panel { flex-direction:column; align-items:center; text-align:center; background:radial-gradient(circle at 88% 18%,#864963 0%,#3a284b 40%,#22223c 100%); border:1px solid #79546c; color:var(--ink); }
+    .contact-panel p { margin-inline:auto; }
+    .contact-panel .button.primary { background:var(--gold); color:#17182a; border-color:var(--gold); }
+    .page-hero,.case-hero { background:radial-gradient(circle at 50% -25%,#8d4e6c 0%,#352540 46%,#171a32 100%); text-align:center; }
+    .page-hero { padding:175px 0 95px; }
+    .case-hero { padding:150px 0 95px; }
+    .page-hero h1,.case-hero h1 { margin:20px auto; }
+    .page-hero p,.case-hero p { margin-inline:auto; color:#eee1e9; }
+    .projects-intro { margin:0 auto 37px; text-align:center; }
+    #projects-title,.case-content h2 { text-align:center; }
+    .resume-actions,.contact-direct { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+    .resume-actions { margin-top:32px; }
+    .resume-actions .button.primary,.contact-direct .button.primary { background:var(--gold); color:#16182c; border-color:var(--gold); }
+    .contact-direct { margin:0 auto 36px; }
+    .resume-layout { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:9%; align-items:start; }
+    .resume-layout h2 { font-size:clamp(2rem,3vw,3rem); }
+    .resume-summary { position:sticky; top:130px; }
+    .resume-summary h2,.resume-history h2 { margin:15px 0 18px; }
+    .resume-summary p,.resume-entry p,.resume-education p { color:var(--muted); }
+    .resume-skills { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+    .resume-skills span { border:1px solid #766b88; border-radius:100px; padding:6px 12px; font-size:.78rem; }
+    .resume-entry { padding:23px 0 24px; border-top:1px solid var(--line); }
+    .resume-entry .tag { margin-bottom:9px; }
+    .resume-entry h3 { margin-bottom:8px; }
+    .resume-entry p:last-child { margin-bottom:0; }
+    .resume-education { border-top:1px solid var(--line); padding-top:25px; }
+    .demo-wrap { padding:0 0 105px; }
+    .demo-panel { border:1px solid #5a536d; border-radius:20px; background:linear-gradient(145deg,#242640,#191c35); padding:clamp(22px,4vw,46px); box-shadow:var(--shadow); }
+    .demo-panel h2 { margin:13px auto; text-align:center; }
+    .demo-intro { max-width:740px; margin:0 auto 30px; text-align:center; color:var(--muted); }
+    .demo-schema { margin:-9px auto 25px; max-width:760px; padding:12px 16px; border:1px solid #57536d; border-radius:10px; color:#e5d7e5; font-size:.83rem; text-align:center; }
+    .demo-schema code { color:var(--gold); }
+    .demo-toolbar { display:flex; flex-wrap:wrap; gap:14px; align-items:end; margin-bottom:23px; }
+    .demo-toolbar label { display:grid; gap:5px; flex:1 1 195px; font-size:.81rem; font-weight:750; }
+    .demo-toolbar select,.demo-toolbar input { width:100%; padding:10px 12px; border:1px solid #8d829c; border-radius:8px; background:#fdf8f4; color:#241d32; font:inherit; }
+    .demo-toolbar button,.demo-item button,.demo-history button { border:1px solid var(--gold); border-radius:100px; background:var(--gold); color:#222039; min-height:42px; padding:9px 16px; font-weight:750; cursor:pointer; }
+    .demo-toolbar button { background:transparent; color:var(--gold); }
+    .demo-item button[disabled] { opacity:.55; cursor:not-allowed; }
+    .demo-inventory { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px; }
+    .demo-item { display:flex; flex-direction:column; border:1px solid #57536d; border-radius:12px; padding:19px; background:#ffffff08; }
+    .demo-item .tag { font-size:.69rem; }
+    .demo-item h3 { font-size:1.3rem; margin:7px 0 6px; }
+    .demo-item p { color:var(--muted); font-size:.88rem; margin-bottom:20px; }
+    .demo-item button { margin-top:auto; align-self:start; }
+    .demo-item .available { color:#bedeca; }.demo-item .borrowed { color:#f6d5b2; }
+    .demo-history { margin-top:37px; overflow-x:auto; }
+    .demo-history h3 { margin-bottom:12px; }
+    .demo-history table { width:100%; border-collapse:collapse; min-width:610px; font-size:.9rem; }
+    .demo-history th,.demo-history td { padding:12px 10px; border-bottom:1px solid #57536d; text-align:left; }
+    .demo-history th { color:var(--gold); font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; }
+    .demo-history button { min-height:36px; padding:6px 12px; font-size:.78rem; }
+    .demo-footnote,.demo-status { margin:17px 0 0; color:var(--muted); font-size:.84rem; }
+    .demo-status { color:#e6cda3; min-height:1.5em; }
+    .case-nav { color:var(--gold); }
+    .case-content .draft-note { display:none; color:#f4e5e9; background:#302a45; }
+    .editor,.editor-actions { background:#fffaf4; color:#292436; }
+    .editor-body > p,.editor-status { color:#645467; }
+    .editor details { border-color:#ddd4d8; }
+    .editor-field input,.editor-field textarea { color:#292436; }
+    .editor-actions button { border-color:#241b35; color:#241b35; }
+    .editor-actions .save-edit { background:#241b35; color:white; }
+    @media(max-width:700px) {
+      .site-header .nav { padding-block:10px; }
+      .cosmic-sticky { min-height:540px; }
+      .hero { height:210svh; }
+      .hero-copy { padding-top:clamp(150px,23svh,210px); }
+      .hero h1 { font-size:clamp(2.7rem,11.3vw,4.6rem); }
+      .hero .lead { font-size:1rem; }
+      .sun-core { width:min(60vw,340px); }
+      .sun-halo { width:110vw; }
+      .scroll-cue { bottom:16px; font-size:.58rem; }
+      .page-hero,.case-hero { padding:170px 0 65px; }
+      .contact-panel { align-items:center; text-align:center; }
+      .resume-layout { grid-template-columns:1fr; gap:45px; }
+      .resume-summary { position:static; }
+      .demo-inventory { grid-template-columns:1fr; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .hero { height:100svh; }
+      .cosmic-sticky { position:relative; height:100svh; }
+      .nebula-haze,.nebula-image,.nebula-light { display:none; }
+    }
+    @media(max-height:650px) {
+      .hero-copy { padding-top:120px; }
+      .hero h1 { font-size:clamp(2.3rem,7.4vw,4.2rem); margin-block:12px; }
+      .hero .actions { margin-top:16px; }
+      .scroll-cue { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="wordmark" href="#/">Milo Rowley<span> ✳</span></a>
+      <div class="nav-links">
+        <a href="#/" data-nav="home">Home</a>
+        <a href="#/projects" data-nav="projects">Projects</a>
+        <a href="#/about" data-nav="about">About</a>
+        <a href="#/resume" data-nav="resume">Résumé</a>
+        <a class="nav-contact" href="#/contact" data-nav="contact">Connect ↗</a>
+      </div>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="view" id="home-view">
+      <section class="hero" id="sunrise-stage" aria-label="Sunrise to supernova">
+        <div class="cosmic-sticky">
+          <div class="cosmic-sky" aria-hidden="true">
+            <div class="first-stars"></div><div class="sky-glow"></div>
+            <div class="sun-halo"></div><div class="sun-core"></div>
+            <div class="horizon-line"></div><div class="sea"></div>
+            <div class="nebula-haze"></div><div class="nebula-image"></div><div class="nebula-light"></div><div class="afterglow"></div>
+          </div>
+          <div class="hero-copy shell">
+            <span class="eyebrow">Creative work with purpose</span>
+            <h1>Making things that <em>mean something.</em></h1>
+            <p class="lead">I’m Milo Rowley. I work across storytelling, digital projects, and community media to make useful things and help good ideas reach people.</p>
+            <div class="actions"><a class="button primary" href="#/projects">Explore my projects <span aria-hidden="true">↗</span></a><a class="button ghost" href="#/about">Get to know me</a></div>
+          </div>
+          <div class="scroll-cue" aria-hidden="true">Scroll to see the sunrise evolve <span>↓</span></div>
+        </div>
+      </section>
+      <section class="section shell" aria-labelledby="featured-title">
+        <div class="section-head"><div><span class="eyebrow">Selected work</span><h2 id="featured-title">A few places my work has gone.</h2></div><p>From social storytelling to practical tools, each project starts with people.</p></div>
+        <div class="project-grid" id="featured-grid"></div>
+        <div class="actions"><a class="button ghost" href="#/projects">See all projects <span aria-hidden="true">↗</span></a></div>
+      </section>
+      <section class="section dark-panel" aria-labelledby="social-title"><div class="shell"><div class="section-head"><div><span class="eyebrow">Around the web</span><h2 id="social-title">Find the work in the wild.</h2></div><p>SuperNovaSunrise lives on Instagram and Facebook; below are other channels I’ve helped with, too.</p></div><div class="social-grid" id="home-social"></div></div></section>
+      <section class="section shell" aria-labelledby="about-teaser-title"><div class="about-grid"><div><span class="eyebrow">A little about me</span><h2 id="about-teaser-title">Curiosity, care, and follow-through.</h2></div><div><p>My experience spans creative communication, service, and systems. I’ve helped with community media, written family histories, and developed a relational database to move a durable medical equipment library’s filing and checkout process into a digital system.</p><p>I’m drawn to work that makes information easier to use and stories easier to share.</p><a class="button ghost" href="#/about">More about me <span aria-hidden="true">↗</span></a></div></div></section>
+      <section class="section shell" aria-labelledby="home-contact-title"><div class="contact-panel"><div><span class="eyebrow">Let’s connect</span><h2 id="home-contact-title">Have a project in mind?</h2><p>I’m interested in thoughtful collaborations and opportunities to make useful, human-centered work.</p></div><a class="button primary" href="#/contact">Ways to connect <span aria-hidden="true">↗</span></a></div></section>
+    </div>
+    <div class="view" id="projects-view" hidden>
+      <section class="page-hero"><div class="shell"><span class="eyebrow">Portfolio / Projects</span><h1>Ideas made real, together.</h1><p>Creative projects, communication work, and systems built with a purpose. Explore the stories and follow the links to the public work.</p></div></section>
+      <section class="section shell" aria-labelledby="projects-title"><h2 id="projects-title" class="serif" style="font-size:2rem;margin-bottom:15px">Project directory</h2><p class="projects-intro">Each card opens a project page. We can add more examples and outcomes as you choose what to share.</p><div class="project-grid" id="all-projects"></div></section>
+    </div>
+    <div class="view" id="about-view" hidden>
+      <section class="page-hero"><div class="shell"><span class="eyebrow">About / Milo</span><h1>Thoughtful work starts with people.</h1><p>I care about how ideas are communicated, how tools serve their communities, and how stories bring people closer.</p></div></section>
+      <section class="section shell about-grid" aria-label="About Milo"><div><span class="eyebrow">My approach</span><h2>Listen closely. Make it useful.</h2></div><div><p>I’m Milo Rowley, a creator and collaborator whose work has moved between social media, podcasting, writing, and a practical database project. The common thread is making information and experiences more meaningful for the people who use them.</p><p>My service experience has included work with FamilySearch, Flathead Food Bank, NWMT Veteran’s Food Pantry, and DREAM Adaptive Recreation. I value work that gives people dignity, connection, and a clearer path forward.</p><div class="note"><p>Want a fuller picture of my background? <a href="#/resume">Read my résumé</a> or download the PDF there.</p></div></div></section>
+    </div>
+    <div class="view" id="resume-view" hidden>
+      <section class="page-hero"><div class="shell"><span class="eyebrow">Experience / Résumé</span><h1>Work with curiosity and care.</h1><p>Communications, quality assurance, systems, and service have all shaped the way I work.</p><div class="actions resume-actions"><a class="button primary" href="assets/Richard_Milo_Rowley_Resume.pdf" download>Download résumé (PDF) ↓</a><a class="button ghost" href="assets/Richard_Milo_Rowley_Resume.pdf" target="_blank" rel="noopener noreferrer">View PDF ↗</a></div></div></section>
+      <section class="section shell resume-layout" aria-label="Résumé highlights">
+        <div class="resume-summary"><span class="eyebrow">Profile</span><h2>A practical and creative perspective.</h2><p>Communications and quality assurance experience across AI evaluation, academic marketing, documentation, and community service. I bring structured judgment, clear writing, and attention to the people a project serves.</p><div class="resume-skills"><span>AI evaluation</span><span>Social media</span><span>Writing</span><span>Quality assurance</span><span>Database work</span><span>Public speaking</span></div></div>
+        <div class="resume-history"><h2>Selected experience</h2>
+          <article class="resume-entry"><p class="tag">2025 – Jan 2027 · Kalispell, MT</p><h3>Service Missionary</h3><p>The Church of Jesus Christ of Latter-day Saints. Developed a relational database for a durable medical equipment library and served individuals and community partners.</p></article>
+          <article class="resume-entry"><p class="tag">2024 – 2025 · Remote</p><h3>AI Model Evaluator</h3><p>Outlier AI. Evaluated model responses for accuracy, instruction adherence, and comparative quality using project rubrics.</p></article>
+          <article class="resume-entry"><p class="tag">2024 · Orem, UT</p><h3>Marketing Lead &amp; Instructional Assistant</h3><p>Utah Valley University Honors Program. Led marketing for an award-winning academic journal and coached undergraduates in public speaking.</p></article>
+          <article class="resume-entry"><p class="tag">2023 – 2025 · Remote</p><h3>Family History Writer</h3><p>Interviewed a client and edited their life story into a manuscript intended for their children.</p></article>
+          <div class="resume-education"><h2>Education</h2><p>B.S. in Communication: Public Relations, BYU–Idaho — in progress<br>Associate in Science, Utah Valley University — 2024</p></div>
+        </div>
+      </section>
+    </div>
+    <div class="view" id="contact-view" hidden>
+      <section class="page-hero"><div class="shell"><span class="eyebrow">Connect / Collaborate</span><h1>Let’s make something meaningful.</h1><p>Interested in working together, sharing an opportunity, or following along? Here are the places to find me and the projects I’ve supported.</p></div></section>
+      <section class="section dark-panel" aria-labelledby="contact-links-title"><div class="shell"><div class="section-head"><div><span class="eyebrow">Links</span><h2 id="contact-links-title">Around the web.</h2></div><p>Reach me directly, explore my work, or follow a project I’ve contributed to.</p></div><div class="contact-direct"><a class="button primary" href="mailto:richardrowss@gmail.com">Email me ↗</a><a class="button ghost" href="https://www.linkedin.com/in/milo-rowley" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="button ghost" href="https://github.com/SupernovaSunrise" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="button ghost" href="#/resume">Résumé ↗</a></div><div class="social-grid" id="contact-social"></div></div></section>
+    </div>
+    <div class="view" id="case-view" hidden>
+      <section class="case-hero"><div class="shell"><a class="case-nav" href="#/projects">← All projects</a><span class="eyebrow" id="case-category"></span><h1 id="case-title"></h1><p id="case-summary"></p></div></section>
+      <div class="shell case-content"><article><h2>The project</h2><p id="case-context"></p><h2 style="margin-top:45px">My contribution</h2><p id="case-role"></p><p class="draft-note" id="case-draft"></p></article><aside class="case-side"><h3>Explore the work</h3><div id="case-links"></div></aside></div>
+      <section class="demo-wrap shell" id="dme-demo" aria-labelledby="demo-heading" hidden>
+        <div class="demo-panel">
+          <span class="eyebrow">Interactive demonstration</span><h2 id="demo-heading">A library, connected.</h2>
+          <p class="demo-intro">Choose a fictional borrower and check equipment out. Availability and the checkout log update together, showing how linked records replace a paper filing system.</p>
+          <p class="demo-schema">Each checkout links <code>equipment.id</code> to <code>checkout.equipment_id</code> and <code>borrower.id</code> to <code>checkout.borrower_id</code>.</p>
+          <div class="demo-toolbar"><label for="demo-borrower">Borrower<select id="demo-borrower"><option value="BR-01">Alex Rivera · BR-01</option><option value="BR-02">Jordan Lee · BR-02</option><option value="BR-03">Sam Patel · BR-03</option></select></label><label for="demo-search">Find equipment<input id="demo-search" type="search" placeholder="Search equipment or ID"></label><button id="demo-reset" type="button">Reset sample data</button></div>
+          <div class="demo-inventory" id="demo-inventory"></div>
+          <div class="demo-history"><h3>Checkout history</h3><table><thead><tr><th scope="col">Record</th><th scope="col">Equipment</th><th scope="col">Borrower</th><th scope="col">Status / action</th></tr></thead><tbody id="demo-history-rows"></tbody></table></div>
+          <p class="demo-status" id="demo-status" role="status" aria-live="polite"></p>
+          <p class="demo-footnote">Illustrative front-end demo with invented people and equipment. It does not connect to the original database or store any personal information.</p>
+        </div>
+      </section>
+    </div>
+    <div class="view" id="not-found-view" hidden><div class="shell not-found"><span class="eyebrow">Page not found</span><h1>Let’s head back.</h1><a class="button primary" href="#/projects">Explore projects</a></div></div>
+  </main>
+  <footer class="site-footer"><div class="shell footer-row"><span>© <span id="year"></span> Milo Rowley · Made with curiosity and care.</span><span><a href="#/projects">Projects</a> · <a id="personal-footer-link" href="https://www.instagram.com/supernovasunrise/" target="_blank" rel="noopener noreferrer">@supernovasunrise ↗</a></span></div></footer>
+  <button class="edit-button" id="open-editor" type="button">✎ Edit this draft</button>
+  <dialog class="editor" id="editor" aria-labelledby="editor-title"><div class="editor-head"><h2 id="editor-title">Edit your portfolio</h2><button class="close-editor" id="close-editor" type="button" aria-label="Close editor">×</button></div><div class="editor-body"><p>Change text and links here, then save. Edits stay in this browser. To publish them, download the updated HTML and keep the <strong>assets</strong> folder beside it; the folder contains the nebula image and résumé PDF.</p><form id="editor-form"></form></div><div class="editor-actions"><button class="save-edit" type="submit" form="editor-form">Save changes</button><button id="download-site" type="button">Download updated HTML</button><button id="reset-site" type="button">Reset draft</button></div><div class="editor-status" id="editor-status" role="status" aria-live="polite"></div></dialog>
+  <script id="editable-data" type="application/json">{}</script>
+  <script>
+    const embeddedData = JSON.parse(document.getElementById('editable-data').textContent || '{}');
+    const storageKey = 'milo-portfolio-editable-v3';
+    let localData = {};
+    try { localData = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch (_) {}
+    const startingData = Object.keys(localData).length ? localData : embeddedData;
+    const baseProjects = [
+      { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'A high school creative project connected to Utah FCCLA.', context:'During high school, I worked on FCCLA UT. This page will gather examples of the content and the story behind the project.', role:'I contributed to this project during high school. My specific responsibilities and examples can be added here in the next revision.', draft:'Draft note: add the correct account link, your role, and a few posts or assets you have permission to show.', links:[], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳' },
+      { slug:'supernovasunrise', title:'SuperNovaSunrise', category:'Personal expression / Social media', summary:'My personal creative space on Instagram and Facebook.', context:'SuperNovaSunrise is my personal presence on Instagram and Facebook, with similar posts on both. Its name inspired the warm, celestial direction of this portfolio draft.', role:'These are my personal accounts. A future revision can describe the ideas, visual choices, and posts that best represent me.', draft:'Draft note: the social feeds could not be viewed during this pass. Add a screenshot or visual reference so the site can match their actual style more closely.', links:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']], colors:['#f4c5b4','#f49177','#693354'], glyph:'✦' },
+      { slug:'hands-of-the-lord', title:'Hands of the Lord', category:'Community media / Social', summary:'Faith-centered storytelling shared on Instagram and Facebook.', context:'Hands of the Lord shares content rooted in service and faith across its social channels.', role:'I worked on this project. The next revision can identify my exact responsibilities, examples, and collaborators.', draft:'Draft note: specify the posts, campaigns, or account work you contributed to, with any permissions needed to display them.', links:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/people/Hands-of-the-Lord/100091913612468/']], colors:['#dab4b8','#af7886','#422d4a'], glyph:'✶' },
+      { slug:'as-the-savior-would', title:'As the Savior Would', category:'Podcast / Storytelling', summary:'A service missionary podcast about following Jesus Christ through meaningful service.', context:'As the Savior Would is a podcast produced by service missionaries. It shares conversations about discipleship, faith, and service.', role:'I worked on the podcast. The next revision can name my role and link to episodes or production work that I helped create.', draft:'Draft note: add your exact podcast responsibilities and one or two episodes you would like to feature.', links:[['Listen on Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Listen on Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']], colors:['#edc996','#b97d72','#483650'], glyph:'♫' },
+      { slug:'dme-library', title:'DME Library Database', category:'Systems / Service', summary:'Moving a physical equipment filing and checkout process into a relational database.', context:'A durable medical equipment library used a physical filing and checkout system. This project brought that workflow into a relational database.', role:'I developed the relational database for the library. A future case study can explain the data structure, workflow, and lessons learned without sharing sensitive records.', draft:'Draft note: add the tools used and a safe diagram or sample data when available.', links:[], colors:['#c9d7c8','#89aa9b','#38545c'], glyph:'◎' },
+      { slug:'family-history', title:'Family History Writing', category:'Writing / Oral history', summary:'Helping someone preserve their life story for their children.', context:'A person wanted to record their story for their children. The work began with interviews and continued through transcription and editing.', role:'As a Family History Writer, I interviewed the person and edited the transcriptions into a clearer record of their story.', draft:'Draft note: include a writing excerpt only if the person and family have given permission.', links:[], colors:['#e9d5bc','#cba277','#5c4548'], glyph:'❋' },
+      { slug:'beware-the-hog', title:'beware_the_hog', category:'Social media / Instagram', summary:'An Instagram project I worked on.', context:'beware_the_hog is another Instagram project I contributed to. This project page can tell the story behind the account and show selected work.', role:'I worked on beware_the_hog. My specific responsibilities and examples can be added in the next revision.', draft:'Draft note: add your role, the time period, and posts you can show publicly. Confirm the account link before publishing.', links:[['View Instagram','https://www.instagram.com/beware_the_hog/']], colors:['#e8b2a0','#d58179','#49334b'], glyph:'✹' },
+      { slug:'scistrive', title:'SciStrive', category:'Website / Digital project', summary:'A live website project at scistrive.com.', context:'SciStrive is another website project I worked on. Visit the live site to see the work, and return here for a fuller project story as this portfolio develops.', role:'I worked on the SciStrive site. My specific responsibilities and the parts I built can be added here once documented.', draft:'Draft note: add your exact role, tools used, and a screenshot or feature you can discuss publicly.', links:[['Visit SciStrive','https://scistrive.com/']], colors:['#b6cfc9','#79a8a5','#324b55'], glyph:'◈' }
+    ];
+    const baseSocials = [
+      { name:'SuperNovaSunrise', detail:'My personal Instagram · @supernovasunrise', url:'https://www.instagram.com/supernovasunrise/' },
+      { name:'SuperNovaSunrise', detail:'My personal Facebook page', url:'https://www.facebook.com/supernovasunrise' },
+      { name:'Hands of the Lord', detail:'Instagram · collaborative project', url:'https://www.instagram.com/hands.of.the.lord/' },
+      { name:'Hands of the Lord', detail:'Facebook · collaborative project', url:'https://www.facebook.com/people/Hands-of-the-Lord/100091913612468/' },
+      { name:'As the Savior Would', detail:'Podcast · Apple Podcasts', url:'https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384' },
+      { name:'beware_the_hog', detail:'Instagram · project I worked on', url:'https://www.instagram.com/beware_the_hog/' }
+    ];
+    let projects = startingData.projects ? [...startingData.projects, ...baseProjects.filter(p => !startingData.projects.some(saved => saved.slug === p.slug))] : structuredClone(baseProjects);
+    let socials = startingData.socials ? [...startingData.socials, ...baseSocials.filter(s => s.name === 'beware_the_hog' && !startingData.socials.some(saved => saved.url === s.url))] : structuredClone(baseSocials);
+    const copyFields = [
+      ['Home headline','#home-view .hero h1'],
+      ['Home introduction','#home-view .hero .lead'],
+      ['Featured projects heading','#featured-title'],
+      ['Featured projects introduction','#home-view [aria-labelledby="featured-title"] .section-head p'],
+      ['Social links heading','#social-title'],
+      ['Social links introduction','#home-view [aria-labelledby="social-title"] .section-head p'],
+      ['Home about heading','#about-teaser-title'],
+      ['Home about paragraph 1','#home-view [aria-labelledby="about-teaser-title"] .about-grid > div:last-child > p:first-of-type'],
+      ['Home about paragraph 2','#home-view [aria-labelledby="about-teaser-title"] .about-grid > div:last-child > p:nth-of-type(2)'],
+      ['Home contact heading','#home-contact-title'],
+      ['Home contact introduction','#home-view [aria-labelledby="home-contact-title"] .contact-panel p'],
+      ['Projects headline','#projects-view .page-hero h1'],
+      ['Projects introduction','#projects-view .page-hero p'],
+      ['Project directory introduction','#projects-view .projects-intro'],
+      ['About headline','#about-view .page-hero h1'],
+      ['About introduction','#about-view .page-hero p'],
+      ['About section heading','#about-view .about-grid h2'],
+      ['About paragraph 1','#about-view .about-grid > div:last-child > p:first-of-type'],
+      ['About paragraph 2','#about-view .about-grid > div:last-child > p:nth-of-type(2)'],
+      ['Résumé headline','#resume-view .page-hero h1'],
+      ['Résumé introduction','#resume-view .page-hero p'],
+      ['Résumé profile heading','#resume-view .resume-summary h2'],
+      ['Résumé profile introduction','#resume-view .resume-summary > p'],
+      ['Connect headline','#contact-view .page-hero h1'],
+      ['Connect introduction','#contact-view .page-hero p'],
+      ['Connect links heading','#contact-links-title'],
+      ['Connect links introduction','#contact-view [aria-labelledby="contact-links-title"] .section-head p']
+    ];
+    const originalHeroHTML = document.querySelector('#home-view .hero h1').innerHTML;
+    const originalCopy = Object.fromEntries(copyFields.map(([label,selector]) => [label,document.querySelector(selector).textContent.trim()]));
+    let copy = { ...originalCopy, ...(startingData.copy || {}) };
+    function renderCopy() { for(const [label,selector] of copyFields) { const el = document.querySelector(selector); if(label === 'Home headline' && copy[label] === originalCopy[label]) el.innerHTML = originalHeroHTML; else el.textContent = copy[label]; } }
+    function escapeHTML(value) { return String(value ?? '').replace(/[&<>"']/g,ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+    function safeURL(value) { try { const u = new URL(value); return u.protocol === 'https:' ? u.href : ''; } catch (_) { return ''; } }
+    function card(p) {
+      const [bg,orb,ink] = p.colors;
+      return `<article class="project-card"><div class="project-art" style="--art-bg:${bg};--art-orb:${orb};--art-text:${ink}" aria-hidden="true"><span>${escapeHTML(p.glyph)}</span></div><div class="card-body"><span class="tag">${escapeHTML(p.category)}</span><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.summary)}</p><a class="card-link" href="#/projects/${encodeURIComponent(p.slug)}" aria-label="Explore ${escapeHTML(p.title)}">Explore project ↗</a></div></article>`;
+    }
+    function social(s) { return `<a class="social-link" href="${escapeHTML(safeURL(s.url))}" target="_blank" rel="noopener noreferrer"><span><strong>${escapeHTML(s.name)}</strong><small>${escapeHTML(s.detail)}</small></span><span aria-hidden="true">↗</span></a>`; }
+    function renderLists() {
+      document.getElementById('featured-grid').innerHTML = ['scistrive','dme-library','hands-of-the-lord','supernovasunrise'].map(slug => projects.find(p => p.slug === slug)).filter(Boolean).map(card).join('');
+      document.getElementById('all-projects').innerHTML = projects.map(card).join('');
+      for(const id of ['home-social','contact-social']) document.getElementById(id).innerHTML = socials.filter(s => safeURL(s.url)).map(social).join('');
+      const personal = socials.find(s => safeURL(s.url) && /instagram\.com\/supernovasunrise\/?/i.test(s.url)) || socials.find(s => safeURL(s.url));
+      if(personal) { document.getElementById('personal-footer-link').href = safeURL(personal.url); document.getElementById('personal-footer-link').textContent = `${personal.name} ↗`; }
+    }
+    renderCopy(); renderLists();
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const demoEquipment = [
+      {id:'EQ-101',name:'Rollator walker',type:'Mobility'},
+      {id:'EQ-102',name:'Shower chair',type:'Bathroom safety'},
+      {id:'EQ-103',name:'Transfer bench',type:'Bathroom safety'},
+      {id:'EQ-104',name:'Transport wheelchair',type:'Mobility'},
+      {id:'EQ-105',name:'Bed rail',type:'Home safety'},
+      {id:'EQ-106',name:'Walking cane',type:'Mobility'}
+    ];
+    const demoBorrowers = [{id:'BR-01',name:'Alex Rivera'},{id:'BR-02',name:'Jordan Lee'},{id:'BR-03',name:'Sam Patel'}];
+    const initialDemoLoans = [{id:'LO-001',equipmentId:'EQ-102',borrowerId:'BR-02',returned:false}];
+    let demoLoans = structuredClone(initialDemoLoans), nextDemoLoan = 2;
+    const demoStatus = document.getElementById('demo-status');
+    function renderDemo() {
+      const query = document.getElementById('demo-search').value.trim().toLowerCase();
+      const visible = demoEquipment.filter(item => `${item.name} ${item.id} ${item.type}`.toLowerCase().includes(query));
+      document.getElementById('demo-inventory').innerHTML = visible.length ? visible.map(item => {
+        const active = demoLoans.find(loan => loan.equipmentId === item.id && !loan.returned);
+        const borrower = active && demoBorrowers.find(person => person.id === active.borrowerId);
+        return `<article class="demo-item"><span class="tag">${escapeHTML(item.id)} · ${escapeHTML(item.type)}</span><h3>${escapeHTML(item.name)}</h3><p class="${active?'borrowed':'available'}">${active ? `On loan to ${escapeHTML(borrower.name)}` : 'Available for checkout'}</p><button type="button" data-demo-checkout="${escapeHTML(item.id)}" ${active?'disabled':''}>${active?'Checked out':'Check out item'}</button></article>`;
+      }).join('') : '<p>No equipment matches your search.</p>';
+      document.getElementById('demo-history-rows').innerHTML = [...demoLoans].reverse().map(loan => {
+        const item = demoEquipment.find(entry => entry.id === loan.equipmentId);
+        const borrower = demoBorrowers.find(entry => entry.id === loan.borrowerId);
+        return `<tr><td>${escapeHTML(loan.id)}</td><td>${escapeHTML(item.name)}<br><small>${escapeHTML(item.id)}</small></td><td>${escapeHTML(borrower.name)}<br><small>${escapeHTML(borrower.id)}</small></td><td>${loan.returned?'Returned':`<button type="button" data-demo-return="${escapeHTML(loan.id)}">Return item</button>`}</td></tr>`;
+      }).join('');
+    }
+    document.getElementById('demo-search').addEventListener('input',renderDemo);
+    document.getElementById('demo-inventory').addEventListener('click',event => {
+      const button = event.target.closest('[data-demo-checkout]');
+      if(!button || button.disabled) return;
+      const equipmentId = button.dataset.demoCheckout;
+      if(demoLoans.some(loan => loan.equipmentId === equipmentId && !loan.returned)) return;
+      const borrowerId = document.getElementById('demo-borrower').value;
+      demoLoans.push({id:`LO-${String(nextDemoLoan++).padStart(3,'0')}`,equipmentId,borrowerId,returned:false});
+      demoStatus.textContent = `${demoEquipment.find(item => item.id === equipmentId).name} checked out to ${demoBorrowers.find(person => person.id === borrowerId).name}.`;
+      renderDemo();
+    });
+    document.getElementById('demo-history-rows').addEventListener('click',event => {
+      const button = event.target.closest('[data-demo-return]');
+      if(!button) return;
+      const loan = demoLoans.find(entry => entry.id === button.dataset.demoReturn);
+      if(!loan || loan.returned) return;
+      loan.returned = true;
+      demoStatus.textContent = `${demoEquipment.find(item => item.id === loan.equipmentId).name} returned and available again.`;
+      renderDemo();
+    });
+    document.getElementById('demo-reset').addEventListener('click',() => {
+      demoLoans = structuredClone(initialDemoLoans); nextDemoLoan = 2;
+      document.getElementById('demo-search').value = '';
+      document.getElementById('demo-borrower').value = 'BR-01';
+      demoStatus.textContent = 'Sample data restored.';
+      renderDemo();
+    });
+    renderDemo();
+    const views = [...document.querySelectorAll('.view')];
+    function route() {
+      const path = decodeURIComponent(location.hash.slice(1) || '/');
+      const parts = path.split('/').filter(Boolean);
+      let name = 'home';
+      if(parts.length === 1 && ['projects','about','resume','contact'].includes(parts[0])) name = parts[0];
+      else if(parts.length === 2 && parts[0] === 'projects') {
+        const p = projects.find(x => x.slug === parts[1]);
+        if(p) {
+          name = 'case';
+          document.getElementById('case-category').textContent = p.category;
+          document.getElementById('case-title').textContent = p.title;
+          document.getElementById('case-summary').textContent = p.summary;
+          document.getElementById('case-context').textContent = p.context;
+          document.getElementById('case-role').textContent = p.role;
+          document.getElementById('case-draft').textContent = p.draft;
+          const links = p.links.filter(([,url]) => safeURL(url));
+          document.getElementById('case-links').innerHTML = links.length ? links.map(([label,url]) => `<a href="${escapeHTML(safeURL(url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} ↗</a>`).join('') : (p.slug === 'dme-library' ? '<p>Try the interactive sample below ↓</p>' : '<p>Public examples to add in a future revision.</p>');
+          document.getElementById('dme-demo').hidden = p.slug !== 'dme-library';
+        } else name = 'not-found';
+      } else if(parts.length) name = 'not-found';
+      views.forEach(v => v.hidden = v.id !== `${name}-view`);
+      document.querySelectorAll('[data-nav]').forEach(a => {
+        const active = a.dataset.nav === (name === 'case' ? 'projects' : name);
+        if(active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+      });
+      const title = name === 'case' ? document.getElementById('case-title').textContent : ({home:'Portfolio',projects:'Projects',about:'About',resume:'Résumé',contact:'Connect','not-found':'Page not found'})[name];
+      document.title = `${title} — Milo Rowley`;
+      window.scrollTo(0,0);
+    }
+    const themeKeys = [['night','Dark background'],['cream','Page background'],['orange','Accent']];
+    const defaultTheme = Object.fromEntries(themeKeys.map(([key]) => [key,getComputedStyle(document.documentElement).getPropertyValue('--'+key).trim()]));
+    let theme = { ...defaultTheme, ...(startingData.theme || {}) };
+    function renderTheme() { for(const [key] of themeKeys) document.documentElement.style.setProperty('--'+key,theme[key]); }
+    renderTheme();
+    const editor = document.getElementById('editor');
+    const form = document.getElementById('editor-form');
+    const status = document.getElementById('editor-status');
+    function field(name,label,value,multi=false) {
+      const v = escapeHTML(value ?? '');
+      return `<label class="editor-field ${multi ? 'wide' : ''}">${escapeHTML(label)}${multi ? `<textarea name="${name}">${v}</textarea>` : `<input name="${name}" value="${v}">`}</label>`;
+    }
+    function buildEditor() {
+      let html = '<details open><summary>Page text</summary><div class="editor-fields">';
+      copyFields.forEach(([label],i) => { html += field(`copy-${i}`,label,copy[label],true); });
+      html += '</div></details><details><summary>Projects and project pages</summary><p>Update the six projects below. Leave an external link blank to hide it.</p>';
+      projects.forEach((p,i) => {
+        html += `<details><summary>${escapeHTML(p.title)}</summary><div class="editor-fields">`;
+        for(const [key,label,multi] of [['title','Project title',false],['category','Category',false],['summary','Short description',true],['context','Project overview',true],['role','Your contribution',true],['draft','Draft note or next detail',true]]) html += field(`project-${i}-${key}`,label,p[key],multi);
+        for(let j=0;j<2;j++) { html += field(`project-${i}-link-${j}-label`,`Link ${j+1} label`,p.links[j]?.[0] || ''); html += field(`project-${i}-link-${j}-url`,`Link ${j+1} URL (https://)`,p.links[j]?.[1] || ''); }
+        html += '</div></details>';
+      });
+      html += '</details><details><summary>Social connections</summary><p>To remove a connection, clear its URL. Two empty slots are available for new connections.</p>';
+      for(let i=0;i<socials.length+2;i++) { const s=socials[i] || {name:'',detail:'',url:''}; html += `<details><summary>${escapeHTML(s.name || `New connection ${i+1}`)}</summary><div class="editor-fields">${field(`social-${i}-name`,'Display name',s.name)}${field(`social-${i}-detail`,'Description',s.detail)}${field(`social-${i}-url`,'URL (https://)',s.url)}</div></details>`; }
+      html += '</details><details><summary>Colors</summary><div class="editor-fields">';
+      for(const [key,label] of themeKeys) html += `<label class="editor-field">${label}<input type="color" name="theme-${key}" value="${escapeHTML(theme[key])}"></label>`;
+      html += '</div></details>';
+      form.innerHTML = html;
+    }
+    function collectEdits() {
+      const values = new FormData(form);
+      const get = name => String(values.get(name) ?? '').trim();
+      const newCopy = Object.fromEntries(copyFields.map(([label],i) => [label,get(`copy-${i}`)]));
+      const newProjects = projects.map((p,i) => {
+        const next = {...p};
+        for(const key of ['title','category','summary','context','role','draft']) next[key] = get(`project-${i}-${key}`);
+        next.links = [];
+        for(let j=0;j<2;j++) {
+          const label = get(`project-${i}-link-${j}-label`), url = get(`project-${i}-link-${j}-url`);
+          if(url && !safeURL(url)) throw new Error(`Use an https:// URL for ${next.title}, link ${j+1}.`);
+          if(url) next.links.push([label || 'Visit project',url]);
+        }
+        if(!next.title) throw new Error(`Project ${i+1} needs a title.`);
+        return next;
+      });
+      const newSocials = [];
+      for(let i=0;i<socials.length+2;i++) {
+        const name = get(`social-${i}-name`), detail = get(`social-${i}-detail`), url = get(`social-${i}-url`);
+        if(url && !safeURL(url)) throw new Error(`Use an https:// URL for ${name || `connection ${i+1}`}.`);
+        if(url) newSocials.push({name:name || 'Social profile',detail,url});
+      }
+      const newTheme = Object.fromEntries(themeKeys.map(([key]) => [key,get(`theme-${key}`)]));
+      copy = newCopy; projects = newProjects; socials = newSocials; theme = newTheme;
+      renderCopy(); renderLists(); renderTheme(); route();
+      try { localStorage.setItem(storageKey,JSON.stringify({copy,projects,socials,theme})); status.textContent='Changes saved in this browser. Download HTML and keep it alongside the assets folder.'; }
+      catch (_) { status.textContent='Changes applied. Browser storage is unavailable here; download HTML and keep the assets folder.'; }
+      return {copy,projects,socials,theme};
+    }
+    document.getElementById('open-editor').addEventListener('click',() => { buildEditor(); status.textContent=''; editor.showModal(); });
+    document.getElementById('close-editor').addEventListener('click',() => editor.close());
+    form.addEventListener('submit',e => { e.preventDefault(); try { collectEdits(); buildEditor(); } catch(err) { status.textContent=err.message; } });
+    document.getElementById('download-site').addEventListener('click',() => {
+      try {
+        const data = collectEdits();
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelector('#editor').removeAttribute('open');
+        clone.querySelector('#editor-form').replaceChildren();
+        clone.querySelector('#editor-status').textContent='';
+        clone.querySelector('#editable-data').textContent = JSON.stringify(data).replace(/</g,'\\u003c');
+        const blob = new Blob(['<!doctype html>\n',clone.outerHTML],{type:'text/html;charset=utf-8'});
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob); link.download='milo-portfolio-updated.html'; link.click();
+        setTimeout(() => URL.revokeObjectURL(link.href),30000);
+        status.textContent='Updated HTML downloaded. Rename it index.html and keep assets beside it when publishing.';
+      } catch(err) { status.textContent=err.message; }
+    });
+    document.getElementById('reset-site').addEventListener('click',() => {
+      if(!confirm('Discard this browser’s edits and restore the downloaded draft?')) return;
+      try { localStorage.removeItem(storageKey); } catch(_) {}
+      copy={...originalCopy,...(embeddedData.copy || {})}; projects=structuredClone(embeddedData.projects || baseProjects); socials=structuredClone(embeddedData.socials || baseSocials); theme={...defaultTheme,...(embeddedData.theme || {})};
+      renderCopy(); renderLists(); renderTheme(); route(); buildEditor(); status.textContent='Draft restored in this browser.';
+    });
+    const stage = document.getElementById('sunrise-stage');
+    const scene = stage.querySelector('.cosmic-sticky');
+    const heroCopy = stage.querySelector('.hero-copy');
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    const clamp = value => Math.max(0,Math.min(1,value));
+    const smooth = (start,end,value) => { const t=clamp((value-start)/(end-start)); return t*t*(3-2*t); };
+    let framePending=false;
+    function updateSunrise() {
+      framePending=false;
+      if(reducedMotion.matches || document.getElementById('home-view').hidden) { heroCopy.inert=false; return; }
+      const distance=Math.max(1,stage.offsetHeight-innerHeight);
+      const progress=clamp(-stage.getBoundingClientRect().top/distance);
+      const bloom=smooth(.25,.85,progress);
+      const fade=smooth(.09,.42,progress);
+      const finish=smooth(.69,1,progress);
+      scene.style.setProperty('--sun-y',`${74-15*smooth(.13,.62,progress)}%`);
+      scene.style.setProperty('--sun-scale',(1+bloom*.65).toFixed(3));
+      scene.style.setProperty('--sun-opacity',(1-smooth(.3,.76,progress)*.95).toFixed(3));
+      scene.style.setProperty('--nebula-scale',(.78+bloom*.38).toFixed(3));
+      scene.style.setProperty('--nebula-opacity',bloom.toFixed(3));
+      scene.style.setProperty('--horizon-opacity',(1-smooth(.18,.72,progress)).toFixed(3));
+      scene.style.setProperty('--halo-opacity',(1-finish*.7).toFixed(3));
+      scene.style.setProperty('--copy-opacity',(1-fade).toFixed(3));
+      scene.style.setProperty('--copy-shift',`${(-fade*65).toFixed(1)}px`);
+      scene.style.setProperty('--finish',finish.toFixed(3));
+      heroCopy.inert=fade>.97;
+    }
+    function scheduleSunrise() { if(!framePending) { framePending=true; requestAnimationFrame(updateSunrise); } }
+    window.addEventListener('scroll',scheduleSunrise,{passive:true});
+    window.addEventListener('resize',scheduleSunrise);
+    reducedMotion.addEventListener('change',scheduleSunrise);
+    window.addEventListener('hashchange',route);
+    route();
+    scheduleSunrise();
+  </script>
+</body>
+</html>
