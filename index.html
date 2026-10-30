@@ -167,7 +167,12 @@
     .social-link { border-color:#64617d; }
     .about-grid { grid-template-columns:1fr; gap:20px; max-width:850px; text-align:center; }
     .about-grid p { margin-inline:auto; }
-    .about-grid .eyebrow { display:block; text-align:center; }
+    #home-view .about-grid { display:flex; flex-direction:column; align-items:center; justify-content:center; width:min(850px,calc(100% - 36px)); margin-inline:auto; padding:clamp(36px,6vw,70px); border:1px solid #ffffff24; border-radius:24px; background:#10142eb3; box-shadow:0 25px 70px #05081752; backdrop-filter:blur(9px); }
+    #home-view .about-grid > div { width:100%; text-align:center; }
+    #home-view .about-grid .eyebrow { display:inline-flex; justify-content:center; }
+    #home-view .about-grid h2 { margin:16px auto 0; }
+    #home-view .about-grid p { max-width:680px; margin:0 auto 18px; }
+    #home-view .about-grid .button { margin-inline:auto; }
     .note { background:#272841; text-align:left; }
     .note p { color:#eee6ed; }
     .contact-panel { flex-direction:column; align-items:center; text-align:center; background:radial-gradient(circle at 88% 18%,#864963 0%,#3a284b 40%,#22223c 100%); border:1px solid #79546c; color:var(--ink); }
@@ -241,11 +246,14 @@
     .ambient-sky .first-stars,.ambient-sky .sky-glow { z-index:2; }
     .ambient-sky .sun-halo { z-index:2; }
     .ambient-sky .hero-aurora { z-index:3; }
-    .ambient-sky .afterglow { opacity:calc(var(--finish) * .22); }
+    .ambient-sky .afterglow { opacity:calc(var(--finish) * .32); }
     .hero { background:transparent; }
     .cosmic-sticky { background:transparent; }
-    #prismatic-burst { position:absolute; inset:0; z-index:5; width:100%; height:100%; opacity:var(--burst-opacity,0); mix-blend-mode:screen; filter:drop-shadow(0 0 40px #9ab6e999); }
+    #prismatic-burst { position:absolute; inset:0; z-index:5; width:100%; height:100%; opacity:var(--burst-opacity,0); mix-blend-mode:screen; filter:drop-shadow(0 0 25px #9ab6e954); }
     .ambient-words { color:#ffe2ca0b; }
+    .section-head h2,.page-hero h1,.case-hero h1,.about-grid h2,.case-content h2 { color:#fff8f2; text-shadow:0 2px 22px #030617dc; }
+    .section-head p,.about-grid p,.case-content p,.page-hero p,.case-hero p { color:#e7dfec; text-shadow:0 2px 13px #05071cc7; }
+    #home-view .about-grid .eyebrow { color:#ffe0a9; text-shadow:0 2px 14px #05071cd0; }
     .ambient-aurora { position:absolute; inset:-30%; opacity:.72; filter:blur(45px); background:radial-gradient(ellipse 38% 24% at 33% 26%,#8668aa55,transparent 80%),radial-gradient(ellipse 35% 22% at 77% 55%,#e59b8461,transparent 80%),radial-gradient(ellipse 35% 34% at 50% 85%,#557fab4f,transparent 80%); animation:aurora-drift 26s ease-in-out infinite alternate; transform:translate3d(0,0,0); }
     @keyframes aurora-drift { from { transform:translate3d(-5%,0,0) rotate(-8deg) scale(1); } to { transform:translate3d(6%,-4%,0) rotate(8deg) scale(1.13); } }
     #star-field { position:absolute; inset:0; width:100%; height:100%; opacity:.84; }
@@ -267,6 +275,8 @@
     .social-preview iframe { width:100%; height:290px; border:0; background:white; }
     .social-preview .instagram-media { width:calc(100% - 24px) !important; max-width:none !important; min-width:0 !important; margin:12px auto !important; border-radius:12px !important; }
     .instagram-fallback { min-height:135px; display:flex; align-items:center; justify-content:center; padding:20px; text-align:center; color:var(--gold); }
+    .social-preview .live-preview { width:100%; min-height:300px; border:0; background:#f9f8f7; }
+    .social-preview .preview-fallback { display:flex; align-items:center; justify-content:center; min-height:82px; padding:16px 20px; text-align:center; color:#ffe5bc; background:#2a2a45; font-size:.83rem; }
     .social-preview-links { display:flex; flex-wrap:wrap; gap:9px; padding:16px 20px 20px; margin-top:auto; }
     .social-preview-links a { display:inline-flex; align-items:center; padding:7px 12px; border:1px solid #c7a6a3; border-radius:100px; font-size:.78rem; text-decoration:none; }
     .social-preview-links a:hover { background:#ffffff18; }
@@ -407,7 +417,7 @@
       { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'Utah FCCLA media and events, led as vice president of social media.', context:'Utah FCCLA gave me an opportunity to bring student leadership, communication, and events together. I coordinated media and events across Utah.', role:'I served as Utah FCCLA vice president of social media, coordinated media and events, and earned a national ranking for leadership.', links:[], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳' },
       { slug:'supernovasunrise', title:'SupernovaSunrise', category:'Personal expression / Social media', summary:'My personal creative page on Instagram and Facebook.', context:'SupernovaSunrise is my personal space for creative expression on Instagram and Facebook. The invitation “Come unto me, all ye ends of the earth” stays with me and shapes the warmth and welcome I hope this space conveys.', role:'I created and run the page, shaping its voice, visual direction, and posts.', links:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']], colors:['#f4c5b4','#f49177','#693354'], glyph:'✦' },
       { slug:'hands-of-the-lord', title:'Hands of the Lord', category:'Service / Community media', summary:'Service and volunteer stories shared by service missionaries.', context:'Hands of the Lord is service and volunteer centered content run by service missionaries. It shares opportunities and stories rooted in helping others.', role:'I contributed creative work, with my largest contributions in organization, leadership, and operations.', links:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/people/Hands-of-the-Lord/100091913612468/']], colors:['#dab4b8','#af7886','#422d4a'], glyph:'✶' },
-      { slug:'as-the-savior-would', title:'As the Savior Would', category:'Podcast / Storytelling', summary:'A service missionary podcast about following Jesus Christ through meaningful service.', context:'As the Savior Would is a podcast produced by service missionaries. It shares conversations about discipleship, faith, and service.', role:'I hosted the podcast, guiding conversations about service and discipleship.', links:[['Listen on Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Listen on Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']], colors:['#edc996','#b97d72','#483650'], glyph:'♫' },
+      { slug:'as-the-savior-would', title:'As the Savior Would', category:'Podcast / Storytelling', summary:'A service missionary podcast about following Jesus Christ through meaningful service.', context:'As the Savior Would is a podcast produced by service missionaries. It shares conversations about discipleship, faith, and service.', role:'I hosted the podcast, guiding conversations about service and discipleship.', links:[['YouTube channel','https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg'],['Listen on Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Listen on Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']], colors:['#edc996','#b97d72','#483650'], glyph:'♫' },
       { slug:'dme-library', title:'DME Library Database', category:'Systems / Service', summary:'Mendure DME: an offline Electron and SQLite system for equipment loans.', context:'Mendure DME is an offline Electron desktop app for the NW Montana Veterans Stand Down and Food Pantry. It tracks equipment, customers, 120-day loans, signatures, and reports in SQLite.', role:'I developed the relational database for the library and designed a system to make equipment tracking and checkout more useful.', links:[['Source code','https://github.com/SupernovaSunrise/Relational-Database'],['How it works','https://github.com/SupernovaSunrise/Relational-Database/blob/main/README.md']], colors:['#c9d7c8','#89aa9b','#38545c'], glyph:'◎' },
       { slug:'family-history', title:'Family History Writing', category:'Writing / Oral history', summary:'Helping a family preserve a life story for future generations.', context:'A family wanted to record a loved one’s story for their children. The work began with interviews and continued through transcription and editing.', role:'As a Family History Writer, I interviewed their family member and edited the transcriptions into a clearer record of their story.', links:[], colors:['#e9d5bc','#cba277','#5c4548'], glyph:'❋' },
       { slug:'beware-the-hog', title:'Beware the Hog', category:'Live event / Community', summary:'A live performance and thrift event built around an in-person community experience.', context:'Beware the Hog brought people together for a live performance and thrift event. Its Instagram page offers a glimpse of the project; the experience itself happened in person.', role:'I served as the Hog’s Squire and contributed to the creative work around the event.', links:[['View Instagram','https://www.instagram.com/beware_the_hog/']], colors:['#e8b2a0','#d58179','#49334b'], glyph:'✹' },
@@ -421,19 +431,26 @@
       return `<article class="project-card"><div class="project-art" style="--art-bg:${bg};--art-orb:${orb};--art-text:${ink}" aria-hidden="true"><span>${escapeHTML(p.glyph)}</span></div><div class="card-body"><span class="tag">${escapeHTML(p.category)}</span><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.summary)}</p><a class="card-link" href="#/projects/${encodeURIComponent(p.slug)}" aria-label="Explore ${escapeHTML(p.title)}">Explore project ↗</a></div></article>`;
     }
     const mediaProfiles = [
-      {slug:'supernovasunrise',name:'SupernovaSunrise',caption:'My personal creative page',platforms:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']]},
-      {slug:'hands-of-the-lord',name:'Hands of the Lord',caption:'Service and volunteer stories',platforms:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/people/Hands-of-the-Lord/100091913612468/']]},
-      {slug:'beware-the-hog',name:'Beware the Hog',caption:'Live performance and thrift event',platforms:[['Instagram','https://www.instagram.com/beware_the_hog/']]},
-      {slug:'as-the-savior-would',name:'As the Savior Would',caption:'Service missionary podcast',platforms:[['Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']]}
+      {slug:'supernovasunrise',name:'SupernovaSunrise',caption:'My personal creative page',preview:'facebook',platforms:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']]},
+      {slug:'hands-of-the-lord',name:'Hands of the Lord',caption:'Service and volunteer stories',preview:'facebook',platforms:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/people/Hands-of-the-Lord/100091913612468/']]},
+      {slug:'beware-the-hog',name:'Beware the Hog',caption:'Live performance and thrift event',preview:'instagram',platforms:[['Instagram','https://www.instagram.com/beware_the_hog/']]},
+      {slug:'as-the-savior-would',name:'As the Savior Would',caption:'Service missionary podcast',preview:'youtube',platforms:[['YouTube','https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg'],['Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']]}
     ];
     function socialPreview(profile) {
-      const podcast = profile.slug === 'as-the-savior-would';
-      const instagram = profile.platforms.find(([platform]) => platform === 'Instagram');
-      const instagramEmbed = instagram ? `<blockquote class="instagram-media" data-instgrm-permalink="${escapeHTML(safeURL(instagram[1]))}" data-instgrm-version="14"><a class="instagram-fallback" href="${escapeHTML(safeURL(instagram[1]))}" target="_blank" rel="noopener noreferrer">View ${escapeHTML(profile.name)} on Instagram ↗</a></blockquote>` : '';
-      const media = podcast ? '<iframe title="As the Savior Would podcast preview" loading="lazy" src="https://open.spotify.com/embed/show/0N50Bv2tXqzNEHB7u2cdAW?utm_source=generator" allow="encrypted-media"></iframe>' : instagramEmbed;
+      const channel = profile.platforms.find(([platform]) => platform === (profile.preview === 'facebook' ? 'Facebook' : profile.preview === 'youtube' ? 'YouTube' : 'Instagram'));
+      const url = safeURL(channel?.[1]);
+      let media;
+      if(profile.preview === 'instagram') {
+        media = `<blockquote class="instagram-media" data-instgrm-permalink="${escapeHTML(url)}" data-instgrm-version="14"><a class="instagram-fallback" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">View ${escapeHTML(profile.name)} on Instagram ↗</a></blockquote>`;
+      } else {
+        const frame = profile.preview === 'facebook'
+          ? `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(url)}&tabs=timeline&width=500&height=300&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false`
+          : 'https://www.youtube-nocookie.com/embed/videoseries?list=UUkclXkaImNbSIiN30d2BWfg';
+        media = `<div class="social-preview-media"><span>${escapeHTML(profile.name)}</span><small>${profile.preview === 'facebook' ? 'Facebook page preview' : 'YouTube channel videos'}</small></div><iframe class="live-preview" title="${escapeHTML(profile.name)} ${profile.preview === 'facebook' ? 'Facebook timeline' : 'YouTube videos'}" loading="lazy" src="${escapeHTML(frame)}" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a class="preview-fallback" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">Open ${escapeHTML(profile.name)} on ${profile.preview === 'facebook' ? 'Facebook' : 'YouTube'} ↗</a>`;
+      }
       const links = profile.platforms.map(([platform,url]) => `<a href="${escapeHTML(safeURL(url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(platform)} ↗</a>`).join('');
-      const note = podcast ? 'Podcast player loads from Spotify.' : 'Instagram preview depends on the profile’s embed settings.';
-      return `<article class="social-preview"><div class="social-preview-top"><span class="tag">${podcast?'Podcast':'Instagram preview'}</span><h3>${escapeHTML(profile.name)}</h3><p>${escapeHTML(profile.caption)}</p></div>${media}<div class="social-preview-links">${links}</div><div class="social-preview-note">${escapeHTML(note)}</div></article>`;
+      const note = profile.preview === 'instagram' ? 'Instagram preview depends on the profile’s embed settings.' : 'If the live preview is unavailable, use the channel link.';
+      return `<article class="social-preview"><div class="social-preview-top"><span class="tag">${profile.preview === 'youtube'?'Podcast':profile.preview === 'facebook'?'Facebook preview':'Instagram preview'}</span><h3>${escapeHTML(profile.name)}</h3><p>${escapeHTML(profile.caption)}</p></div>${media}<div class="social-preview-links">${links}</div><div class="social-preview-note">${escapeHTML(note)}</div></article>`;
     }
     function renderLists() {
       document.getElementById('featured-grid').innerHTML = ['scistrive','dme-library','hands-of-the-lord','supernovasunrise'].map(slug => projects.find(p => p.slug === slug)).filter(Boolean).map(card).join('');
@@ -639,8 +656,8 @@
       scene.style.setProperty('--sun-scale',(1+bloom*.65).toFixed(3));
       scene.style.setProperty('--sun-opacity',(1-smooth(.3,.76,progress)*.95).toFixed(3));
       scene.style.setProperty('--nebula-scale',(.78+bloom*.38).toFixed(3));
-      scene.style.setProperty('--nebula-opacity',(bloom*.5).toFixed(3));
-      scene.style.setProperty('--burst-opacity',bloom.toFixed(3));
+      scene.style.setProperty('--nebula-opacity',(bloom*.28).toFixed(3));
+      scene.style.setProperty('--burst-opacity',(bloom*.72).toFixed(3));
       scene.style.setProperty('--horizon-opacity',(1-smooth(.18,.72,progress)).toFixed(3));
       scene.style.setProperty('--halo-opacity',(1-finish*.7).toFixed(3));
       scene.style.setProperty('--copy-opacity',(1-fade).toFixed(3));
