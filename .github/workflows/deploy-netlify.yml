@@ -1,0 +1,41 @@
+name: Deploy portfolio to Netlify
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: netlify-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check Netlify credentials
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo 'Add NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID to repository Actions secrets.' >&2
+            exit 1
+          fi
+      - name: Prepare static site
+        run: |
+          mkdir -p dist/assets
+          cp index.html dist/index.html
+          cp assets/nebula-reference.jpg assets/Richard_Milo_Rowley_Resume.pdf dist/assets/
+      - name: Publish production deploy
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: npx --yes netlify-cli@27.14.2 deploy --prod --dir=dist --no-build

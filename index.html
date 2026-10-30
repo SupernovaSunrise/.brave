@@ -108,34 +108,14 @@
     .case-content { display: grid; grid-template-columns: minmax(0,1fr) 280px; gap: 12%; align-items: start; padding-block: 80px 105px; }
     .case-content h2 { font-size: 2.5rem; margin-bottom: 17px; }
     .case-content p { font-size: 1.07rem; max-width: 690px; color: #514a58; }
-    .case-content .draft-note { color: #6a5161; background: #f9ebe3; border-left: 3px solid var(--orange); padding: 18px 20px; font-size: .94rem; border-radius: 0 8px 8px 0; }
     .case-side { border-top: 2px solid var(--orange); padding-top: 22px; }
     .case-side h3 { font: 750 .72rem system-ui,sans-serif; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 13px; }
     .case-side a { display: block; margin: 8px 0; text-underline-offset: 4px; }
     .case-side p { font-size: .9rem; color: var(--muted); }
     .not-found { min-height: 50vh; padding-block: 100px; }
-    .edit-button { position: fixed; z-index: 20; bottom: 20px; right: 20px; border: 1px solid #fff8; border-radius: 100px; background: var(--night); color: white; padding: 12px 19px; box-shadow: var(--shadow); font: 700 .88rem system-ui,sans-serif; cursor: pointer; }
-    .editor { width: min(760px,calc(100% - 28px)); max-height: min(88vh,900px); padding: 0; border: 0; border-radius: 16px; box-shadow: 0 28px 100px #241b3580; color: var(--ink); background: var(--paper); }
-    .editor::backdrop { background: #241b35b8; }
-    .editor-head { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 20px 25px; color: white; background: var(--night); }
-    .editor-head h2 { margin: 0; font-size: 1.6rem; }
-    .close-editor { color: white; background: transparent; border: 0; font-size: 1.8rem; line-height: 1; cursor: pointer; }
-    .editor-body { padding: 22px 26px 10px; }
-    .editor-body > p { color: var(--muted); font-size: .9rem; }
-    .editor details { border-top: 1px solid var(--line); padding: 17px 0; }
-    .editor summary { font-weight: 750; cursor: pointer; }
-    .editor-field { display: block; margin: 16px 0; font-size: .81rem; font-weight: 700; }
-    .editor-field input, .editor-field textarea { display: block; width: 100%; margin-top: 6px; padding: 11px 12px; border: 1px solid #bcb2bb; border-radius: 7px; background: white; color: var(--ink); font: 400 .93rem/1.5 system-ui,sans-serif; }
-    .editor-field textarea { resize: vertical; min-height: 85px; }
-    .editor-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
-    .editor-fields .wide { grid-column: 1/-1; }
-    .editor-actions { position: sticky; bottom: 0; display: flex; gap: 10px; flex-wrap: wrap; padding: 16px 26px; background: var(--paper); border-top: 1px solid var(--line); }
-    .editor-actions button { border: 1px solid var(--night); border-radius: 100px; padding: 10px 16px; background: white; color: var(--night); font-weight: 750; cursor: pointer; }
-    .editor-actions .save-edit { background: var(--night); color: white; }
-    .editor-status { min-height: 1.6em; padding: 0 26px 15px; color: #584456; font-size: .85rem; }
     @media(max-width: 900px) { .hero-grid { gap: 0; }.sky-art { opacity: .75; transform: scale(.88) translateX(5%); }.project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.contact-panel { align-items: start; flex-direction: column; } }
     @media(max-width: 700px) {
-      .shell { width: min(100% - 36px, 560px); }.nav { align-items: start; flex-direction: column; justify-content: center; gap: 4px; padding-block: 15px; }.nav-links { gap: 2px; margin-left: -10px; }.nav-links a { padding: 7px 10px; font-size: .83rem; }.nav-links .nav-contact { margin-left: 0; }.editor-fields { grid-template-columns: 1fr; }.editor-fields .wide { grid-column: auto; }
+      .shell { width: min(100% - 36px, 560px); }.nav { align-items: start; flex-direction: column; justify-content: center; gap: 4px; padding-block: 15px; }.nav-links { gap: 2px; margin-left: -10px; }.nav-links a { padding: 7px 10px; font-size: .83rem; }.nav-links .nav-contact { margin-left: 0; }
       .hero { min-height: 0; }.hero-grid { display: block; padding: 70px 0 66px; }.hero h1 { font-size: clamp(3.5rem,13vw,5.5rem); }.sky-art { width: min(72vw,340px); margin: 15px auto -75px; opacity: .7; transform: none; }.section { padding-block: 70px; }.section-head { display: block; }.section-head p { margin-top: 13px; }.project-grid,#featured-grid,.social-grid,.about-grid,.case-content { grid-template-columns: 1fr; }.project-card { min-height: 0; }.case-content { gap: 40px; padding-block: 60px 75px; }.page-hero { padding: 68px 0 54px; }.case-hero { padding: 50px 0 60px; }.footer-row { align-items: start; flex-direction: column; gap: 5px; }
     }
     @media(prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
@@ -158,6 +138,9 @@
     .nebula-haze { z-index:3; width:min(110vw,1250px); aspect-ratio:1; opacity:var(--nebula-opacity); background:radial-gradient(ellipse at 50% 47%,#effaff 0 6%,#95d2f4 18%,#5e73b7a9 30%,transparent 55%),conic-gradient(from 58deg,#db795822,#ffbc64ba 18%,#3a2d5c00 35%,#c85d4f99 54%,#ffce81b0 75%,#d7635033 90%,#db795822); filter:blur(34px); transform:translate(-50%,-50%) scale(var(--nebula-scale)); }
     .nebula-image { z-index:4; width:min(91vmin,820px); aspect-ratio:1; opacity:var(--nebula-opacity); background:url('assets/nebula-reference.jpg') center / contain no-repeat; filter:blur(3px) saturate(1.1); mix-blend-mode:screen; mask-image:radial-gradient(circle,#000 0 48%,#0009 66%,transparent 78%); transform:translate(-50%,-50%) scale(var(--nebula-scale)); }
     .nebula-light { z-index:5; width:min(63vmin,610px); aspect-ratio:1; opacity:var(--nebula-opacity); background:radial-gradient(ellipse at 48% 50%,#ffffefbb 0 9%,#b5e1ff80 24%,#a7bafa38 46%,transparent 68%); filter:blur(24px); transform:translate(-50%,-50%) scale(var(--nebula-scale)); }
+    .hero-aurora { position:absolute; inset:-25%; z-index:1; opacity:var(--nebula-opacity); background:conic-gradient(from 50deg at 50% 50%,transparent 0 10%,#83b1dd55 25%,transparent 38%,#ffd19a44 58%,transparent 75%,#cf88bd55 90%,transparent); filter:blur(68px); animation:aurora-drift 21s ease-in-out infinite alternate; }
+    .hero-stars { position:absolute; inset:0; z-index:6; width:100%; height:100%; opacity:var(--nebula-opacity); pointer-events:none; }
+    .nova-copy { position:absolute; inset:auto 18px 10%; z-index:7; text-align:center; font:italic clamp(2.3rem,6vw,6rem)/1 Georgia,serif; color:#fff0df; text-shadow:0 0 38px #a9cfff; opacity:var(--nova-copy-opacity,0); transform:translateY(22px); transition:transform .3s; pointer-events:none; }
     .afterglow { position:absolute; z-index:5; inset:0; background:linear-gradient(180deg,#10132900 0%,#101329 100%); opacity:var(--finish); }
     .hero-copy { position:relative; z-index:7; text-align:center; padding-top:clamp(140px,21svh,230px); opacity:var(--copy-opacity); transform:translateY(var(--copy-shift)); }
     .hero-copy .eyebrow { color:#ffe3bd; }
@@ -184,6 +167,7 @@
     .social-link { border-color:#64617d; }
     .about-grid { grid-template-columns:1fr; gap:20px; max-width:850px; text-align:center; }
     .about-grid p { margin-inline:auto; }
+    .about-grid .eyebrow { display:block; text-align:center; }
     .note { background:#272841; text-align:left; }
     .note p { color:#eee6ed; }
     .contact-panel { flex-direction:column; align-items:center; text-align:center; background:radial-gradient(circle at 88% 18%,#864963 0%,#3a284b 40%,#22223c 100%); border:1px solid #79546c; color:var(--ink); }
@@ -240,13 +224,48 @@
     .demo-footnote,.demo-status { margin:17px 0 0; color:var(--muted); font-size:.84rem; }
     .demo-status { color:#e6cda3; min-height:1.5em; }
     .case-nav { color:var(--gold); }
-    .case-content .draft-note { display:none; color:#f4e5e9; background:#302a45; }
-    .editor,.editor-actions { background:#fffaf4; color:#292436; }
-    .editor-body > p,.editor-status { color:#645467; }
-    .editor details { border-color:#ddd4d8; }
-    .editor-field input,.editor-field textarea { color:#292436; }
-    .editor-actions button { border-color:#241b35; color:#241b35; }
-    .editor-actions .save-edit { background:#241b35; color:white; }
+    .project-picker { position:relative; display:flex; align-items:center; border-radius:100px; }
+    .project-picker > a { padding-right:5px; }
+    .project-picker-toggle { border:0; padding:9px 15px 9px 6px; background:none; color:#fff1de; cursor:pointer; font:700 1.1rem/1 system-ui,sans-serif; transition:transform .22s ease; }
+    .project-picker-toggle[aria-expanded="true"] { transform:rotate(180deg); }
+    .project-picker-menu { position:absolute; z-index:45; top:calc(100% + 13px); left:0; width:min(315px,86vw); max-height:min(65vh,470px); overflow-y:auto; padding:8px; border:1px solid #ffffff38; border-radius:16px; background:#24243beF; box-shadow:0 22px 65px #070718a8; backdrop-filter:blur(22px); }
+    .project-picker-menu[hidden] { display:none; }
+    .project-picker-menu::before { content:""; position:absolute; left:24px; top:-6px; width:11px; height:11px; background:#24243b; transform:rotate(45deg); }
+    .project-picker-menu a { position:relative; z-index:2; display:block; width:100%; padding:11px 13px; border-radius:9px; text-decoration:none; font-size:.85rem; font-weight:650; }
+    .project-picker-menu a:hover,.project-picker-menu a:focus-visible { background:#ffffff19; outline:2px solid #ffd393; outline-offset:-2px; }
+    .project-picker-highlight { position:absolute; top:8px; left:8px; right:8px; z-index:1; height:40px; background:linear-gradient(110deg,#ffc78632,#b5c6ff1b); border:1px solid #ffddaa42; border-radius:9px; opacity:0; pointer-events:none; transition:transform .23s cubic-bezier(.2,.8,.2,1),height .23s,opacity .18s; }
+    .ambient-sky { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; background:radial-gradient(ellipse at 45% 58%,#31223e 0%,#15162e 52%,#0c1125 100%); }
+    .ambient-aurora { position:absolute; inset:-30%; opacity:.72; filter:blur(45px); background:radial-gradient(ellipse 38% 24% at 33% 26%,#8668aa55,transparent 80%),radial-gradient(ellipse 35% 22% at 77% 55%,#e59b8461,transparent 80%),radial-gradient(ellipse 35% 34% at 50% 85%,#557fab4f,transparent 80%); animation:aurora-drift 26s ease-in-out infinite alternate; transform:translate3d(0,0,0); }
+    @keyframes aurora-drift { from { transform:translate3d(-5%,0,0) rotate(-8deg) scale(1); } to { transform:translate3d(6%,-4%,0) rotate(8deg) scale(1.13); } }
+    #star-field { position:absolute; inset:0; width:100%; height:100%; opacity:.84; }
+    .ambient-words { position:absolute; right:clamp(10px,5vw,90px); bottom:6vh; font:700 clamp(3rem,8vw,9rem)/.96 Georgia,serif; letter-spacing:-.06em; text-align:right; color:#ffe2ca0e; opacity:0; transform:translateY(30px); transition:opacity .65s,transform .65s; }
+    body[data-cosmos="visible"] .ambient-words { opacity:1; transform:translateY(0); }
+    main,.site-footer { position:relative; z-index:1; }
+    .site-footer { background:#111328ba; }
+    #home-view > .section:not(.dark-panel),#projects-view > .section,#about-view > .section,#resume-view > .section,#case-view > .case-content,#contact-view > .section { background:transparent; }
+    .dark-panel { background:#171a33c9; }
+    .page-hero,.case-hero { background:radial-gradient(circle at 50% -25%,#8d4e6ca1 0%,#352540b5 46%,#171a32a6 100%); }
+    .social-grid { align-items:stretch; }
+    .social-preview { display:flex; flex-direction:column; overflow:hidden; border:1px solid #69617a; border-radius:18px; background:#22243de9; box-shadow:0 17px 45px #090a1836; }
+    .social-preview-top { padding:18px 20px; border-bottom:1px solid #ffffff1d; }
+    .social-preview-top h3 { margin:8px 0 6px; font-size:1.38rem; }
+    .social-preview-top p { margin:0; color:var(--muted); font-size:.86rem; }
+    .social-preview-media { min-height:166px; display:grid; align-content:center; padding:27px; background:radial-gradient(circle at 24% 25%,#ffb88277,transparent 47%),radial-gradient(circle at 80% 72%,#899acc77,transparent 48%),#292844; }
+    .social-preview-media span { display:block; font:italic 1.75rem/1.18 Georgia,serif; max-width:260px; color:#fff2e9; }
+    .social-preview-media small { display:block; margin-top:13px; font-size:.71rem; text-transform:uppercase; letter-spacing:.14em; color:#ffe2bb; }
+    .social-preview iframe { width:100%; height:290px; border:0; background:white; }
+    .social-preview .instagram-media { width:calc(100% - 24px) !important; max-width:none !important; min-width:0 !important; margin:12px auto !important; border-radius:12px !important; }
+    .instagram-fallback { min-height:135px; display:flex; align-items:center; justify-content:center; padding:20px; text-align:center; color:var(--gold); }
+    .social-preview-links { display:flex; flex-wrap:wrap; gap:9px; padding:16px 20px 20px; margin-top:auto; }
+    .social-preview-links a { display:inline-flex; align-items:center; padding:7px 12px; border:1px solid #c7a6a3; border-radius:100px; font-size:.78rem; text-decoration:none; }
+    .social-preview-links a:hover { background:#ffffff18; }
+    .social-preview-note { padding:0 20px 18px; color:#c9bfce; font-size:.75rem; }
+    .external-preview,.case-social-previews { text-align:center; padding-bottom:95px; }
+    .external-preview p { max-width:650px; margin:9px auto 25px; color:var(--muted); }
+    .external-preview h2,.case-social-previews h2 { margin:10px 0 25px; }
+    .website-frame { position:relative; height:min(55vw,550px); min-height:350px; margin:0 auto 25px; overflow:hidden; border:1px solid #7a7190; border-radius:17px; box-shadow:var(--shadow); background:linear-gradient(125deg,#514e72,#1b1e36); }
+    .website-frame iframe { width:100%; height:100%; border:0; background:white; }
+    .case-social-previews .social-grid { text-align:left; margin-top:25px; }
     @media(max-width:700px) {
       .site-header .nav { padding-block:10px; }
       .cosmic-sticky { min-height:540px; }
@@ -262,11 +281,15 @@
       .resume-layout { grid-template-columns:1fr; gap:45px; }
       .resume-summary { position:static; }
       .demo-inventory { grid-template-columns:1fr; }
+      .project-picker-menu { left:-70px; }
+      .ambient-words { font-size:clamp(2.5rem,11vw,5.2rem); }
     }
     @media(prefers-reduced-motion:reduce) {
       .hero { height:100svh; }
       .cosmic-sticky { position:relative; height:100svh; }
       .nebula-haze,.nebula-image,.nebula-light { display:none; }
+      .ambient-aurora { animation:none; }
+      .ambient-words { transition:none; }
     }
     @media(max-height:650px) {
       .hero-copy { padding-top:120px; }
@@ -283,7 +306,7 @@
       <a class="wordmark" href="#/">Milo Rowley<span> ✳</span></a>
       <div class="nav-links">
         <a href="#/" data-nav="home">Home</a>
-        <a href="#/projects" data-nav="projects">Projects</a>
+        <div class="project-picker" id="project-picker"><a href="#/projects" data-nav="projects">Projects</a><button class="project-picker-toggle" id="project-picker-toggle" type="button" aria-label="Choose a project" aria-expanded="false" aria-controls="project-picker-menu">⌄</button><div class="project-picker-menu" id="project-picker-menu" aria-label="Choose a project" hidden><span class="project-picker-highlight" aria-hidden="true"></span><div id="project-picker-options"></div></div></div>
         <a href="#/about" data-nav="about">About</a>
         <a href="#/resume" data-nav="resume">Résumé</a>
         <a class="nav-contact" href="#/contact" data-nav="contact">Connect ↗</a>
@@ -298,7 +321,7 @@
             <div class="first-stars"></div><div class="sky-glow"></div>
             <div class="sun-halo"></div><div class="sun-core"></div>
             <div class="horizon-line"></div><div class="sea"></div>
-            <div class="nebula-haze"></div><div class="nebula-image"></div><div class="nebula-light"></div><div class="afterglow"></div>
+            <div class="hero-aurora"></div><div class="nebula-haze"></div><div class="nebula-image"></div><div class="nebula-light"></div><div class="afterglow"></div><canvas class="hero-stars" id="hero-stars"></canvas>
           </div>
           <div class="hero-copy shell">
             <span class="eyebrow">Creative work with purpose</span>
@@ -306,6 +329,7 @@
             <p class="lead">I’m Milo Rowley. I work across storytelling, digital projects, and community media to make useful things and help good ideas reach people.</p>
             <div class="actions"><a class="button primary" href="#/projects">Explore my projects <span aria-hidden="true">↗</span></a><a class="button ghost" href="#/about">Get to know me</a></div>
           </div>
+          <div class="nova-copy" aria-hidden="true">Find your next horizon.</div>
           <div class="scroll-cue" aria-hidden="true">Scroll to see the sunrise evolve <span>↓</span></div>
         </div>
       </section>
@@ -320,7 +344,7 @@
     </div>
     <div class="view" id="projects-view" hidden>
       <section class="page-hero"><div class="shell"><span class="eyebrow">Portfolio / Projects</span><h1>Ideas made real, together.</h1><p>Creative projects, communication work, and systems built with a purpose. Explore the stories and follow the links to the public work.</p></div></section>
-      <section class="section shell" aria-labelledby="projects-title"><h2 id="projects-title" class="serif" style="font-size:2rem;margin-bottom:15px">Project directory</h2><p class="projects-intro">Each card opens a project page. We can add more examples and outcomes as you choose what to share.</p><div class="project-grid" id="all-projects"></div></section>
+      <section class="section shell" aria-labelledby="projects-title"><h2 id="projects-title" class="serif" style="font-size:2rem;margin-bottom:15px">Project directory</h2><p class="projects-intro">Each card opens a project page. Select a project to see the details, try the database preview, or visit the public work.</p><div class="project-grid" id="all-projects"></div></section>
     </div>
     <div class="view" id="about-view" hidden>
       <section class="page-hero"><div class="shell"><span class="eyebrow">About / Milo</span><h1>Thoughtful work starts with people.</h1><p>I care about how ideas are communicated, how tools serve their communities, and how stories bring people closer.</p></div></section>
@@ -345,153 +369,165 @@
     </div>
     <div class="view" id="case-view" hidden>
       <section class="case-hero"><div class="shell"><a class="case-nav" href="#/projects">← All projects</a><span class="eyebrow" id="case-category"></span><h1 id="case-title"></h1><p id="case-summary"></p></div></section>
-      <div class="shell case-content"><article><h2>The project</h2><p id="case-context"></p><h2 style="margin-top:45px">My contribution</h2><p id="case-role"></p><p class="draft-note" id="case-draft"></p></article><aside class="case-side"><h3>Explore the work</h3><div id="case-links"></div></aside></div>
+      <div class="shell case-content"><article><h2>The project</h2><p id="case-context"></p><h2 style="margin-top:45px">My contribution</h2><p id="case-role"></p></article><aside class="case-side"><h3>Explore the work</h3><div id="case-links"></div></aside></div>
       <section class="demo-wrap shell" id="dme-demo" aria-labelledby="demo-heading" hidden>
         <div class="demo-panel">
           <span class="eyebrow">Interactive demonstration</span><h2 id="demo-heading">A library, connected.</h2>
-          <p class="demo-intro">Choose a fictional borrower and check equipment out. Availability and the checkout log update together, showing how linked records replace a paper filing system.</p>
-          <p class="demo-schema">Each checkout links <code>equipment.id</code> to <code>checkout.equipment_id</code> and <code>borrower.id</code> to <code>checkout.borrower_id</code>.</p>
-          <div class="demo-toolbar"><label for="demo-borrower">Borrower<select id="demo-borrower"><option value="BR-01">Alex Rivera · BR-01</option><option value="BR-02">Jordan Lee · BR-02</option><option value="BR-03">Sam Patel · BR-03</option></select></label><label for="demo-search">Find equipment<input id="demo-search" type="search" placeholder="Search equipment or ID"></label><button id="demo-reset" type="button">Reset sample data</button></div>
+          <p class="demo-intro">An interactive browser adaptation of <a href="https://github.com/SupernovaSunrise/Relational-Database" target="_blank" rel="noopener noreferrer">Mendure DME ↗</a>, the real Electron and SQLite project. Choose a fictional customer, then check out equipment to see linked records and the 120-day return date.</p>
+          <p class="demo-schema">The actual schema connects <code>loans.customer_id → customers.id</code> and <code>loans.equipment_id → equipment.equipment_id</code>. Equipment IDs follow <code>AA-0000</code>; a returned item sets <code>returned_date</code>.</p>
+          <div class="demo-toolbar"><label for="demo-borrower">Customer<select id="demo-borrower"><option value="1">Alex Rivera · #1</option><option value="2">Jordan Lee · #2</option><option value="3">Sam Patel · #3</option></select></label><label for="demo-search">Find equipment<input id="demo-search" type="search" placeholder="Search equipment or ID"></label><button id="demo-reset" type="button">Reset sample data</button></div>
           <div class="demo-inventory" id="demo-inventory"></div>
-          <div class="demo-history"><h3>Checkout history</h3><table><thead><tr><th scope="col">Record</th><th scope="col">Equipment</th><th scope="col">Borrower</th><th scope="col">Status / action</th></tr></thead><tbody id="demo-history-rows"></tbody></table></div>
+          <div class="demo-history"><h3>Loans</h3><table><thead><tr><th scope="col">Loan</th><th scope="col">Equipment</th><th scope="col">Customer</th><th scope="col">Due date</th><th scope="col">Status / action</th></tr></thead><tbody id="demo-history-rows"></tbody></table></div>
           <p class="demo-status" id="demo-status" role="status" aria-live="polite"></p>
-          <p class="demo-footnote">Illustrative front-end demo with invented people and equipment. It does not connect to the original database or store any personal information.</p>
+          <p class="demo-footnote">This browser adaptation uses fictional records and the public repository’s schema and rules. The real product is an offline desktop app with SQLite, account access, and signed checkout agreements; no live records are loaded here.</p>
         </div>
       </section>
+      <section class="shell external-preview" id="scistrive-preview" hidden aria-labelledby="scistrive-preview-heading"><span class="eyebrow">Live website</span><h2 id="scistrive-preview-heading">Explore SciStrive.</h2><p>Preview the public site below. If the site prevents embedding, open it in a new tab.</p><div class="website-frame"><iframe title="SciStrive website preview" loading="lazy" referrerpolicy="no-referrer" src="https://scistrive.com/"></iframe></div><a class="button ghost" href="https://scistrive.com/" target="_blank" rel="noopener noreferrer">Open SciStrive ↗</a></section>
+      <section class="shell case-social-previews" id="case-social-previews" hidden aria-labelledby="case-social-title"><span class="eyebrow">Across channels</span><h2 id="case-social-title">See the work where it lives.</h2><div class="social-grid" id="case-social-grid"></div></section>
     </div>
     <div class="view" id="not-found-view" hidden><div class="shell not-found"><span class="eyebrow">Page not found</span><h1>Let’s head back.</h1><a class="button primary" href="#/projects">Explore projects</a></div></div>
   </main>
   <footer class="site-footer"><div class="shell footer-row"><span>© <span id="year"></span> Milo Rowley · Made with curiosity and care.</span><span><a href="#/projects">Projects</a> · <a id="personal-footer-link" href="https://www.instagram.com/supernovasunrise/" target="_blank" rel="noopener noreferrer">@supernovasunrise ↗</a></span></div></footer>
-  <button class="edit-button" id="open-editor" type="button">✎ Edit this draft</button>
-  <dialog class="editor" id="editor" aria-labelledby="editor-title"><div class="editor-head"><h2 id="editor-title">Edit your portfolio</h2><button class="close-editor" id="close-editor" type="button" aria-label="Close editor">×</button></div><div class="editor-body"><p>Change text and links here, then save. Edits stay in this browser. To publish them, download the updated HTML and keep the <strong>assets</strong> folder beside it; the folder contains the nebula image and résumé PDF.</p><form id="editor-form"></form></div><div class="editor-actions"><button class="save-edit" type="submit" form="editor-form">Save changes</button><button id="download-site" type="button">Download updated HTML</button><button id="reset-site" type="button">Reset draft</button></div><div class="editor-status" id="editor-status" role="status" aria-live="polite"></div></dialog>
-  <script id="editable-data" type="application/json">{}</script>
+  <div class="ambient-sky" aria-hidden="true"><div class="ambient-aurora"></div><canvas id="star-field"></canvas><div class="ambient-words">MAKE SOMETHING<br>MEAN SOMETHING.</div></div>
   <script>
-    const embeddedData = JSON.parse(document.getElementById('editable-data').textContent || '{}');
-    const storageKey = 'milo-portfolio-editable-v3';
-    let localData = {};
-    try { localData = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch (_) {}
-    const startingData = Object.keys(localData).length ? localData : embeddedData;
     const baseProjects = [
-      { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'A high school creative project connected to Utah FCCLA.', context:'During high school, I worked on FCCLA UT. This page will gather examples of the content and the story behind the project.', role:'I contributed to this project during high school. My specific responsibilities and examples can be added here in the next revision.', draft:'Draft note: add the correct account link, your role, and a few posts or assets you have permission to show.', links:[], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳' },
-      { slug:'supernovasunrise', title:'SuperNovaSunrise', category:'Personal expression / Social media', summary:'My personal creative space on Instagram and Facebook.', context:'SuperNovaSunrise is my personal presence on Instagram and Facebook, with similar posts on both. Its name inspired the warm, celestial direction of this portfolio draft.', role:'These are my personal accounts. A future revision can describe the ideas, visual choices, and posts that best represent me.', draft:'Draft note: the social feeds could not be viewed during this pass. Add a screenshot or visual reference so the site can match their actual style more closely.', links:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']], colors:['#f4c5b4','#f49177','#693354'], glyph:'✦' },
-      { slug:'hands-of-the-lord', title:'Hands of the Lord', category:'Community media / Social', summary:'Faith-centered storytelling shared on Instagram and Facebook.', context:'Hands of the Lord shares content rooted in service and faith across its social channels.', role:'I worked on this project. The next revision can identify my exact responsibilities, examples, and collaborators.', draft:'Draft note: specify the posts, campaigns, or account work you contributed to, with any permissions needed to display them.', links:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/people/Hands-of-the-Lord/100091913612468/']], colors:['#dab4b8','#af7886','#422d4a'], glyph:'✶' },
-      { slug:'as-the-savior-would', title:'As the Savior Would', category:'Podcast / Storytelling', summary:'A service missionary podcast about following Jesus Christ through meaningful service.', context:'As the Savior Would is a podcast produced by service missionaries. It shares conversations about discipleship, faith, and service.', role:'I worked on the podcast. The next revision can name my role and link to episodes or production work that I helped create.', draft:'Draft note: add your exact podcast responsibilities and one or two episodes you would like to feature.', links:[['Listen on Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Listen on Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']], colors:['#edc996','#b97d72','#483650'], glyph:'♫' },
-      { slug:'dme-library', title:'DME Library Database', category:'Systems / Service', summary:'Moving a physical equipment filing and checkout process into a relational database.', context:'A durable medical equipment library used a physical filing and checkout system. This project brought that workflow into a relational database.', role:'I developed the relational database for the library. A future case study can explain the data structure, workflow, and lessons learned without sharing sensitive records.', draft:'Draft note: add the tools used and a safe diagram or sample data when available.', links:[], colors:['#c9d7c8','#89aa9b','#38545c'], glyph:'◎' },
-      { slug:'family-history', title:'Family History Writing', category:'Writing / Oral history', summary:'Helping someone preserve their life story for their children.', context:'A person wanted to record their story for their children. The work began with interviews and continued through transcription and editing.', role:'As a Family History Writer, I interviewed the person and edited the transcriptions into a clearer record of their story.', draft:'Draft note: include a writing excerpt only if the person and family have given permission.', links:[], colors:['#e9d5bc','#cba277','#5c4548'], glyph:'❋' },
-      { slug:'beware-the-hog', title:'beware_the_hog', category:'Social media / Instagram', summary:'An Instagram project I worked on.', context:'beware_the_hog is another Instagram project I contributed to. This project page can tell the story behind the account and show selected work.', role:'I worked on beware_the_hog. My specific responsibilities and examples can be added in the next revision.', draft:'Draft note: add your role, the time period, and posts you can show publicly. Confirm the account link before publishing.', links:[['View Instagram','https://www.instagram.com/beware_the_hog/']], colors:['#e8b2a0','#d58179','#49334b'], glyph:'✹' },
-      { slug:'scistrive', title:'SciStrive', category:'Website / Digital project', summary:'A live website project at scistrive.com.', context:'SciStrive is another website project I worked on. Visit the live site to see the work, and return here for a fuller project story as this portfolio develops.', role:'I worked on the SciStrive site. My specific responsibilities and the parts I built can be added here once documented.', draft:'Draft note: add your exact role, tools used, and a screenshot or feature you can discuss publicly.', links:[['Visit SciStrive','https://scistrive.com/']], colors:['#b6cfc9','#79a8a5','#324b55'], glyph:'◈' }
+      { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'A high school creative project connected to Utah FCCLA.', context:'During high school, I worked on FCCLA UT. This project connects creative communication and student leadership.', role:'I contributed to this student leadership project during high school.', links:[], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳' },
+      { slug:'supernovasunrise', title:'SuperNovaSunrise', category:'Personal expression / Social media', summary:'My personal creative space on Instagram and Facebook.', context:'SuperNovaSunrise is my personal presence on Instagram and Facebook, with similar posts on both. Its name inspires the warm, celestial direction of this site.', role:'These are my personal accounts. I shaped this personal space for creative expression and connection.', links:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']], colors:['#f4c5b4','#f49177','#693354'], glyph:'✦' },
+      { slug:'hands-of-the-lord', title:'Hands of the Lord', category:'Community media / Social', summary:'Faith-centered storytelling shared on Instagram and Facebook.', context:'Hands of the Lord shares content rooted in service and faith across its social channels.', role:'I worked on this project. This project brought together creative work on Instagram and Facebook.', links:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/people/Hands-of-the-Lord/100091913612468/']], colors:['#dab4b8','#af7886','#422d4a'], glyph:'✶' },
+      { slug:'as-the-savior-would', title:'As the Savior Would', category:'Podcast / Storytelling', summary:'A service missionary podcast about following Jesus Christ through meaningful service.', context:'As the Savior Would is a podcast produced by service missionaries. It shares conversations about discipleship, faith, and service.', role:'I worked on the podcast. This podcast brought storytelling and service together.', links:[['Listen on Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Listen on Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']], colors:['#edc996','#b97d72','#483650'], glyph:'♫' },
+      { slug:'dme-library', title:'DME Library Database', category:'Systems / Service', summary:'Mendure DME: an offline Electron and SQLite system for equipment loans.', context:'Mendure DME is an offline Electron desktop app for the NW Montana Veterans Stand Down and Food Pantry. It tracks equipment, customers, 120-day loans, signatures, and reports in SQLite.', role:'I developed the relational database for the library and designed a system to make equipment tracking and checkout more useful.', links:[['Source code','https://github.com/SupernovaSunrise/Relational-Database'],['How it works','https://github.com/SupernovaSunrise/Relational-Database/blob/main/README.md']], colors:['#c9d7c8','#89aa9b','#38545c'], glyph:'◎' },
+      { slug:'family-history', title:'Family History Writing', category:'Writing / Oral history', summary:'Helping someone preserve their life story for their children.', context:'A person wanted to record their story for their children. The work began with interviews and continued through transcription and editing.', role:'As a Family History Writer, I interviewed the person and edited the transcriptions into a clearer record of their story.', links:[], colors:['#e9d5bc','#cba277','#5c4548'], glyph:'❋' },
+      { slug:'beware-the-hog', title:'beware_the_hog', category:'Social media / Instagram', summary:'An Instagram project I worked on.', context:'beware_the_hog is another Instagram project I contributed to. The project explored Instagram as a space for creative communication.', role:'I worked on beware_the_hog. I contributed to the account’s creative work.', links:[['View Instagram','https://www.instagram.com/beware_the_hog/']], colors:['#e8b2a0','#d58179','#49334b'], glyph:'✹' },
+      { slug:'scistrive', title:'SciStrive', category:'Website / Digital project', summary:'A live website project at scistrive.com.', context:'SciStrive is another website project I worked on. Explore its live website below.', role:'I contributed to the SciStrive website project.', links:[['Visit SciStrive','https://scistrive.com/']], colors:['#b6cfc9','#79a8a5','#324b55'], glyph:'◈' }
     ];
-    const baseSocials = [
-      { name:'SuperNovaSunrise', detail:'My personal Instagram · @supernovasunrise', url:'https://www.instagram.com/supernovasunrise/' },
-      { name:'SuperNovaSunrise', detail:'My personal Facebook page', url:'https://www.facebook.com/supernovasunrise' },
-      { name:'Hands of the Lord', detail:'Instagram · collaborative project', url:'https://www.instagram.com/hands.of.the.lord/' },
-      { name:'Hands of the Lord', detail:'Facebook · collaborative project', url:'https://www.facebook.com/people/Hands-of-the-Lord/100091913612468/' },
-      { name:'As the Savior Would', detail:'Podcast · Apple Podcasts', url:'https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384' },
-      { name:'beware_the_hog', detail:'Instagram · project I worked on', url:'https://www.instagram.com/beware_the_hog/' }
-    ];
-    let projects = startingData.projects ? [...startingData.projects, ...baseProjects.filter(p => !startingData.projects.some(saved => saved.slug === p.slug))] : structuredClone(baseProjects);
-    let socials = startingData.socials ? [...startingData.socials, ...baseSocials.filter(s => s.name === 'beware_the_hog' && !startingData.socials.some(saved => saved.url === s.url))] : structuredClone(baseSocials);
-    const copyFields = [
-      ['Home headline','#home-view .hero h1'],
-      ['Home introduction','#home-view .hero .lead'],
-      ['Featured projects heading','#featured-title'],
-      ['Featured projects introduction','#home-view [aria-labelledby="featured-title"] .section-head p'],
-      ['Social links heading','#social-title'],
-      ['Social links introduction','#home-view [aria-labelledby="social-title"] .section-head p'],
-      ['Home about heading','#about-teaser-title'],
-      ['Home about paragraph 1','#home-view [aria-labelledby="about-teaser-title"] .about-grid > div:last-child > p:first-of-type'],
-      ['Home about paragraph 2','#home-view [aria-labelledby="about-teaser-title"] .about-grid > div:last-child > p:nth-of-type(2)'],
-      ['Home contact heading','#home-contact-title'],
-      ['Home contact introduction','#home-view [aria-labelledby="home-contact-title"] .contact-panel p'],
-      ['Projects headline','#projects-view .page-hero h1'],
-      ['Projects introduction','#projects-view .page-hero p'],
-      ['Project directory introduction','#projects-view .projects-intro'],
-      ['About headline','#about-view .page-hero h1'],
-      ['About introduction','#about-view .page-hero p'],
-      ['About section heading','#about-view .about-grid h2'],
-      ['About paragraph 1','#about-view .about-grid > div:last-child > p:first-of-type'],
-      ['About paragraph 2','#about-view .about-grid > div:last-child > p:nth-of-type(2)'],
-      ['Résumé headline','#resume-view .page-hero h1'],
-      ['Résumé introduction','#resume-view .page-hero p'],
-      ['Résumé profile heading','#resume-view .resume-summary h2'],
-      ['Résumé profile introduction','#resume-view .resume-summary > p'],
-      ['Connect headline','#contact-view .page-hero h1'],
-      ['Connect introduction','#contact-view .page-hero p'],
-      ['Connect links heading','#contact-links-title'],
-      ['Connect links introduction','#contact-view [aria-labelledby="contact-links-title"] .section-head p']
-    ];
-    const originalHeroHTML = document.querySelector('#home-view .hero h1').innerHTML;
-    const originalCopy = Object.fromEntries(copyFields.map(([label,selector]) => [label,document.querySelector(selector).textContent.trim()]));
-    let copy = { ...originalCopy, ...(startingData.copy || {}) };
-    function renderCopy() { for(const [label,selector] of copyFields) { const el = document.querySelector(selector); if(label === 'Home headline' && copy[label] === originalCopy[label]) el.innerHTML = originalHeroHTML; else el.textContent = copy[label]; } }
+    const projects = baseProjects;
     function escapeHTML(value) { return String(value ?? '').replace(/[&<>"']/g,ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
     function safeURL(value) { try { const u = new URL(value); return u.protocol === 'https:' ? u.href : ''; } catch (_) { return ''; } }
     function card(p) {
       const [bg,orb,ink] = p.colors;
       return `<article class="project-card"><div class="project-art" style="--art-bg:${bg};--art-orb:${orb};--art-text:${ink}" aria-hidden="true"><span>${escapeHTML(p.glyph)}</span></div><div class="card-body"><span class="tag">${escapeHTML(p.category)}</span><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.summary)}</p><a class="card-link" href="#/projects/${encodeURIComponent(p.slug)}" aria-label="Explore ${escapeHTML(p.title)}">Explore project ↗</a></div></article>`;
     }
-    function social(s) { return `<a class="social-link" href="${escapeHTML(safeURL(s.url))}" target="_blank" rel="noopener noreferrer"><span><strong>${escapeHTML(s.name)}</strong><small>${escapeHTML(s.detail)}</small></span><span aria-hidden="true">↗</span></a>`; }
+    const mediaProfiles = [
+      {slug:'supernovasunrise',name:'SuperNovaSunrise',caption:'Personal creative space',platforms:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']]},
+      {slug:'hands-of-the-lord',name:'Hands of the Lord',caption:'Faith and service stories',platforms:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/people/Hands-of-the-Lord/100091913612468/']]},
+      {slug:'beware-the-hog',name:'beware_the_hog',caption:'Instagram project',platforms:[['Instagram','https://www.instagram.com/beware_the_hog/']]},
+      {slug:'as-the-savior-would',name:'As the Savior Would',caption:'Service missionary podcast',platforms:[['Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']]}
+    ];
+    function socialPreview(profile) {
+      const fb = profile.platforms.find(([platform]) => platform === 'Facebook');
+      const podcast = profile.slug === 'as-the-savior-would';
+      const instagram = profile.platforms.find(([platform]) => platform === 'Instagram');
+      const instagramEmbed = instagram ? `<blockquote class="instagram-media" data-instgrm-permalink="${escapeHTML(safeURL(instagram[1]))}" data-instgrm-version="14"><a class="instagram-fallback" href="${escapeHTML(safeURL(instagram[1]))}" target="_blank" rel="noopener noreferrer">View ${escapeHTML(profile.name)} on Instagram ↗</a></blockquote>` : '';
+      const facebookEmbed = fb ? `<iframe title="${escapeHTML(profile.name)} Facebook page preview" loading="lazy" src="https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(fb[1])}&tabs=timeline&width=500&height=290&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false"></iframe>` : '';
+      const media = podcast ? '<iframe title="As the Savior Would podcast preview" loading="lazy" src="https://open.spotify.com/embed/show/0N50Bv2tXqzNEHB7u2cdAW?utm_source=generator" allow="encrypted-media"></iframe>' : instagramEmbed + facebookEmbed;
+      const links = profile.platforms.map(([platform,url]) => `<a href="${escapeHTML(safeURL(url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(platform)} ↗</a>`).join('');
+      const note = podcast ? 'Podcast player loads from Spotify.' : fb ? 'Instagram and Facebook may require sign-in or allow embeds only for public profiles.' : 'Instagram preview depends on the profile’s embed settings.';
+      return `<article class="social-preview"><div class="social-preview-top"><span class="tag">${podcast?'Podcast':fb?'Instagram + Facebook':'Instagram'}</span><h3>${escapeHTML(profile.name)}</h3><p>${escapeHTML(profile.caption)}</p></div>${media}<div class="social-preview-links">${links}</div><div class="social-preview-note">${escapeHTML(note)}</div></article>`;
+    }
     function renderLists() {
       document.getElementById('featured-grid').innerHTML = ['scistrive','dme-library','hands-of-the-lord','supernovasunrise'].map(slug => projects.find(p => p.slug === slug)).filter(Boolean).map(card).join('');
       document.getElementById('all-projects').innerHTML = projects.map(card).join('');
-      for(const id of ['home-social','contact-social']) document.getElementById(id).innerHTML = socials.filter(s => safeURL(s.url)).map(social).join('');
-      const personal = socials.find(s => safeURL(s.url) && /instagram\.com\/supernovasunrise\/?/i.test(s.url)) || socials.find(s => safeURL(s.url));
-      if(personal) { document.getElementById('personal-footer-link').href = safeURL(personal.url); document.getElementById('personal-footer-link').textContent = `${personal.name} ↗`; }
+      for(const id of ['home-social','contact-social']) document.getElementById(id).innerHTML = mediaProfiles.map(socialPreview).join('');
+      document.getElementById('project-picker-options').innerHTML = '<a href="#/projects">All projects</a>' + projects.map(p => `<a href="#/projects/${encodeURIComponent(p.slug)}">${escapeHTML(p.title)}</a>`).join('');
     }
-    renderCopy(); renderLists();
+    function refreshInstagramEmbeds() { if(window.instgrm?.Embeds?.process) window.instgrm.Embeds.process(); }
+    renderLists();
     document.getElementById('year').textContent = new Date().getFullYear();
+    const picker = document.getElementById('project-picker');
+    const pickerButton = document.getElementById('project-picker-toggle');
+    const pickerMenu = document.getElementById('project-picker-menu');
+    const pickerHighlight = picker.querySelector('.project-picker-highlight');
+    function closePicker() { pickerMenu.hidden=true; pickerButton.setAttribute('aria-expanded','false'); }
+    function openPicker() { pickerMenu.hidden=false; pickerButton.setAttribute('aria-expanded','true'); }
+    pickerButton.addEventListener('click',() => pickerMenu.hidden ? openPicker() : closePicker());
+    pickerButton.addEventListener('keydown',e => { if(e.key==='ArrowDown') { e.preventDefault(); openPicker(); pickerMenu.querySelector('a')?.focus(); } });
+    pickerMenu.addEventListener('keydown',e => {
+      const links=[...pickerMenu.querySelectorAll('a')]; const index=links.indexOf(document.activeElement);
+      if(e.key==='ArrowDown' || e.key==='ArrowUp') { e.preventDefault(); links[(index + (e.key==='ArrowDown'?1:links.length-1))%links.length].focus(); }
+      if(e.key==='Escape') { closePicker(); pickerButton.focus(); }
+    });
+    picker.addEventListener('mouseover',e => {
+      const item=e.target.closest('#project-picker-menu a'); if(!item) return;
+      pickerHighlight.style.transform=`translateY(${item.offsetTop-8}px)`;
+      pickerHighlight.style.height=`${item.offsetHeight}px`;
+      pickerHighlight.style.opacity='1';
+    });
+    pickerMenu.addEventListener('focusin',e => {
+      const item=e.target.closest('a'); if(!item) return;
+      pickerHighlight.style.transform=`translateY(${item.offsetTop-8}px)`;
+      pickerHighlight.style.height=`${item.offsetHeight}px`;
+      pickerHighlight.style.opacity='1';
+    });
+    pickerMenu.addEventListener('mouseleave',() => { if(!pickerMenu.contains(document.activeElement)) pickerHighlight.style.opacity='0'; });
+    document.addEventListener('click',e => { if(!picker.contains(e.target)) closePicker(); });
+    document.addEventListener('keydown',e => { if(e.key==='Escape' && !pickerMenu.hidden) { closePicker(); pickerButton.focus(); } });
+    pickerMenu.addEventListener('click',e => { if(e.target.closest('a')) closePicker(); });
+
+    // Browser adaptation of the public Mendure DME schema and 120-day due-date rule.
+    // Sample people and equipment below are fictional and never leave this browser.
     const demoEquipment = [
-      {id:'EQ-101',name:'Rollator walker',type:'Mobility'},
-      {id:'EQ-102',name:'Shower chair',type:'Bathroom safety'},
-      {id:'EQ-103',name:'Transfer bench',type:'Bathroom safety'},
-      {id:'EQ-104',name:'Transport wheelchair',type:'Mobility'},
-      {id:'EQ-105',name:'Bed rail',type:'Home safety'},
-      {id:'EQ-106',name:'Walking cane',type:'Mobility'}
+      {id:'MO-1001',name:'Rollator walker',type:'Mobility'},
+      {id:'BA-1002',name:'Shower chair',type:'Bathroom safety'},
+      {id:'BA-1003',name:'Transfer bench',type:'Bathroom safety'},
+      {id:'MO-1004',name:'Transport wheelchair',type:'Mobility'},
+      {id:'HO-1005',name:'Bed rail',type:'Home safety'},
+      {id:'MO-1006',name:'Walking cane',type:'Mobility'}
     ];
-    const demoBorrowers = [{id:'BR-01',name:'Alex Rivera'},{id:'BR-02',name:'Jordan Lee'},{id:'BR-03',name:'Sam Patel'}];
-    const initialDemoLoans = [{id:'LO-001',equipmentId:'EQ-102',borrowerId:'BR-02',returned:false}];
-    let demoLoans = structuredClone(initialDemoLoans), nextDemoLoan = 2;
+    const demoCustomers = [{id:1,name:'Alex Rivera'},{id:2,name:'Jordan Lee'},{id:3,name:'Sam Patel'}];
+    const localISO = () => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
+    const addDays = (iso,days) => { const [y,m,d]=iso.split('-').map(Number); return new Date(Date.UTC(y,m-1,d+days)).toISOString().slice(0,10); };
+    const weekday = iso => { const [y,m,d]=iso.split('-').map(Number); return new Date(Date.UTC(y,m-1,d)).getUTCDay(); };
+    function federalHolidays(year) {
+      const observed=iso => weekday(iso)===6?addDays(iso,-1):weekday(iso)===0?addDays(iso,1):iso;
+      const nth=(month,day,n) => { let count=0; for(let date=1;date<=31;date++) { const d=new Date(Date.UTC(year,month-1,date)); if(d.getUTCMonth()!==month-1) break; if(d.getUTCDay()===day && ++count===n) return d.toISOString().slice(0,10); } };
+      const last=(month,day) => { for(let date=31;date>=1;date--) { const d=new Date(Date.UTC(year,month-1,date)); if(d.getUTCMonth()===month-1 && d.getUTCDay()===day) return d.toISOString().slice(0,10); } };
+      return [observed(`${year}-01-01`),nth(1,1,3),nth(2,1,3),last(5,1),observed(`${year}-06-19`),observed(`${year}-07-04`),nth(9,1,1),nth(10,1,2),observed(`${year}-11-11`),nth(11,4,4),observed(`${year}-12-25`)];
+    }
+    function calculateDueDate(iso) {
+      let date=addDays(iso,120);
+      const holidays=new Set([Number(iso.slice(0,4)),Number(date.slice(0,4)),Number(date.slice(0,4))+1].flatMap(federalHolidays));
+      while(weekday(date)===0 || weekday(date)===6 || holidays.has(date)) date=addDays(date,1);
+      return date;
+    }
+    const initialDemoLoans = [{id:1,equipmentId:'BA-1002',customerId:2,checkedOutDate:localISO(),dueDate:calculateDueDate(localISO()),returnedDate:null}];
+    let demoLoans = structuredClone(initialDemoLoans), nextDemoLoan=2;
     const demoStatus = document.getElementById('demo-status');
     function renderDemo() {
-      const query = document.getElementById('demo-search').value.trim().toLowerCase();
-      const visible = demoEquipment.filter(item => `${item.name} ${item.id} ${item.type}`.toLowerCase().includes(query));
-      document.getElementById('demo-inventory').innerHTML = visible.length ? visible.map(item => {
-        const active = demoLoans.find(loan => loan.equipmentId === item.id && !loan.returned);
-        const borrower = active && demoBorrowers.find(person => person.id === active.borrowerId);
-        return `<article class="demo-item"><span class="tag">${escapeHTML(item.id)} · ${escapeHTML(item.type)}</span><h3>${escapeHTML(item.name)}</h3><p class="${active?'borrowed':'available'}">${active ? `On loan to ${escapeHTML(borrower.name)}` : 'Available for checkout'}</p><button type="button" data-demo-checkout="${escapeHTML(item.id)}" ${active?'disabled':''}>${active?'Checked out':'Check out item'}</button></article>`;
-      }).join('') : '<p>No equipment matches your search.</p>';
-      document.getElementById('demo-history-rows').innerHTML = [...demoLoans].reverse().map(loan => {
-        const item = demoEquipment.find(entry => entry.id === loan.equipmentId);
-        const borrower = demoBorrowers.find(entry => entry.id === loan.borrowerId);
-        return `<tr><td>${escapeHTML(loan.id)}</td><td>${escapeHTML(item.name)}<br><small>${escapeHTML(item.id)}</small></td><td>${escapeHTML(borrower.name)}<br><small>${escapeHTML(borrower.id)}</small></td><td>${loan.returned?'Returned':`<button type="button" data-demo-return="${escapeHTML(loan.id)}">Return item</button>`}</td></tr>`;
+      const query=document.getElementById('demo-search').value.trim().toLowerCase();
+      const visible=demoEquipment.filter(item => `${item.name} ${item.id} ${item.type}`.toLowerCase().includes(query));
+      document.getElementById('demo-inventory').innerHTML=visible.length?visible.map(item => {
+        const loan=demoLoans.find(x => x.equipmentId===item.id && !x.returnedDate);
+        const customer=loan && demoCustomers.find(x => x.id===loan.customerId);
+        return `<article class="demo-item"><span class="tag">${escapeHTML(item.id)} · ${escapeHTML(item.type)}</span><h3>${escapeHTML(item.name)}</h3><p class="${loan?'borrowed':'available'}">${loan?`On loan to ${escapeHTML(customer.name)} · due ${loan.dueDate}`:'Available for checkout'}</p><button type="button" data-demo-checkout="${escapeHTML(item.id)}" ${loan?'disabled':''}>${loan?'Checked out':'Check out item'}</button></article>`;
+      }).join(''):'<p>No equipment matches your search.</p>';
+      document.getElementById('demo-history-rows').innerHTML=[...demoLoans].reverse().map(loan => {
+        const equipment=demoEquipment.find(x => x.id===loan.equipmentId);
+        const customer=demoCustomers.find(x => x.id===loan.customerId);
+        return `<tr><td>#${loan.id}</td><td>${escapeHTML(equipment.name)}<br><small>${escapeHTML(equipment.id)}</small></td><td>${escapeHTML(customer.name)}<br><small>#${customer.id}</small></td><td>${loan.dueDate}</td><td>${loan.returnedDate?`Returned ${loan.returnedDate}`:`<button type="button" data-demo-return="${loan.id}">Return item</button>`}</td></tr>`;
       }).join('');
     }
     document.getElementById('demo-search').addEventListener('input',renderDemo);
     document.getElementById('demo-inventory').addEventListener('click',event => {
-      const button = event.target.closest('[data-demo-checkout]');
-      if(!button || button.disabled) return;
-      const equipmentId = button.dataset.demoCheckout;
-      if(demoLoans.some(loan => loan.equipmentId === equipmentId && !loan.returned)) return;
-      const borrowerId = document.getElementById('demo-borrower').value;
-      demoLoans.push({id:`LO-${String(nextDemoLoan++).padStart(3,'0')}`,equipmentId,borrowerId,returned:false});
-      demoStatus.textContent = `${demoEquipment.find(item => item.id === equipmentId).name} checked out to ${demoBorrowers.find(person => person.id === borrowerId).name}.`;
+      const button=event.target.closest('[data-demo-checkout]'); if(!button || button.disabled) return;
+      const equipmentId=button.dataset.demoCheckout;
+      if(demoLoans.some(loan => loan.equipmentId===equipmentId && !loan.returnedDate)) return;
+      const customerId=Number(document.getElementById('demo-borrower').value);
+      const checkedOutDate=localISO(), dueDate=calculateDueDate(checkedOutDate);
+      demoLoans.push({id:nextDemoLoan++,equipmentId,customerId,checkedOutDate,dueDate,returnedDate:null});
+      demoStatus.textContent=`${demoEquipment.find(x=>x.id===equipmentId).name} checked out to ${demoCustomers.find(x=>x.id===customerId).name}; due ${dueDate}.`;
       renderDemo();
     });
     document.getElementById('demo-history-rows').addEventListener('click',event => {
-      const button = event.target.closest('[data-demo-return]');
-      if(!button) return;
-      const loan = demoLoans.find(entry => entry.id === button.dataset.demoReturn);
-      if(!loan || loan.returned) return;
-      loan.returned = true;
-      demoStatus.textContent = `${demoEquipment.find(item => item.id === loan.equipmentId).name} returned and available again.`;
+      const button=event.target.closest('[data-demo-return]'); if(!button) return;
+      const loan=demoLoans.find(x=>x.id===Number(button.dataset.demoReturn)); if(!loan || loan.returnedDate) return;
+      loan.returnedDate=localISO();
+      demoStatus.textContent=`${demoEquipment.find(x=>x.id===loan.equipmentId).name} returned and available again.`;
       renderDemo();
     });
     document.getElementById('demo-reset').addEventListener('click',() => {
-      demoLoans = structuredClone(initialDemoLoans); nextDemoLoan = 2;
-      document.getElementById('demo-search').value = '';
-      document.getElementById('demo-borrower').value = 'BR-01';
-      demoStatus.textContent = 'Sample data restored.';
-      renderDemo();
+      demoLoans=structuredClone(initialDemoLoans); nextDemoLoan=2;
+      document.getElementById('demo-search').value=''; document.getElementById('demo-borrower').value='1';
+      demoStatus.textContent='Sample data restored.'; renderDemo();
     });
     renderDemo();
     const views = [...document.querySelectorAll('.view')];
@@ -509,10 +545,14 @@
           document.getElementById('case-summary').textContent = p.summary;
           document.getElementById('case-context').textContent = p.context;
           document.getElementById('case-role').textContent = p.role;
-          document.getElementById('case-draft').textContent = p.draft;
           const links = p.links.filter(([,url]) => safeURL(url));
-          document.getElementById('case-links').innerHTML = links.length ? links.map(([label,url]) => `<a href="${escapeHTML(safeURL(url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} ↗</a>`).join('') : (p.slug === 'dme-library' ? '<p>Try the interactive sample below ↓</p>' : '<p>Public examples to add in a future revision.</p>');
+          document.getElementById('case-links').innerHTML = links.length ? links.map(([label,url]) => `<a href="${escapeHTML(safeURL(url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} ↗</a>`).join('') : '<p>No public link available for this project.</p>';
           document.getElementById('dme-demo').hidden = p.slug !== 'dme-library';
+          document.getElementById('scistrive-preview').hidden = p.slug !== 'scistrive';
+          const preview = mediaProfiles.find(profile => profile.slug === p.slug);
+          document.getElementById('case-social-previews').hidden = !preview;
+          document.getElementById('case-social-grid').innerHTML = preview ? socialPreview(preview) : '';
+          if(preview) requestAnimationFrame(refreshInstagramEmbeds);
         } else name = 'not-found';
       } else if(parts.length) name = 'not-found';
       views.forEach(v => v.hidden = v.id !== `${name}-view`);
@@ -522,100 +562,60 @@
       });
       const title = name === 'case' ? document.getElementById('case-title').textContent : ({home:'Portfolio',projects:'Projects',about:'About',resume:'Résumé',contact:'Connect','not-found':'Page not found'})[name];
       document.title = `${title} — Milo Rowley`;
+      document.body.dataset.cosmos = name === 'home' ? 'hidden' : 'visible';
+      closePicker();
       window.scrollTo(0,0);
     }
-    const themeKeys = [['night','Dark background'],['cream','Page background'],['orange','Accent']];
-    const defaultTheme = Object.fromEntries(themeKeys.map(([key]) => [key,getComputedStyle(document.documentElement).getPropertyValue('--'+key).trim()]));
-    let theme = { ...defaultTheme, ...(startingData.theme || {}) };
-    function renderTheme() { for(const [key] of themeKeys) document.documentElement.style.setProperty('--'+key,theme[key]); }
-    renderTheme();
-    const editor = document.getElementById('editor');
-    const form = document.getElementById('editor-form');
-    const status = document.getElementById('editor-status');
-    function field(name,label,value,multi=false) {
-      const v = escapeHTML(value ?? '');
-      return `<label class="editor-field ${multi ? 'wide' : ''}">${escapeHTML(label)}${multi ? `<textarea name="${name}">${v}</textarea>` : `<input name="${name}" value="${v}">`}</label>`;
-    }
-    function buildEditor() {
-      let html = '<details open><summary>Page text</summary><div class="editor-fields">';
-      copyFields.forEach(([label],i) => { html += field(`copy-${i}`,label,copy[label],true); });
-      html += '</div></details><details><summary>Projects and project pages</summary><p>Update the six projects below. Leave an external link blank to hide it.</p>';
-      projects.forEach((p,i) => {
-        html += `<details><summary>${escapeHTML(p.title)}</summary><div class="editor-fields">`;
-        for(const [key,label,multi] of [['title','Project title',false],['category','Category',false],['summary','Short description',true],['context','Project overview',true],['role','Your contribution',true],['draft','Draft note or next detail',true]]) html += field(`project-${i}-${key}`,label,p[key],multi);
-        for(let j=0;j<2;j++) { html += field(`project-${i}-link-${j}-label`,`Link ${j+1} label`,p.links[j]?.[0] || ''); html += field(`project-${i}-link-${j}-url`,`Link ${j+1} URL (https://)`,p.links[j]?.[1] || ''); }
-        html += '</div></details>';
-      });
-      html += '</details><details><summary>Social connections</summary><p>To remove a connection, clear its URL. Two empty slots are available for new connections.</p>';
-      for(let i=0;i<socials.length+2;i++) { const s=socials[i] || {name:'',detail:'',url:''}; html += `<details><summary>${escapeHTML(s.name || `New connection ${i+1}`)}</summary><div class="editor-fields">${field(`social-${i}-name`,'Display name',s.name)}${field(`social-${i}-detail`,'Description',s.detail)}${field(`social-${i}-url`,'URL (https://)',s.url)}</div></details>`; }
-      html += '</details><details><summary>Colors</summary><div class="editor-fields">';
-      for(const [key,label] of themeKeys) html += `<label class="editor-field">${label}<input type="color" name="theme-${key}" value="${escapeHTML(theme[key])}"></label>`;
-      html += '</div></details>';
-      form.innerHTML = html;
-    }
-    function collectEdits() {
-      const values = new FormData(form);
-      const get = name => String(values.get(name) ?? '').trim();
-      const newCopy = Object.fromEntries(copyFields.map(([label],i) => [label,get(`copy-${i}`)]));
-      const newProjects = projects.map((p,i) => {
-        const next = {...p};
-        for(const key of ['title','category','summary','context','role','draft']) next[key] = get(`project-${i}-${key}`);
-        next.links = [];
-        for(let j=0;j<2;j++) {
-          const label = get(`project-${i}-link-${j}-label`), url = get(`project-${i}-link-${j}-url`);
-          if(url && !safeURL(url)) throw new Error(`Use an https:// URL for ${next.title}, link ${j+1}.`);
-          if(url) next.links.push([label || 'Visit project',url]);
-        }
-        if(!next.title) throw new Error(`Project ${i+1} needs a title.`);
-        return next;
-      });
-      const newSocials = [];
-      for(let i=0;i<socials.length+2;i++) {
-        const name = get(`social-${i}-name`), detail = get(`social-${i}-detail`), url = get(`social-${i}-url`);
-        if(url && !safeURL(url)) throw new Error(`Use an https:// URL for ${name || `connection ${i+1}`}.`);
-        if(url) newSocials.push({name:name || 'Social profile',detail,url});
-      }
-      const newTheme = Object.fromEntries(themeKeys.map(([key]) => [key,get(`theme-${key}`)]));
-      copy = newCopy; projects = newProjects; socials = newSocials; theme = newTheme;
-      renderCopy(); renderLists(); renderTheme(); route();
-      try { localStorage.setItem(storageKey,JSON.stringify({copy,projects,socials,theme})); status.textContent='Changes saved in this browser. Download HTML and keep it alongside the assets folder.'; }
-      catch (_) { status.textContent='Changes applied. Browser storage is unavailable here; download HTML and keep the assets folder.'; }
-      return {copy,projects,socials,theme};
-    }
-    document.getElementById('open-editor').addEventListener('click',() => { buildEditor(); status.textContent=''; editor.showModal(); });
-    document.getElementById('close-editor').addEventListener('click',() => editor.close());
-    form.addEventListener('submit',e => { e.preventDefault(); try { collectEdits(); buildEditor(); } catch(err) { status.textContent=err.message; } });
-    document.getElementById('download-site').addEventListener('click',() => {
-      try {
-        const data = collectEdits();
-        const clone = document.documentElement.cloneNode(true);
-        clone.querySelector('#editor').removeAttribute('open');
-        clone.querySelector('#editor-form').replaceChildren();
-        clone.querySelector('#editor-status').textContent='';
-        clone.querySelector('#editable-data').textContent = JSON.stringify(data).replace(/</g,'\\u003c');
-        const blob = new Blob(['<!doctype html>\n',clone.outerHTML],{type:'text/html;charset=utf-8'});
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob); link.download='milo-portfolio-updated.html'; link.click();
-        setTimeout(() => URL.revokeObjectURL(link.href),30000);
-        status.textContent='Updated HTML downloaded. Rename it index.html and keep assets beside it when publishing.';
-      } catch(err) { status.textContent=err.message; }
-    });
-    document.getElementById('reset-site').addEventListener('click',() => {
-      if(!confirm('Discard this browser’s edits and restore the downloaded draft?')) return;
-      try { localStorage.removeItem(storageKey); } catch(_) {}
-      copy={...originalCopy,...(embeddedData.copy || {})}; projects=structuredClone(embeddedData.projects || baseProjects); socials=structuredClone(embeddedData.socials || baseSocials); theme={...defaultTheme,...(embeddedData.theme || {})};
-      renderCopy(); renderLists(); renderTheme(); route(); buildEditor(); status.textContent='Draft restored in this browser.';
-    });
     const stage = document.getElementById('sunrise-stage');
     const scene = stage.querySelector('.cosmic-sticky');
     const heroCopy = stage.querySelector('.hero-copy');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    let heroParticleStrength=0;
+    const canvases=[document.getElementById('star-field'),document.getElementById('hero-stars')];
+    const contexts=canvases.map(canvas=>canvas.getContext('2d'));
+    const particles=Array.from({length:105},(_,i)=>({
+      x:((i*0.61803398875)%1),y:((i*0.754877666)%1),
+      size:.55+(i%7)*.23,phase:i*1.913,angle:i*2.39996,speed:.5+(i%11)*.08
+    }));
+    function sizeCanvases() {
+      const scale=Math.min(devicePixelRatio||1,2);
+      for(const [i,canvas] of canvases.entries()) {
+        const w=canvas.clientWidth,h=canvas.clientHeight;
+        if(canvas.width!==Math.round(w*scale) || canvas.height!==Math.round(h*scale)) { canvas.width=Math.round(w*scale); canvas.height=Math.round(h*scale); }
+        contexts[i].setTransform(scale,0,0,scale,0,0);
+      }
+    }
+    let particleFrame=0,particleLast=0;
+    function drawParticles(time=0) {
+      particleFrame=requestAnimationFrame(drawParticles);
+      if(document.hidden || (time-particleLast<33 && !reducedMotion.matches)) return;
+      particleLast=time;
+      sizeCanvases();
+      canvases.forEach((canvas,i)=>{
+        const ctx=contexts[i], w=canvas.clientWidth,h=canvas.clientHeight;
+        ctx.clearRect(0,0,w,h);
+        if(i===1 && (document.getElementById('home-view').hidden || heroParticleStrength<.02)) return;
+        const intensity=i?heroParticleStrength:1;
+        particles.slice(0,reducedMotion.matches?45:85+(i?20:0)).forEach(p=>{
+          let x=p.x*w,y=p.y*h;
+          if(i) {
+            const radius=(.11+p.x*.48)*Math.min(w,h)*(1+heroParticleStrength*.95);
+            x=w*.5+Math.cos(p.angle)*radius; y=h*.57+Math.sin(p.angle)*radius;
+          } else if(!reducedMotion.matches) { y=(y+time*p.speed*.002)%h; }
+          const twinkle=reducedMotion.matches?1:.62+.38*Math.sin(time*.0015+p.phase);
+          ctx.beginPath(); ctx.fillStyle=i?`rgba(253,226,198,${(.25+.68*intensity)*twinkle})`:`rgba(214,226,255,${(.18+.48*twinkle)})`;
+          ctx.arc(x,y,p.size*(i?1.15:1),0,Math.PI*2);ctx.fill();
+        });
+      });
+      if(reducedMotion.matches) { cancelAnimationFrame(particleFrame); particleFrame=0; }
+    }
+    reducedMotion.addEventListener('change',()=>{ if(!particleFrame) particleFrame=requestAnimationFrame(drawParticles); });
     const clamp = value => Math.max(0,Math.min(1,value));
     const smooth = (start,end,value) => { const t=clamp((value-start)/(end-start)); return t*t*(3-2*t); };
     let framePending=false;
     function updateSunrise() {
       framePending=false;
-      if(reducedMotion.matches || document.getElementById('home-view').hidden) { heroCopy.inert=false; return; }
+      if(reducedMotion.matches || document.getElementById('home-view').hidden) { heroCopy.inert=false; heroParticleStrength=0; return; }
       const distance=Math.max(1,stage.offsetHeight-innerHeight);
       const progress=clamp(-stage.getBoundingClientRect().top/distance);
       const bloom=smooth(.25,.85,progress);
@@ -631,15 +631,21 @@
       scene.style.setProperty('--copy-opacity',(1-fade).toFixed(3));
       scene.style.setProperty('--copy-shift',`${(-fade*65).toFixed(1)}px`);
       scene.style.setProperty('--finish',finish.toFixed(3));
+      scene.style.setProperty('--nova-copy-opacity',(smooth(.52,.73,progress)*(1-smooth(.83,1,progress))).toFixed(3));
+      document.body.dataset.cosmos = progress>.73 ? 'visible' : 'hidden';
+      heroParticleStrength = bloom;
       heroCopy.inert=fade>.97;
     }
     function scheduleSunrise() { if(!framePending) { framePending=true; requestAnimationFrame(updateSunrise); } }
     window.addEventListener('scroll',scheduleSunrise,{passive:true});
     window.addEventListener('resize',scheduleSunrise);
+    window.addEventListener('resize',sizeCanvases);
     reducedMotion.addEventListener('change',scheduleSunrise);
     window.addEventListener('hashchange',route);
     route();
     scheduleSunrise();
+    particleFrame=requestAnimationFrame(drawParticles);
   </script>
+  <script async src="https://www.instagram.com/embed.js" onload="if(window.instgrm?.Embeds?.process) window.instgrm.Embeds.process()"></script>
 </body>
 </html>
