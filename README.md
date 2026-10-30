@@ -1,6 +1,6 @@
 # Milo Rowley · Portfolio
 
-A static portfolio with project pages, a browser adaptation of the [Mendure DME database](https://github.com/SupernovaSunrise/Relational-Database), social previews, and a scroll driven sunrise.
+A static portfolio with project pages, a browser adaptation of the [Mendure DME database](https://github.com/SupernovaSunrise/Relational-Database), social previews, and a scroll driven sunrise with a persistent WebGL supernova. Browsers without WebGL use the CSS nebula treatment.
 
 ## View or edit
 
@@ -16,4 +16,4 @@ Open `index.html` in a browser, or use a local static server such as `python3 -m
 
 The site is plain HTML, CSS, and JavaScript, so no build command is required. `netlify.toml` also declares the root publish directory for manual Netlify imports; the Action publishes its curated `dist` folder.
 
-Some previews rely on third-party embeds. SciStrive may block frames, and Facebook/Spotify may require a browser session; the project and channel links stay available.
+Some previews rely on third-party embeds. SciStrive may block frames, and Instagram/Spotify may require a browser session; the project and channel links stay available.

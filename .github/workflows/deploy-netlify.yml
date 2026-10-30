@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir -p dist/assets
           cp index.html dist/index.html
-          cp assets/nebula-reference.jpg assets/Richard_Milo_Rowley_Resume.pdf dist/assets/
+          cp assets/nebula-reference.jpg assets/prismatic-burst.js assets/Richard_Milo_Rowley_Resume.pdf dist/assets/
       - name: Publish production deploy
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
