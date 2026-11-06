@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Hands of the Lord Instagram and Facebook preview">
+  <defs>
+    <radialGradient id="bg" cx="75%" cy="62%" r="85%">
+      <stop offset="0%" stop-color="#dab4b8"/>
+      <stop offset="45%" stop-color="#af7886"/>
+      <stop offset="100%" stop-color="#422d4a"/>
+    </radialGradient>
+    <radialGradient id="orb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff6e8"/>
+      <stop offset="100%" stop-color="#af7886"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#101228"/>
+  <rect width="1200" height="630" fill="url(#bg)" opacity=".95"/>
+  <circle cx="890" cy="320" r="185" fill="url(#orb)"/>
+  <circle cx="890" cy="320" r="235" fill="none" stroke="#fff" stroke-opacity=".4"/>
+  <circle cx="890" cy="320" r="295" fill="none" stroke="#fff" stroke-opacity=".18"/>
+  <text x="70" y="150" font-family="Georgia, serif" font-size="15" letter-spacing="6" fill="#ffe3bd" font-weight="bold">SERVICE / COMMUNITY MEDIA</text>
+  <text x="70" y="245" font-family="Georgia, serif" font-size="78" fill="#fff8f0">Hands of</text>
+  <text x="70" y="325" font-family="Georgia, serif" font-size="78" fill="#ffd393">the Lord ✶</text>
+  <text x="70" y="385" font-family="system-ui, sans-serif" font-size="27" fill="#fff4ec">@hands.of.the.lord</text>
+  <text x="70" y="435" font-family="system-ui, sans-serif" font-size="22" fill="#fff4ec" opacity=".85">Service and volunteer stories, shared by service missionaries.</text>
+  <rect x="70" y="480" width="330" height="64" rx="32" fill="#101228" opacity=".88"/>
+  <text x="235" y="523" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#ffd393" font-weight="700">Explore project ↗</text>
+</svg>

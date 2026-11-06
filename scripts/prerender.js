@@ -19,7 +19,13 @@ const descriptions = {
   contact:'Connect with Milo Rowley about communication, community projects, and creative collaborations.'
 };
 const headings = {projects:'Projects',about:'About',resume:'Résumé',contact:'Connect'};
-const cards = items => items.map(project => `<article class="project-card"><div class="card-body"><span class="tag">${escape(project.category)}</span><h3>${escape(project.title)}</h3><p>${escape(project.summary)}</p><a class="card-link" href="/projects/${escape(project.slug)}">Explore project ↗</a></div></article>`).join('');
+const cardDims = project => project.slug==='dme-library' ? ' width="4121" height="1031"' : project.slug==='scistrive' ? ' width="960" height="960"' : project.slug==='as-the-savior-would' ? ' width="800" height="800"' : ' width="1200" height="630"';
+const cards = items => items.map(project => {
+  const art = project.preview
+    ? `<div class="project-art has-image"><span class="project-preview"><img src="${escape(project.preview.src)}" alt="${escape(project.preview.alt)}"${cardDims(project)} loading="lazy" decoding="async">${project.preview.badge?`<span class="preview-badge">${escape(project.preview.badge)}</span>`:''}</span></div>`
+    : `<div class="project-art" style="--art-bg:${escape(project.colors[0])};--art-orb:${escape(project.colors[1])};--art-text:${escape(project.colors[2])}" aria-hidden="true"><span>${escape(project.glyph)}</span></div>`;
+  return `<article class="project-card">${art}<div class="card-body"><span class="tag">${escape(project.category)}</span><h3>${escape(project.title)}</h3><p>${escape(project.summary)}</p><a class="card-link" href="/projects/${escape(project.slug)}">Explore project ↗</a></div></article>`;
+}).join('');
 const featured=['scistrive','dme-library','hands-of-the-lord','supernovasunrise'].map(slug=>bySlug.get(slug));
 const base=source.replace('<div class="project-grid" id="featured-grid"></div>',`<div class="project-grid" id="featured-grid">${cards(featured)}</div>`);
 
@@ -47,9 +53,19 @@ function render(page) {
       .replace('<p id="case-context"></p>',`<p id="case-context">${escape(project.context)}</p>`)
       .replace('<p id="case-role"></p>',`<p id="case-role">${escape(project.role)}</p>`)
       .replace('<div id="case-links"></div>',`<div id="case-links">${project.links.map(([label,link])=>`<a href="${escape(link)}" target="_blank" rel="noopener noreferrer">${escape(label)} ↗</a>`).join('')}</div>`);
+    if(project.preview){
+      html=html.replace('id="case-preview" hidden','id="case-preview"')
+        .replace('<p id="case-preview-caption"></p>',`<p id="case-preview-caption">${escape(project.summary)}</p>`)
+        .replace('<div id="case-preview-body"></div>',`<div id="case-preview-body"><figure><img src="${escape(project.preview.src)}" alt="${escape(project.preview.alt)}" loading="lazy" decoding="async"><figcaption>${escape(project.preview.alt)}</figcaption></figure></div>`);
+    }
     if(project.slug==='dme-library') html=html.replace('id="dme-showcase" hidden','id="dme-showcase"').replace('id="dme-demo" aria-labelledby="demo-heading" hidden','id="dme-demo" aria-labelledby="demo-heading"');
     if(project.slug==='scistrive') html=html.replace('id="scistrive-preview" hidden','id="scistrive-preview"');
-    if(project.slug==='dme-library') html=html.replace(/<meta property="og:image" content="[^"]*">/,`<meta property="og:image" content="${site}/assets/photos/mendure-dashboard.webp">`).replace(/<meta property="og:image:alt" content="[^"]*">/,'<meta property="og:image:alt" content="Mendure DME dashboard showing library activity">');
+    if(project.slug==='as-the-savior-would') html=html.replace('id="podcast-preview" hidden','id="podcast-preview"');
+    const ogImage = project.og ? `${site}${project.og}` : `${site}/assets/photos/violin-outdoors.webp`;
+    const ogAlt = project.ogAlt || 'Milo playing violin outdoors';
+    const ogW = project.slug==='as-the-savior-would' ? 800 : project.slug==='scistrive' ? 1200 : project.slug==='dme-library' ? 1920 : 1100;
+    const ogH = project.slug==='as-the-savior-would' ? 800 : project.slug==='scistrive' ? 630 : project.slug==='dme-library' ? 480 : 825;
+    html=html.replace(/<meta property="og:image" content="[^"]*">/,`<meta property="og:image" content="${ogImage}">`).replace(/<meta property="og:image:alt" content="[^"]*">/,`<meta property="og:image:alt" content="${escape(ogAlt)}">`).replace(/<meta property="og:image:width" content="[^"]*">/,`<meta property="og:image:width" content="${ogW}">`).replace(/<meta property="og:image:height" content="[^"]*">/,`<meta property="og:image:height" content="${ogH}">`);
   }
   return html;
 }

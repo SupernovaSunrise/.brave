@@ -1,0 +1,27 @@
+name: Build check
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build static site
+        run: bash scripts/build.sh
+      - name: Verify dist output
+        run: |
+          test -f dist/index.html
+          test -f dist/_redirects
+          test -f dist/sitemap.xml
+          test -f dist/assets/favicon.svg
+          echo "Build smoke check passed."

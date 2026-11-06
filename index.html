@@ -3,10 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101228">
+  <meta name="theme-color" content="#060712">
+  <script>(function(){try{var t=localStorage.getItem('sn-theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark'}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <meta name="description" content="Milo Rowley works across communication, community media, storytelling, and practical digital tools. Explore selected projects, experience, and ways to connect.">
   <link rel="canonical" href="https://supernovasunrise.netlify.app/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/photos/reading-portrait.webp">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://open.spotify.com">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="preconnect" href="https://i.scdn.co">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Milo Rowley">
   <meta property="og:title" content="Milo Rowley | Communication, creative work &amp; digital projects">
@@ -15,6 +24,9 @@
   <meta property="og:image" content="https://supernovasunrise.netlify.app/assets/photos/violin-outdoors.webp">
   <meta property="og:image:alt" content="Milo playing violin outdoors">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://supernovasunrise.netlify.app/assets/photos/violin-outdoors.webp">
+  <meta property="og:image:width" content="1100">
+  <meta property="og:image:height" content="825">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Milo Rowley","url":"https://supernovasunrise.netlify.app/"},{"@type":"Person","name":"Milo Rowley","url":"https://supernovasunrise.netlify.app/","description":"Communication, storytelling, community media, and practical digital projects.","image":"https://supernovasunrise.netlify.app/assets/photos/reading-portrait.webp","sameAs":["https://www.instagram.com/supernovasunrise/","https://www.facebook.com/supernovasunrise","https://www.linkedin.com/in/milo-rowley","https://github.com/SupernovaSunrise"]}]}</script>
   <title>Milo Rowley | Communication, creative work &amp; digital projects</title>
   <style>
@@ -372,6 +384,100 @@
       .project-filter { font-size:.76rem; padding-inline:12px; }
     }
     @media(prefers-reduced-motion:reduce) { .photo-tile img { transition:none; } }
+    .project-preview { position: relative; display: block; background: #18253a; }
+    .project-preview img { width:100%; height:100%; min-height:175px; object-fit:cover; display:block; }
+    .project-preview .preview-badge { position:absolute; left:14px; bottom:14px; padding:7px 13px; border-radius:100px; background:#101228e6; color:#ffd393; font-size:.72rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    .case-preview { padding-bottom:70px; }
+    .case-preview figure { margin:0; overflow:hidden; border-radius:16px; border:1px solid #ffffff3f; background:#22263f; }
+    .case-preview img { width:100%; height:auto; display:block; }
+    .case-preview figcaption { padding:14px 19px; background:#22263f; color:#eae0ea; font-size:.83rem; }
+    .case-preview .preview-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    .embed-frame { border:1px solid #7a7190; border-radius:17px; overflow:hidden; background:#1b1e36; box-shadow:var(--shadow); }
+    .embed-frame iframe { display:block; width:100%; border:0; min-height:152px; }
+    .social-thumb { width:100%; height:150px; object-fit:cover; display:block; background:#18253a; }
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+    .reveal.is-visible { opacity:1; transform:none; }
+    @media(prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+
+    /* ─── Supernova v2 design system ─────────────────────────────── */
+    :root{
+      --void:#060712; --core:#FFF8EC; --shock:#FFD393; --ion:#8AB6FF; --remnant:#C084FC; --ember:#F49177;
+      --display:"Fraunces",Georgia,serif; --ui:"Space Grotesk",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+    }
+    html[data-theme="dark"]{
+      --bg:#060712; --bg2:#0C0F22; --paper:#141733; --ink:#F8F0ED; --muted:#B8B2CC; --line:#2E3055; --gold:#FFD393; --gold-ink:#17182C;
+      --shadow:0 20px 55px #02030cc9; --card-border:#3A3D66;
+    }
+    html[data-theme="light"]{
+      --bg:#FFF6E8; --bg2:#F3E7D8; --paper:#FFFFFF; --ink:#211D33; --muted:#5E5570; --line:#E4D6C6; --gold:#E9A93B; --gold-ink:#211D33;
+      --shadow:0 18px 45px rgba(90,60,20,.14); --card-border:#E7D9C6;
+    }
+    body{ background:var(--bg); color:var(--ink); font-family:var(--ui); transition:background .4s ease, color .4s ease; }
+    h1,h2,h3,.wordmark{ font-family:var(--display); }
+    .eyebrow{ font-family:var(--mono); letter-spacing:.22em; }
+    .nav-links .theme-toggle{ display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:9px 16px; border-radius:100px; border:1px solid #ffffff32; background:#ffffff14; color:#F4EAF1; font:600 .85rem var(--ui); cursor:pointer; }
+    .nav-links .theme-toggle:hover{ background:#ffffff22; }
+    html[data-theme="light"] .nav-links .theme-toggle{ border-color:var(--card-border); background:#ffffffaa; color:var(--ink); }
+    .supernova-stage{ overflow:hidden; }
+    .supernova-sky{ overflow:hidden; }
+    .supernova-sky canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+    #supernova-canvas{ z-index:1; mix-blend-mode:screen; }
+    html[data-theme="light"] #supernova-canvas{ mix-blend-mode:multiply; opacity:.92; }
+    #ejecta-canvas{ z-index:2; mix-blend-mode:screen; pointer-events:none; }
+    html[data-theme="light"] #ejecta-canvas{ mix-blend-mode:multiply; }
+    .supernova-sky .first-stars{ z-index:3; }
+    .hero-copy{ text-shadow:0 2px 28px rgba(0,0,10,.55); }
+    html[data-theme="light"] .hero-copy{ text-shadow:0 1px 18px rgba(255,250,240,.9); }
+    .hero h1{ letter-spacing:-.04em; }
+    .hero h1 em{ font-style:italic; }
+    .scroll-cue .cue-hint{ display:block; margin-top:8px; font-size:.62rem; letter-spacing:.14em; opacity:.75; text-transform:none; }
+    .site-header{ border-bottom:1px solid #ffffff1c; }
+    html[data-theme="light"] .site-header{ background:#FFF6E8d9; border-bottom:1px solid var(--line); color:var(--ink); }
+    html[data-theme="light"] .nav-links a{ color:var(--ink); }
+    html[data-theme="light"] .nav-links a:hover, html[data-theme="light"] .nav-links a[aria-current="page"]{ background:#211D3314; color:var(--ink); }
+    html[data-theme="light"] .wordmark{ color:var(--ink); }
+    html[data-theme="light"] .wordmark span{ color:#B4761F; }
+    html[data-theme="light"] .project-picker-toggle{ color:var(--ink); }
+    html[data-theme="light"] .project-picker-menu{ background:#FFFCF5f2; border-color:var(--card-border); color:var(--ink); }
+    html[data-theme="light"] .project-picker-menu a:hover, html[data-theme="light"] .project-picker-menu a:focus-visible{ background:#E9D9B855; }
+    html[data-theme="light"] .picker-group-label{ color:#8A6420; }
+    .project-card{ background:var(--paper); border:1px solid var(--card-border); }
+    .social-preview{ background:var(--paper); border-color:var(--card-border); }
+    html[data-theme="light"] .section-head h2, html[data-theme="light"] .page-hero h1, html[data-theme="light"] .case-hero h1, html[data-theme="light"] .about-grid h2, html[data-theme="light"] .case-content h2{ color:var(--ink); text-shadow:none; }
+    html[data-theme="light"] .section-head p, html[data-theme="light"] .about-grid p, html[data-theme="light"] .case-content p, html[data-theme="light"] .page-hero p, html[data-theme="light"] .case-hero p{ color:var(--muted); text-shadow:none; }
+    html[data-theme="light"] .dark-panel{ background:#EFE2D0; color:var(--ink); }
+    html[data-theme="light"] .contact-panel{ background:linear-gradient(135deg,#FFF1D6,#FBE7D2 60%,#F3D9D1); color:var(--ink); border-color:var(--card-border); }
+    html[data-theme="light"] .note{ background:#FFF3E2; }
+    html[data-theme="light"] .note p{ color:var(--ink); }
+    html[data-theme="light"] .site-footer{ background:#FFF6E8ee; }
+    html[data-theme="light"] .button.ghost{ color:var(--ink); border-color:#8A807A; }
+    html[data-theme="light"] .button.ghost:hover{ background:#211D330f; }
+    html[data-theme="light"] .demo-panel{ background:linear-gradient(145deg,#FFFDF9,#FFF3E0); color:var(--ink); border-color:var(--card-border); }
+    html[data-theme="light"] .demo-item{ background:#FFFFFF; border-color:var(--card-border); }
+    html[data-theme="light"] .demo-schema{ background:#FFF8EC; color:var(--ink); border-color:var(--card-border); }
+    html[data-theme="light"] .demo-history th{ color:#8A6420; }
+    html[data-theme="light"] .page-hero, html[data-theme="light"] .case-hero{ background:radial-gradient(circle at 50% -15%, #FFE9C9 0%, #FFF6E8 55%, #FFF6E8 100%); }
+    .ambient-sky{ background:var(--bg); }
+    html[data-theme="light"] .hero .lead{ color:#3D364F; }
+
+    /* ─── v3 cinematic hero ───────────────────────────────────── */
+    .hero{ height:210svh; }
+    .supernova-stage{ min-height:640px; }
+    .supernova-stage::after{ content:""; position:absolute; inset:auto 0 0; height:34%; z-index:4; pointer-events:none;
+      background:linear-gradient(transparent, rgba(6,7,18,.28));
+    }
+    html[data-theme="light"] .supernova-stage::after{ background:linear-gradient(transparent, rgba(255,233,200,.55)); }
+    @media(max-width:700px){ .hero{ height:210svh; } }
+    @media(prefers-reduced-motion:reduce){ .hero{ height:100svh; } }
+    html[data-theme="light"] .hero h1{ color:#211D33; text-shadow:0 1px 22px rgba(255,250,240,.95); }
+    html[data-theme="light"] .hero h1 em{ color:#B4761F; }
+    html[data-theme="light"] .hero .lead{ color:#3D364F; text-shadow:0 1px 14px rgba(255,250,240,.95); }
+    html[data-theme="light"] .hero .eyebrow{ color:#8A6420; }
+    html[data-theme="light"] .hero .button.primary{ background:var(--gold); color:var(--gold-ink); border-color:var(--gold); }
+    html[data-theme="light"] .hero .button.ghost{ color:var(--ink); border-color:#8A807A99; background:#FFFFFF66; }
+    html[data-theme="light"] .scroll-cue{ color:#5E5570; text-shadow:0 1px 10px rgba(255,250,240,.9); }
+    html[data-theme="light"] .nova-copy{ color:#211D33; text-shadow:0 1px 18px rgba(255,240,210,.95); }
+    html[data-theme="light"] .first-stars{ opacity:.22; }
   </style>
 </head>
 <body>
@@ -384,28 +490,29 @@
         <div class="project-picker" id="project-picker"><button class="project-picker-toggle" id="project-picker-toggle" type="button" data-nav="projects" aria-label="Projects menu" aria-haspopup="true" aria-expanded="false" aria-controls="project-picker-menu">Projects</button><div class="project-picker-menu" id="project-picker-menu" aria-label="Choose a project" hidden><span class="project-picker-highlight" aria-hidden="true"></span><div id="project-picker-options"></div></div></div>
         <a href="/about" data-nav="about">About</a>
         <a href="/resume" data-nav="resume">Résumé</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark theme" aria-pressed="false"><span aria-hidden="true" class="theme-icon">☀︎</span><span class="theme-label">Light</span></button>
         <a class="nav-contact" href="/contact" data-nav="contact">Connect ↗</a>
       </div>
     </nav>
   </header>
+  <div id="route-announcer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></div>
   <main id="main" tabindex="-1">
     <div class="view" id="home-view">
-      <section class="hero" id="sunrise-stage" aria-label="Sunrise to supernova">
-        <div class="cosmic-sticky">
-          <div class="cosmic-sky" aria-hidden="true">
-            <div class="first-stars"></div><div class="sky-glow"></div>
-            <div class="sun-halo"></div><div class="sun-core"></div>
-            <div class="horizon-line"></div><div class="sea"></div>
-            <div class="hero-aurora"></div><div class="nebula-haze"></div><div class="nebula-image"></div><div class="nebula-light"></div><div class="afterglow"></div><canvas id="prismatic-burst" aria-hidden="true"></canvas><canvas class="hero-stars" id="hero-stars"></canvas>
+      <section class="hero" id="sunrise-stage" aria-label="Supernova — scroll to watch a star explode">
+        <div class="cosmic-sticky supernova-stage">
+          <div class="cosmic-sky supernova-sky" aria-hidden="true">
+            <canvas id="supernova-canvas" aria-hidden="true"></canvas>
+            <canvas id="ejecta-canvas" aria-hidden="true"></canvas>
+            <div class="first-stars"></div>
           </div>
           <div class="hero-copy shell">
-            <span class="eyebrow">Creative work with purpose</span>
+            <span class="eyebrow">Supernova · Creative work with purpose</span>
             <h1>Look. Listen. <em>Love.</em></h1>
-            <p class="lead">I’m Milo Rowley. I work across storytelling, digital projects, and community media to make useful things and help good ideas reach people.</p>
+            <p class="lead">I’m Milo Rowley. I work across storytelling, digital projects, and community media to make useful things and help good ideas reach people. Scroll — watch what happens next.</p>
             <div class="actions"><a class="button primary" href="/projects">Explore my projects <span aria-hidden="true">↗</span></a><a class="button ghost" href="/about">Get to know me</a></div>
           </div>
           <div class="nova-copy" aria-hidden="true">Find your next horizon.</div>
-          <div class="scroll-cue" aria-hidden="true">Go Supernova <span>↓</span></div>
+          <div class="scroll-cue" aria-hidden="true">Scroll for supernova <span>↓</span><span class="cue-hint">Click anywhere for a flare · Move to bend the light</span></div>
         </div>
       </section>
       <section class="section shell" aria-labelledby="featured-title">
@@ -446,7 +553,9 @@
     <div class="view" id="case-view" hidden>
       <section class="case-hero"><div class="shell"><a class="case-nav" href="/projects">← All projects</a><span class="eyebrow" id="case-category"></span><h1 id="case-title"></h1><p id="case-summary"></p></div></section>
       <div class="shell case-content"><article><h2>The project</h2><p id="case-context"></p><h2 style="margin-top:45px">My contribution</h2><p id="case-role"></p></article><aside class="case-side"><h3>Explore the work</h3><div id="case-links"></div></aside></div>
-      <section class="shell dme-showcase" id="dme-showcase" hidden aria-labelledby="dme-showcase-title"><div class="section-head"><div><span class="eyebrow">The real application</span><h2 id="dme-showcase-title">Mendure DME in action.</h2></div><p>A view from the desktop program showing daily guest counts and monthly equipment activity.</p></div><figure><img src="/assets/photos/mendure-dashboard.webp" alt="Mendure DME dashboard showing guests per day, items checked out, and monthly averages" width="1910" height="1031" loading="lazy" decoding="async"><figcaption>The desktop dashboard, shown separately from the interactive sample below.</figcaption></figure></section>
+      <section class="shell case-preview" id="case-preview" hidden aria-labelledby="case-preview-heading"><div class="section-head"><div><span class="eyebrow">Preview</span><h2 id="case-preview-heading">See it in context.</h2></div><p id="case-preview-caption"></p></div><div id="case-preview-body"></div></section>
+      <section class="shell case-preview" id="podcast-preview" hidden aria-labelledby="podcast-preview-heading"><div class="section-head"><div><span class="eyebrow">Listen</span><h2 id="podcast-preview-heading">Hear an episode.</h2></div><p>Official Spotify and Apple Podcasts players — cover art pulled from the live podcast feeds.</p></div><div class="embed-frame" style="margin-bottom:18px"><iframe title="As the Savior Would on Spotify" loading="lazy" height="152" src="https://open.spotify.com/embed/show/0N50Bv2tXqzNEHB7u2cdAW?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="preview-actions"><a class="button ghost" href="https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384" target="_blank" rel="noopener noreferrer">Apple Podcasts ↗</a><a class="button ghost" href="https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a class="button ghost" href="https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW" target="_blank" rel="noopener noreferrer">Spotify ↗</a></div></section>
+      <section class="shell dme-showcase" id="dme-showcase" hidden aria-labelledby="dme-showcase-title"><div class="section-head"><div><span class="eyebrow">The real application</span><h2 id="dme-showcase-title">Mendure DME in action.</h2></div><p>A view from the desktop program showing daily guest counts and monthly equipment activity.</p></div><figure><img src="/assets/photos/previews/mendure-dashboard.webp" alt="Mendure DME dashboard showing guests per day, items checked out, and monthly averages" width="4121" height="1031" loading="lazy" decoding="async"><figcaption>The desktop dashboard, shown separately from the interactive sample below.</figcaption></figure></section>
       <section class="demo-wrap shell" id="dme-demo" aria-labelledby="demo-heading" hidden>
         <div class="demo-panel">
           <span class="eyebrow">Interactive demonstration</span><h2 id="demo-heading">A library, connected.</h2>
@@ -459,24 +568,24 @@
           <p class="demo-footnote">This browser adaptation uses fictional records and the public repository’s schema and rules. The real product is an offline desktop app with SQLite, account access, and signed checkout agreements; no live records are loaded here.</p>
         </div>
       </section>
-      <section class="shell external-preview" id="scistrive-preview" hidden aria-labelledby="scistrive-preview-heading"><span class="eyebrow">Live website</span><h2 id="scistrive-preview-heading">Explore SciStrive.</h2><p>Preview the public site below. If the site prevents embedding, open it in a new tab.</p><div class="website-frame"><iframe title="SciStrive website preview" loading="lazy" referrerpolicy="no-referrer" src="https://scistrive.com/"></iframe></div><a class="button ghost" href="https://scistrive.com/" target="_blank" rel="noopener noreferrer">Open SciStrive ↗</a></section>
+      <section class="shell external-preview" id="scistrive-preview" hidden aria-labelledby="scistrive-preview-heading"><span class="eyebrow">Live website</span><h2 id="scistrive-preview-heading">Explore SciStrive.</h2><p>A screenshot of the current homepage (captured from the live site) — plus the live site below. If embedding is blocked, open it in a new tab.</p><div class="website-frame" style="height:auto"><img src="/assets/photos/previews/scistrive-site.webp" alt="Screenshot of SciStrive homepage showing 'Compliance Simplified. Quality assured.'" width="960" height="960" loading="lazy" decoding="async" style="width:100%;height:auto;display:block"></div><div class="website-frame"><iframe title="SciStrive website preview" loading="lazy" referrerpolicy="no-referrer" src="https://scistrive.com/"></iframe></div><a class="button ghost" href="https://scistrive.com/" target="_blank" rel="noopener noreferrer">Open SciStrive ↗</a></section>
     </div>
     <div class="view" id="not-found-view" hidden><div class="shell not-found"><span class="eyebrow">Page not found</span><h1>Let’s head back.</h1><a class="button primary" href="/projects">Explore projects</a></div></div>
   </main>
   <dialog class="photo-dialog" id="photo-dialog" aria-label="Photo gallery"><button class="photo-close" id="photo-close" type="button" aria-label="Close photo">×</button><figure><img id="photo-dialog-image" alt=""><figcaption id="photo-dialog-caption"></figcaption></figure><div class="photo-controls"><button type="button" id="photo-prev" aria-label="Previous photo">← Previous</button><span id="photo-count" aria-live="polite"></span><button type="button" id="photo-next" aria-label="Next photo">Next →</button></div></dialog>
   <footer class="site-footer"><div class="shell footer-row"><span>© <span id="year"></span> Milo Rowley · Made with curiosity and care.</span><span><a href="/projects">Projects</a> · <a id="personal-footer-link" href="https://www.instagram.com/supernovasunrise/" target="_blank" rel="noopener noreferrer">@supernovasunrise ↗</a></span></div></footer>
   <div class="ambient-sky" aria-hidden="true"><div class="ambient-aurora"></div><canvas id="star-field"></canvas><div class="ambient-words">LOOK. LISTEN.<br>LOVE.</div></div>
-  <script src="/assets/prismatic-burst.js"></script>
+  <script src="/assets/supernova.js"></script>
   <script>
     const baseProjects = [
-      { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'Utah FCCLA media and events, led as vice president of social media.', context:'Utah FCCLA gave me an opportunity to bring student leadership, communication, and events together. I coordinated media and events across Utah.', role:'I served as Utah FCCLA vice president of social media, coordinated media and events, and earned a national ranking for leadership.', links:[], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳' },
-      { slug:'supernovasunrise', title:'SupernovaSunrise', category:'Personal expression / Social media', summary:'My personal creative page on Instagram and Facebook.', context:'SupernovaSunrise is my personal space for creative expression on Instagram and Facebook. The invitation “Come unto me, all ye ends of the earth” stays with me and shapes the warmth and welcome I hope this space conveys.', role:'I created and run the page, shaping its voice, visual direction, and posts.', links:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']], colors:['#f4c5b4','#f49177','#693354'], glyph:'✦' },
-      { slug:'hands-of-the-lord', title:'Hands of the Lord', category:'Service / Community media', summary:'Service and volunteer stories shared by service missionaries.', context:'Hands of the Lord is service and volunteer centered content run by service missionaries. It shares opportunities and stories rooted in helping others.', role:'I contributed creative work, with my largest contributions in organization, leadership, and operations.', links:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/p/Hands-of-the-Lord-100091913612468/']], colors:['#dab4b8','#af7886','#422d4a'], glyph:'✶' },
-      { slug:'as-the-savior-would', title:'As the Savior Would', category:'Podcast / Storytelling', summary:'A service missionary podcast about following Jesus Christ through meaningful service.', context:'As the Savior Would is a podcast produced by service missionaries. It shares conversations about discipleship, faith, and service.', role:'I hosted the podcast, guiding conversations about service and discipleship.', links:[['Instagram','https://www.instagram.com/as.the.savior.would/'],['YouTube channel','https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg'],['Listen on Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Listen on Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']], colors:['#edc996','#b97d72','#483650'], glyph:'♫' },
-      { slug:'dme-library', title:'DME Library Database', category:'Systems / Service', summary:'Mendure DME: an offline Electron and SQLite system for equipment loans.', context:'Mendure DME is an offline Electron desktop app for the NW Montana Veterans Stand Down and Food Pantry. It tracks equipment, customers, 120-day loans, signatures, and reports in SQLite.', role:'I developed the relational database for the library and designed a system to make equipment tracking and checkout more useful.', links:[['Source code','https://github.com/SupernovaSunrise/Relational-Database'],['How it works','https://github.com/SupernovaSunrise/Relational-Database/blob/main/README.md']], colors:['#c9d7c8','#89aa9b','#38545c'], glyph:'◎' },
-      { slug:'family-history', title:'Family History Writing', category:'Writing / Oral history', summary:'Helping a family preserve a life story for future generations.', context:'A family wanted to record a loved one’s story for their children. The work began with interviews and continued through transcription and editing.', role:'As a Family History Writer, I interviewed their family member and edited the transcriptions into a clearer record of their story.', links:[], colors:['#e9d5bc','#cba277','#5c4548'], glyph:'❋' },
-      { slug:'beware-the-hog', title:'Beware the Hog', category:'Live event / Community', summary:'A live performance and thrift event built around an in-person community experience.', context:'Beware the Hog brought people together for a live performance and thrift event. Its Instagram page offers a glimpse of the project; the experience itself happened in person.', role:'I served as the Hog’s Squire and contributed to the creative work around the event.', links:[['View Instagram','https://www.instagram.com/beware_the_hog/']], colors:['#e8b2a0','#d58179','#49334b'], glyph:'✹' },
-      { slug:'scistrive', title:'SciStrive', category:'Client website / Digital project', summary:'A website I helped deploy for a client.', context:'SciStrive is a client website project. Explore the live site below to see the work in context.', role:'I contributed to the site and deployed the webpage for the client.', links:[['Visit SciStrive','https://scistrive.com/']], colors:['#b6cfc9','#79a8a5','#324b55'], glyph:'◈' }
+      { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'Utah FCCLA media and events, led as vice president of social media.', context:'Utah FCCLA gave me an opportunity to bring student leadership, communication, and events together. I coordinated media and events across Utah.', role:'I served as Utah FCCLA vice president of social media, coordinated media and events, and earned a national ranking for leadership.', links:[], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳', preview:{src:'/assets/photos/previews/fccla-ut.svg', alt:'FCCLA UT social media preview — Utah student leadership', badge:'Utah FCCLA'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'Preview artwork for the project' },
+      { slug:'supernovasunrise', title:'SupernovaSunrise', category:'Personal expression / Social media', summary:'My personal creative page on Instagram and Facebook.', context:'SupernovaSunrise is my personal space for creative expression on Instagram and Facebook. The invitation “Come unto me, all ye ends of the earth” stays with me and shapes the warmth and welcome I hope this space conveys.', role:'I created and run the page, shaping its voice, visual direction, and posts.', links:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']], colors:['#f4c5b4','#f49177','#693354'], glyph:'✦', preview:{src:'/assets/photos/previews/supernovasunrise.svg', alt:'SupernovaSunrise Instagram and Facebook preview with @supernovasunrise handle', badge:'@supernovasunrise'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'SupernovaSunrise preview artwork' },
+      { slug:'hands-of-the-lord', title:'Hands of the Lord', category:'Service / Community media', summary:'Service and volunteer stories shared by service missionaries.', context:'Hands of the Lord is service and volunteer centered content run by service missionaries. It shares opportunities and stories rooted in helping others.', role:'I contributed creative work, with my largest contributions in organization, leadership, and operations.', links:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/p/Hands-of-the-Lord-100091913612468/']], colors:['#dab4b8','#af7886','#422d4a'], glyph:'✶', preview:{src:'/assets/photos/previews/hands-of-the-lord.svg', alt:'Hands of the Lord service media preview with @hands.of.the.lord handle', badge:'@hands.of.the.lord'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'Hands of the Lord preview artwork' },
+      { slug:'as-the-savior-would', title:'As the Savior Would', category:'Podcast / Storytelling', summary:'A service missionary podcast about following Jesus Christ through meaningful service.', context:'As the Savior Would is a podcast produced by service missionaries. It shares conversations about discipleship, faith, and service.', role:'I hosted the podcast, guiding conversations about service and discipleship.', links:[['Instagram','https://www.instagram.com/as.the.savior.would/'],['YouTube channel','https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg'],['Listen on Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Listen on Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']], colors:['#edc996','#b97d72','#483650'], glyph:'♫', preview:{src:'/assets/photos/previews/as-the-savior-would-cover.webp', alt:'As the Savior Would podcast cover art — blue circle with "As the Savior Would — A Hands of the Lord Podcast"', badge:'Listen now'}, og:'/assets/photos/previews/as-the-savior-would-cover.webp', ogAlt:'As the Savior Would podcast cover art' },
+      { slug:'dme-library', title:'DME Library Database', category:'Systems / Service', summary:'Mendure DME: an offline Electron and SQLite system for equipment loans.', context:'Mendure DME is an offline Electron desktop app for the NW Montana Veterans Stand Down and Food Pantry. It tracks equipment, customers, 120-day loans, signatures, and reports in SQLite.', role:'I developed the relational database for the library and designed a system to make equipment tracking and checkout more useful.', links:[['Source code','https://github.com/SupernovaSunrise/Relational-Database'],['How it works','https://github.com/SupernovaSunrise/Relational-Database/blob/main/README.md']], colors:['#c9d7c8','#89aa9b','#38545c'], glyph:'◎', preview:{src:'/assets/photos/previews/mendure-dashboard.webp', alt:'Mendure DME dashboard showing daily guest counts and equipment activity', badge:'Live demo below'}, og:'/assets/photos/previews/mendure-dashboard.webp', ogAlt:'Mendure DME dashboard showing library activity' },
+      { slug:'family-history', title:'Family History Writing', category:'Writing / Oral history', summary:'Helping a family preserve a life story for future generations.', context:'A family wanted to record a loved one’s story for their children. The work began with interviews and continued through transcription and editing.', role:'As a Family History Writer, I interviewed their family member and edited the transcriptions into a clearer record of their story.', links:[], colors:['#e9d5bc','#cba277','#5c4548'], glyph:'❋', preview:{src:'/assets/photos/previews/family-history.svg', alt:'Family History Writing preview — interviews to manuscript for future generations', badge:'Oral history'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'Family History Writing preview artwork' },
+      { slug:'beware-the-hog', title:'Beware the Hog', category:'Live event / Community', summary:'A live performance and thrift event built around an in-person community experience.', context:'Beware the Hog brought people together for a live performance and thrift event. Its Instagram page offers a glimpse of the project; the experience itself happened in person.', role:'I served as the Hog’s Squire and contributed to the creative work around the event.', links:[['View Instagram','https://www.instagram.com/beware_the_hog/']], colors:['#e8b2a0','#d58179','#49334b'], glyph:'✹', preview:{src:'/assets/photos/previews/beware-the-hog.svg', alt:'Beware the Hog live event preview with @beware_the_hog handle', badge:'@beware_the_hog'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'Beware the Hog preview artwork' },
+      { slug:'scistrive', title:'SciStrive', category:'Client website / Digital project', summary:'A website I helped deploy for a client.', context:'SciStrive is a client website project. Explore the live site below to see the work in context.', role:'I contributed to the site and deployed the webpage for the client.', links:[['Visit SciStrive','https://scistrive.com/']], colors:['#b6cfc9','#79a8a5','#324b55'], glyph:'◈', preview:{src:'/assets/photos/previews/scistrive-site.webp', alt:'SciStrive homepage screenshot — "Compliance Simplified. Quality assured." for FDA and supplement brands', badge:'Live site preview'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'SciStrive — Compliance Simplified. Quality assured.' }
     ];
     const projects = baseProjects;
     function escapeHTML(value) { return String(value ?? '').replace(/[&<>"']/g,ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
@@ -488,18 +597,22 @@
     ];
     function card(p) {
       const [bg,orb,ink] = p.colors;
-      const image=p.slug==='dme-library' ? '<img src="/assets/photos/mendure-dashboard.webp" alt="" width="1910" height="1031" loading="lazy" decoding="async">' : `<span>${escapeHTML(p.glyph)}</span>`;
-      return `<article class="project-card"><div class="project-art ${p.slug==='dme-library'?'has-image':''}" style="--art-bg:${bg};--art-orb:${orb};--art-text:${ink}" aria-hidden="true">${image}</div><div class="card-body"><span class="tag">${escapeHTML(p.category)}</span><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.summary)}</p><a class="card-link" href="/projects/${encodeURIComponent(p.slug)}" aria-label="Explore ${escapeHTML(p.title)}">Explore project ↗</a></div></article>`;
+      const dims = p.slug==='dme-library' ? ' width="4121" height="1031"' : p.slug==='scistrive' ? ' width="960" height="960"' : p.slug==='as-the-savior-would' ? ' width="800" height="800"' : ' width="1200" height="630"';
+      const image=p.preview ? `<img src="${escapeHTML(p.preview.src)}" alt="${escapeHTML(p.preview.alt)}"${dims} loading="lazy" decoding="async">` : `<span>${escapeHTML(p.glyph)}</span>`;
+      const badge=p.preview?.badge ? `<span class="preview-badge">${escapeHTML(p.preview.badge)}</span>` : '';
+      const cls=p.preview ? 'has-image' : '';
+      return `<article class="project-card reveal"><div class="project-art ${cls}" style="--art-bg:${bg};--art-orb:${orb};--art-text:${ink}" aria-hidden="true"><span class="project-preview">${image}${badge}</span></div><div class="card-body"><span class="tag">${escapeHTML(p.category)}</span><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.summary)}</p><a class="card-link" href="/projects/${encodeURIComponent(p.slug)}" aria-label="Explore ${escapeHTML(p.title)}">Explore project ↗</a></div></article>`;
     }
     const mediaProfiles = [
-      {slug:'supernovasunrise',name:'SupernovaSunrise',caption:'My personal creative page',platforms:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']]},
-      {slug:'hands-of-the-lord',name:'Hands of the Lord',caption:'Service and volunteer stories',platforms:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/p/Hands-of-the-Lord-100091913612468/']]},
-      {slug:'beware-the-hog',name:'Beware the Hog',caption:'Live performance and thrift event',platforms:[['Instagram','https://www.instagram.com/beware_the_hog/']]},
-      {slug:'as-the-savior-would',name:'As the Savior Would',caption:'Service missionary podcast',platforms:[['Instagram','https://www.instagram.com/as.the.savior.would/'],['YouTube','https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg'],['Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']]}
+      {slug:'supernovasunrise',name:'SupernovaSunrise',caption:'My personal creative page',thumb:'/assets/photos/previews/supernovasunrise.svg',platforms:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']]},
+      {slug:'hands-of-the-lord',name:'Hands of the Lord',caption:'Service and volunteer stories',thumb:'/assets/photos/previews/hands-of-the-lord.svg',platforms:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/p/Hands-of-the-Lord-100091913612468/']]},
+      {slug:'beware-the-hog',name:'Beware the Hog',caption:'Live performance and thrift event',thumb:'/assets/photos/previews/beware-the-hog.svg',platforms:[['Instagram','https://www.instagram.com/beware_the_hog/']]},
+      {slug:'as-the-savior-would',name:'As the Savior Would',caption:'Service missionary podcast',thumb:'/assets/photos/previews/as-the-savior-would-cover.webp',platforms:[['Instagram','https://www.instagram.com/as.the.savior.would/'],['YouTube','https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg'],['Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']]}
     ];
     function socialCard(profile) {
       const links = profile.platforms.map(([platform,url]) => `<a href="${escapeHTML(safeURL(url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(platform)} ↗</a>`).join('');
-      return `<article class="social-preview"><div class="social-preview-top"><h3>${escapeHTML(profile.name)}</h3><p>${escapeHTML(profile.caption)}</p></div><div class="social-preview-links">${links}</div></article>`;
+      const thumb=profile.thumb ? `<img class="social-thumb" src="${escapeHTML(profile.thumb)}" alt="" width="1200" height="630" loading="lazy" decoding="async">` : '';
+      return `<article class="social-preview reveal">${thumb}<div class="social-preview-top"><h3>${escapeHTML(profile.name)}</h3><p>${escapeHTML(profile.caption)}</p></div><div class="social-preview-links">${links}</div></article>`;
     }
     function renderProjectDirectory(group='all') {
       document.querySelectorAll('.project-filter').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.group===group)));
@@ -667,6 +780,13 @@
           document.getElementById('case-role').textContent = p.role;
           const links = p.links.filter(([,url]) => safeURL(url));
           document.getElementById('case-links').innerHTML = links.length ? links.map(([label,url]) => `<a href="${escapeHTML(safeURL(url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} ↗</a>`).join('') : '<p>No public link available for this project.</p>';
+          const cp=document.getElementById('case-preview'), cb=document.getElementById('case-preview-body'), cc=document.getElementById('case-preview-caption');
+          if(p.preview){
+            cp.hidden=false;
+            cc.textContent=p.summary;
+            cb.innerHTML=`<figure><img src="${escapeHTML(p.preview.src)}" alt="${escapeHTML(p.preview.alt)}" loading="lazy" decoding="async"><figcaption>${escapeHTML(p.preview.alt)}</figcaption></figure>`+(links.length?`<div class="preview-actions">${links.map(([label,url])=>`<a class="button ghost" href="${escapeHTML(safeURL(url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} ↗</a>`).join('')}</div>`:'');
+          } else { cp.hidden=true; cb.innerHTML=''; }
+          document.getElementById('podcast-preview').hidden = p.slug !== 'as-the-savior-would';
           document.getElementById('dme-demo').hidden = p.slug !== 'dme-library';
           document.getElementById('dme-showcase').hidden = p.slug !== 'dme-library';
           document.getElementById('scistrive-preview').hidden = p.slug !== 'scistrive';
@@ -686,10 +806,11 @@
       document.querySelector('meta[property="og:title"]').content=document.title;
       document.querySelector('meta[property="og:description"]').content=description;
       document.querySelector('meta[property="og:url"]').content=canonical;
-      document.querySelector('meta[property="og:image"]').content=`https://supernovasunrise.netlify.app/assets/photos/${activeProject?.slug==='dme-library'?'mendure-dashboard.webp':'violin-outdoors.webp'}`;
-      document.querySelector('meta[property="og:image:alt"]').content=activeProject?.slug==='dme-library'?'Mendure DME dashboard showing library activity':'Milo playing violin outdoors';
+      document.querySelector('meta[property="og:image"]').content=`https://supernovasunrise.netlify.app${activeProject?.og ? activeProject.og : '/assets/photos/violin-outdoors.webp'}`;
+      document.querySelector('meta[property="og:image:alt"]').content=activeProject?.ogAlt || 'Milo playing violin outdoors';
       document.querySelector('link[rel="canonical"]').href=canonical;
       document.body.dataset.cosmos = name === 'home' ? 'hidden' : 'visible';
+      document.getElementById('route-announcer').textContent = document.title;
       closePicker();
       window.scrollTo(0,0);
       if(focus) document.getElementById('main').focus({preventScroll:true});
@@ -706,88 +827,109 @@
     });
     const stage = document.getElementById('sunrise-stage');
     const scene = document.querySelector('.ambient-sky');
-    scene.prepend(stage.querySelector('.cosmic-sky'));
     const heroCopy = stage.querySelector('.hero-copy');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-    const burst = window.createPrismaticBurst(document.getElementById('prismatic-burst'), reducedMotion);
-    let heroParticleStrength=0;
-    const canvases=[document.getElementById('star-field'),document.getElementById('hero-stars')];
-    const contexts=canvases.map(canvas=>canvas.getContext('2d'));
-    const particles=Array.from({length:105},(_,i)=>({
-      x:((i*0.61803398875)%1),y:((i*0.754877666)%1),
-      size:.55+(i%7)*.23,phase:i*1.913,angle:i*2.39996,speed:.5+(i%11)*.08
+
+    // --- theme toggle (dark / light compare) ---
+    const themeBtn = document.getElementById('theme-toggle');
+    function syncThemeBtn(){
+      const light = document.documentElement.dataset.theme === 'light';
+      themeBtn.querySelector('.theme-icon').textContent = light ? '☾' : '☀︎';
+      themeBtn.querySelector('.theme-label').textContent = light ? 'Dark' : 'Light';
+      themeBtn.setAttribute('aria-pressed', String(light));
+      document.querySelector('meta[name="theme-color"]').content = light ? '#FFF6E8' : '#060712';
+    }
+    themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem('sn-theme', next); } catch (e) {}
+      syncThemeBtn();
+      if (window.supernova) supernova.pulse();
+      scheduleSunrise();
+    });
+    syncThemeBtn();
+
+    // --- supernova engine (WebGL nebula + ejecta) ---
+    const nova = window.createSupernova(document.getElementById('supernova-canvas'), {
+      ejectaCanvas: document.getElementById('ejecta-canvas'),
+      reducedMotion
+    });
+    window.supernova = nova;
+
+    const starCanvas = document.getElementById('star-field');
+    const starCtx = starCanvas.getContext('2d');
+    const stars = Array.from({length: 120}, (_, i) => ({
+      x: ((i * 0.61803398875) % 1), y: ((i * 0.754877666) % 1),
+      size: .5 + (i % 7) * .22, phase: i * 1.913, speed: .4 + (i % 11) * .07
     }));
-    function sizeCanvases() {
-      const scale=Math.min(devicePixelRatio||1,2);
-      for(const [i,canvas] of canvases.entries()) {
-        const w=canvas.clientWidth,h=canvas.clientHeight;
-        if(canvas.width!==Math.round(w*scale) || canvas.height!==Math.round(h*scale)) { canvas.width=Math.round(w*scale); canvas.height=Math.round(h*scale); }
-        contexts[i].setTransform(scale,0,0,scale,0,0);
+    function sizeStar() {
+      const scale = Math.min(window.devicePixelRatio || 1, 2);
+      const w = starCanvas.clientWidth, h = starCanvas.clientHeight;
+      if (w && (starCanvas.width !== Math.round(w * scale) || starCanvas.height !== Math.round(h * scale))) {
+        starCanvas.width = Math.round(w * scale); starCanvas.height = Math.round(h * scale);
+        starCtx.setTransform(scale, 0, 0, scale, 0, 0);
       }
     }
-    let particleFrame=0,particleLast=0;
-    function drawParticles(time=0) {
-      particleFrame=requestAnimationFrame(drawParticles);
-      if(document.hidden || (time-particleLast<33 && !reducedMotion.matches)) return;
-      particleLast=time;
-      sizeCanvases();
-      canvases.forEach((canvas,i)=>{
-        const ctx=contexts[i], w=canvas.clientWidth,h=canvas.clientHeight;
-        ctx.clearRect(0,0,w,h);
-        if(i===1 && heroParticleStrength<.02) return;
-        const intensity=i?heroParticleStrength:1;
-        particles.slice(0,reducedMotion.matches?45:85+(i?20:0)).forEach(p=>{
-          let x=p.x*w,y=p.y*h;
-          if(i) {
-            const radius=(.11+p.x*.48)*Math.min(w,h)*(1+heroParticleStrength*.95);
-            x=w*.5+Math.cos(p.angle)*radius; y=h*.57+Math.sin(p.angle)*radius;
-          } else if(!reducedMotion.matches) { y=(y+time*p.speed*.002)%h; }
-          const twinkle=reducedMotion.matches?1:.62+.38*Math.sin(time*.0015+p.phase);
-          ctx.beginPath(); ctx.fillStyle=i?`rgba(253,226,198,${(.25+.68*intensity)*twinkle})`:`rgba(214,226,255,${(.18+.48*twinkle)})`;
-          ctx.arc(x,y,p.size*(i?1.15:1),0,Math.PI*2);ctx.fill();
-        });
+    let starFrame = 0, starLast = 0;
+    function drawStars(time = 0) {
+      starFrame = requestAnimationFrame(drawStars);
+      if (document.hidden || (time - starLast < 33 && !reducedMotion.matches)) return;
+      starLast = time; sizeStar();
+      const w = starCanvas.clientWidth, h = starCanvas.clientHeight;
+      starCtx.clearRect(0, 0, w, h);
+      const light = document.documentElement.dataset.theme === 'light';
+      stars.slice(0, reducedMotion.matches ? 40 : 90).forEach(p => {
+        let y = p.y * h; if (!reducedMotion.matches) y = (y + time * p.speed * .002) % h;
+        const tw = reducedMotion.matches ? 1 : .6 + .4 * Math.sin(time * .0014 + p.phase);
+        starCtx.beginPath();
+        starCtx.fillStyle = light ? `rgba(80,70,110,${(.14 + .3 * tw)})` : `rgba(214,226,255,${(.18 + .45 * tw)})`;
+        starCtx.arc(p.x * w, y, p.size, 0, Math.PI * 2); starCtx.fill();
       });
-      if(reducedMotion.matches) { cancelAnimationFrame(particleFrame); particleFrame=0; }
+      if (reducedMotion.matches) { cancelAnimationFrame(starFrame); starFrame = 0; }
     }
-    reducedMotion.addEventListener('change',()=>{ if(!particleFrame) particleFrame=requestAnimationFrame(drawParticles); });
-    const clamp = value => Math.max(0,Math.min(1,value));
-    const smooth = (start,end,value) => { const t=clamp((value-start)/(end-start)); return t*t*(3-2*t); };
-    let framePending=false;
+    reducedMotion.addEventListener('change', () => { if (!starFrame) starFrame = requestAnimationFrame(drawStars); });
+
+    const clamp = value => Math.max(0, Math.min(1, value));
+    const smooth = (start, end, value) => { const t = clamp((value - start) / (end - start)); return t * t * (3 - 2 * t); };
+    let framePending = false;
     function updateSunrise() {
-      framePending=false;
+      framePending = false;
       const home = !document.getElementById('home-view').hidden;
-      const distance=Math.max(1,stage.offsetHeight-innerHeight);
-      const progress=home ? clamp(-stage.getBoundingClientRect().top/distance) : 1;
-      const expansion=smooth(.08,.51,progress);
-      const bloom=expansion*(1-.82*smooth(.62,.97,progress));
-      const fade=smooth(.08,.35,progress);
-      const finish=smooth(.69,1,progress);
-      scene.style.setProperty('--sun-y',`${74-15*smooth(.1,.52,progress)}%`);
-      scene.style.setProperty('--sun-scale',(1+expansion*.65).toFixed(3));
-      scene.style.setProperty('--sun-opacity',(1-smooth(.23,.58,progress)*.95).toFixed(3));
-      scene.style.setProperty('--nebula-scale',(.78+expansion*.38).toFixed(3));
-      scene.style.setProperty('--nebula-opacity',(bloom*.28).toFixed(3));
-      scene.style.setProperty('--burst-opacity',(bloom*.72).toFixed(3));
-      scene.style.setProperty('--horizon-opacity',(1-smooth(.13,.61,progress)).toFixed(3));
-      scene.style.setProperty('--halo-opacity',(1-smooth(.35,.68,progress)*.7-finish*.18).toFixed(3));
-      scene.style.setProperty('--copy-opacity',(1-fade).toFixed(3));
-      scene.style.setProperty('--copy-shift',`${(-fade*65).toFixed(1)}px`);
-      scene.style.setProperty('--finish',finish.toFixed(3));
-      scene.style.setProperty('--nova-copy-opacity',(smooth(.44,.6,progress)*(1-smooth(.73,.96,progress))).toFixed(3));
-      document.body.dataset.cosmos = progress>.6 ? 'visible' : 'hidden';
-      heroParticleStrength = bloom;
-      burst.setProgress(bloom);
-      heroCopy.inert=fade>.97;
+      const distance = Math.max(1, stage.offsetHeight - innerHeight);
+      // 3-act scroll: 0-.25 collapse, .25-.62 explosion, .62-1 remnant
+      const progress = home ? clamp(-stage.getBoundingClientRect().top / distance) : 1;
+      const fade = smooth(.10, .38, progress);
+      const finish = smooth(.72, 1, progress);
+      // keep legacy vars for ambient/edge states
+      scene.style.setProperty('--sun-y', `${62 - 12 * smooth(.1, .52, progress)}%`);
+      scene.style.setProperty('--sun-scale', (1 + smooth(.08, .51, progress) * .65).toFixed(3));
+      scene.style.setProperty('--sun-opacity', (1 - smooth(.23, .58, progress) * .95).toFixed(3));
+      scene.style.setProperty('--nebula-scale', (.9 + smooth(.08, .51, progress) * .35).toFixed(3));
+      scene.style.setProperty('--nebula-opacity', (.22).toFixed(3));
+      scene.style.setProperty('--burst-opacity', '0');
+      scene.style.setProperty('--horizon-opacity', (1 - smooth(.13, .61, progress)).toFixed(3));
+      scene.style.setProperty('--halo-opacity', (1 - smooth(.35, .68, progress) * .7 - finish * .18).toFixed(3));
+      scene.style.setProperty('--copy-opacity', (1 - fade).toFixed(3));
+      scene.style.setProperty('--copy-shift', `${(-fade * 65).toFixed(1)}px`);
+      scene.style.setProperty('--finish', finish.toFixed(3));
+      scene.style.setProperty('--nova-copy-opacity', (smooth(.44, .6, progress) * (1 - smooth(.78, .98, progress))).toFixed(3));
+      document.body.dataset.cosmos = progress > .6 ? 'visible' : 'hidden';
+      nova.setProgress(progress);
+      heroCopy.inert = fade > .97;
     }
-    function scheduleSunrise() { if(!framePending) { framePending=true; requestAnimationFrame(updateSunrise); } }
-    window.addEventListener('scroll',scheduleSunrise,{passive:true});
-    window.addEventListener('resize',scheduleSunrise);
-    window.addEventListener('resize',sizeCanvases);
-    reducedMotion.addEventListener('change',scheduleSunrise);
-    window.addEventListener('popstate',()=>route({focus:true}));
+    function scheduleSunrise() { if (!framePending) { framePending = true; requestAnimationFrame(updateSunrise); } }
+    window.addEventListener('scroll', scheduleSunrise, { passive: true });
+    window.addEventListener('resize', scheduleSunrise);
+    window.addEventListener('resize', sizeStar);
+    reducedMotion.addEventListener('change', scheduleSunrise);
+    window.addEventListener('popstate', () => route({ focus: true }));
+    const revealObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObserver.unobserve(e.target); } }); }, { threshold: .08 }) : null;
+    function observeReveals(){ document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => { if (revealObserver) revealObserver.observe(el); else el.classList.add('is-visible'); }); }
+    new MutationObserver(() => observeReveals()).observe(document.body, { subtree: true, childList: true });
     route();
+    observeReveals();
     scheduleSunrise();
-    particleFrame=requestAnimationFrame(drawParticles);
+    starFrame = requestAnimationFrame(drawStars);
   </script>
 </body>
 </html>

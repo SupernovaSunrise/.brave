@@ -26,7 +26,14 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
           if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
-            echo 'Add NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID to repository Actions secrets.' >&2
+            echo 'ERROR: Netlify secrets missing.' >&2
+            echo '' >&2
+            echo 'Add these Actions secrets in GitHub:' >&2
+            echo '  GitHub repo → Settings → Secrets and variables → Actions → New repository secret' >&2
+            echo '  • NETLIFY_SITE_ID     = your Netlify Project ID (Site settings → General → Project ID)' >&2
+            echo '  • NETLIFY_AUTH_TOKEN  = Netlify user token (User settings → Applications → Personal access tokens)' >&2
+            echo '' >&2
+            echo 'See README.md → "Setup: GitHub + Netlify secrets" for step-by-step instructions.' >&2
             exit 1
           fi
       - name: Prepare static site
