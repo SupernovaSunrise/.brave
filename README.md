@@ -1,10 +1,10 @@
 # Milo Rowley · Portfolio
 
-A static portfolio with project pages, a browser adaptation of the [Mendure DME database](https://github.com/SupernovaSunrise/Relational-Database), social previews, and a scroll driven sunrise with a persistent WebGL supernova. Move the pointer to see the beams respond, or click an open area to send out a wave of light. Browsers without WebGL use the CSS nebula treatment; reduced motion settings pause the shader animation.
+A static portfolio with categorized project pages, a browser adaptation of the [Mendure DME database](https://github.com/SupernovaSunrise/Relational-Database), an About photo gallery, and a scroll driven sunrise with a persistent WebGL supernova. Move the pointer to see the beams respond, or click an open area to send out a wave of light. Browsers without WebGL use the CSS nebula treatment; reduced motion settings pause the shader animation.
 
 ## View or edit
 
-Open `index.html` in a browser, or use a local static server such as `python3 -m http.server 8000`. The content, project descriptions, and social links are in `index.html`; images and the résumé PDF are in `assets/`.
+Use `python3 -m http.server 8000` from the repository root for local edits. Direct project URLs need Netlify's `_redirects` rule or a local server that serves `index.html` for unknown paths. The content and social links are in `index.html`; photos, the screenshot, and the résumé PDF are in `assets/`. The gallery photos are deliberately optimized WebP files.
 
 ## Netlify deployment through GitHub Actions
 
@@ -12,8 +12,8 @@ Open `index.html` in a browser, or use a local static server such as `python3 -m
 2. Find **Project ID** in Netlify's **Project configuration → General → Project details**.
 3. Generate a Netlify personal access token in **User settings → Applications → Personal access tokens**.
 4. In this GitHub repository, add **Actions secrets** `NETLIFY_SITE_ID` (the Project ID) and `NETLIFY_AUTH_TOKEN` (the access token). Never commit the token.
-5. Push to `main`, or run **Deploy portfolio to Netlify** under GitHub Actions. The workflow publishes only `index.html` and the assets directory. It fails with a clear message until both secrets are configured.
+5. Push to `main`, or run **Deploy portfolio to Netlify** under GitHub Actions. The workflow runs `scripts/build.sh` and publishes the curated `dist` directory. It fails with a clear message until both secrets are configured.
 
-The site is plain HTML, CSS, and JavaScript, so no build command is required. `netlify.toml` also declares the root publish directory for manual Netlify imports; the Action publishes its curated `dist` folder.
+The site is plain HTML, CSS, and JavaScript. `netlify.toml` runs `bash scripts/build.sh` and publishes `dist`; the build includes a sitemap, robots file, and HTML snapshots with page specific metadata for each project URL. `scripts/prerender.js` derives those snapshots from the project data in `index.html`. This keeps uploaded source photos and working drafts out of the published directory.
 
-Some previews rely on third-party embeds. SciStrive, Facebook, Instagram, or YouTube may block frames or require a browser session; direct project and channel links stay available.
+Social accounts use direct links instead of external embeds. SciStrive may block its optional iframe; the project still links directly to the site.

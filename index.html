@@ -3,9 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#241b35">
-  <meta name="description" content="Milo Rowley's portfolio: creative communication, service media, storytelling, and useful digital tools.">
-  <title>Milo Rowley — Supernova Portfolio</title>
+  <meta name="theme-color" content="#101228">
+  <meta name="description" content="Milo Rowley works across communication, community media, storytelling, and practical digital tools. Explore selected projects, experience, and ways to connect.">
+  <link rel="canonical" href="https://supernovasunrise.netlify.app/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Milo Rowley">
+  <meta property="og:title" content="Milo Rowley | Communication, creative work &amp; digital projects">
+  <meta property="og:description" content="Explore Milo Rowley's work in storytelling, service media, and practical digital projects.">
+  <meta property="og:url" content="https://supernovasunrise.netlify.app/">
+  <meta property="og:image" content="https://supernovasunrise.netlify.app/assets/photos/violin-outdoors.webp">
+  <meta property="og:image:alt" content="Milo playing violin outdoors">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Milo Rowley","url":"https://supernovasunrise.netlify.app/"},{"@type":"Person","name":"Milo Rowley","url":"https://supernovasunrise.netlify.app/","description":"Communication, storytelling, community media, and practical digital projects.","image":"https://supernovasunrise.netlify.app/assets/photos/reading-portrait.webp","sameAs":["https://www.instagram.com/supernovasunrise/","https://www.facebook.com/supernovasunrise","https://www.linkedin.com/in/milo-rowley","https://github.com/SupernovaSunrise"]}]}</script>
+  <title>Milo Rowley | Communication, creative work &amp; digital projects</title>
   <style>
     :root {
       --night: #241b35; --ink: #292436; --muted: #635b70; --cream: #fff9f1;
@@ -136,7 +147,7 @@
     .sea { position:absolute; z-index:4; inset:80% 0 0; background:linear-gradient(180deg,#b7637a 0%,#633955 44%,#211f3f 100%); opacity:var(--horizon-opacity); }
     .sea::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(175deg,transparent 0 24px,#ffe2bd21 25px 26px,transparent 27px 48px); mask-image:linear-gradient(90deg,transparent 12%,black 50%,transparent 88%); }
     .nebula-haze { z-index:3; width:min(110vw,1250px); aspect-ratio:1; opacity:var(--nebula-opacity); background:radial-gradient(ellipse at 50% 47%,#effaff 0 6%,#95d2f4 18%,#5e73b7a9 30%,transparent 55%),conic-gradient(from 58deg,#db795822,#ffbc64ba 18%,#3a2d5c00 35%,#c85d4f99 54%,#ffce81b0 75%,#d7635033 90%,#db795822); filter:blur(34px); transform:translate(-50%,-50%) scale(var(--nebula-scale)); }
-    .nebula-image { z-index:4; width:min(91vmin,820px); aspect-ratio:1; opacity:var(--nebula-opacity); background:url('assets/nebula-reference.jpg') center / contain no-repeat; filter:blur(3px) saturate(1.1); mix-blend-mode:screen; mask-image:radial-gradient(circle,#000 0 48%,#0009 66%,transparent 78%); transform:translate(-50%,-50%) scale(var(--nebula-scale)); }
+    .nebula-image { z-index:4; width:min(91vmin,820px); aspect-ratio:1; opacity:var(--nebula-opacity); background:url('/assets/nebula-reference.jpg') center / contain no-repeat; filter:blur(3px) saturate(1.1); mix-blend-mode:screen; mask-image:radial-gradient(circle,#000 0 48%,#0009 66%,transparent 78%); transform:translate(-50%,-50%) scale(var(--nebula-scale)); }
     .nebula-light { z-index:5; width:min(63vmin,610px); aspect-ratio:1; opacity:var(--nebula-opacity); background:radial-gradient(ellipse at 48% 50%,#ffffefbb 0 9%,#b5e1ff80 24%,#a7bafa38 46%,transparent 68%); filter:blur(24px); transform:translate(-50%,-50%) scale(var(--nebula-scale)); }
     .hero-aurora { position:absolute; inset:-25%; z-index:1; opacity:var(--nebula-opacity); background:conic-gradient(from 50deg at 50% 50%,transparent 0 10%,#83b1dd55 25%,transparent 38%,#ffd19a44 58%,transparent 75%,#cf88bd55 90%,transparent); filter:blur(68px); animation:aurora-drift 21s ease-in-out infinite alternate; }
     .hero-stars { position:absolute; inset:0; z-index:6; width:100%; height:100%; opacity:var(--nebula-opacity); pointer-events:none; }
@@ -232,8 +243,6 @@
     .project-picker { position:relative; display:flex; align-items:center; border-radius:100px; }
     .project-picker-toggle { border:0; border-radius:100px; padding:9px 16px; background:none; color:#efe9ec; cursor:pointer; font:650 .91rem/1.65 system-ui,sans-serif; }
     .project-picker-toggle:hover,.project-picker-toggle[aria-current="page"],.project-picker-toggle[aria-expanded="true"] { background:#ffffff21; color:white; }
-    .project-picker-toggle span { display:inline-block; margin-left:2px; transition:transform .22s ease; }
-    .project-picker-toggle[aria-expanded="true"] span { transform:rotate(180deg); }
     .project-picker-menu { position:absolute; z-index:45; top:calc(100% + 13px); left:0; width:min(315px,86vw); max-height:min(65vh,470px); overflow-y:auto; padding:8px; border:1px solid #ffffff38; border-radius:16px; background:#24243beF; box-shadow:0 22px 65px #070718a8; backdrop-filter:blur(22px); }
     .project-picker-menu[hidden] { display:none; }
     .project-picker-menu::before { content:""; position:absolute; left:24px; top:-6px; width:11px; height:11px; background:#24243b; transform:rotate(45deg); }
@@ -269,28 +278,14 @@
     .social-preview-top { padding:18px 20px; border-bottom:1px solid #ffffff1d; }
     .social-preview-top h3 { margin:8px 0 6px; font-size:1.38rem; }
     .social-preview-top p { margin:0; color:var(--muted); font-size:.86rem; }
-    .social-preview-media { min-height:166px; display:grid; align-content:center; padding:27px; background:radial-gradient(circle at 24% 25%,#ffb88277,transparent 47%),radial-gradient(circle at 80% 72%,#899acc77,transparent 48%),#292844; }
-    .social-preview-media span { display:block; font:italic 1.75rem/1.18 Georgia,serif; max-width:260px; color:#fff2e9; }
-    .social-preview-media small { display:block; margin-top:13px; font-size:.71rem; text-transform:uppercase; letter-spacing:.14em; color:#ffe2bb; }
-    .social-preview iframe { width:100%; height:290px; border:0; background:white; }
-    .social-preview .instagram-media { width:calc(100% - 24px) !important; max-width:none !important; min-width:0 !important; margin:12px auto !important; border-radius:12px !important; }
-    .instagram-fallback { position:relative; min-height:195px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:7px; overflow:hidden; padding:24px; text-align:left; text-decoration:none; color:#fff5ed; background:radial-gradient(circle at 87% 26%,#ffca8b88,transparent 34%),radial-gradient(circle at 17% 80%,#de819176,transparent 43%),#342447; }
-    .instagram-fallback::after { content:"✦"; position:absolute; right:22px; top:10px; color:#ffffff6b; font:5rem Georgia,serif; pointer-events:none; }
-    .instagram-fallback .profile-label { font-size:.67rem; text-transform:uppercase; letter-spacing:.16em; font-weight:750; color:#ffdaa8; }
-    .instagram-fallback strong { max-width:100%; overflow-wrap:anywhere; font:italic clamp(1.35rem,3vw,2rem)/1.2 Georgia,serif; }
-    .instagram-fallback .profile-link { margin-top:10px; font-size:.8rem; font-weight:750; text-decoration:underline; text-underline-offset:4px; }
-    .social-preview .live-preview { width:100%; min-height:300px; border:0; background:#f9f8f7; }
-    .social-preview .preview-fallback { display:flex; align-items:center; justify-content:center; min-height:82px; padding:16px 20px; text-align:center; color:#ffe5bc; background:#2a2a45; font-size:.83rem; }
     .social-preview-links { display:flex; flex-wrap:wrap; gap:9px; padding:16px 20px 20px; margin-top:auto; }
     .social-preview-links a { display:inline-flex; align-items:center; padding:7px 12px; border:1px solid #c7a6a3; border-radius:100px; font-size:.78rem; text-decoration:none; }
     .social-preview-links a:hover { background:#ffffff18; }
-    .social-preview-note { padding:0 20px 18px; color:#c9bfce; font-size:.75rem; }
-    .external-preview,.case-social-previews { text-align:center; padding-bottom:95px; }
+    .external-preview { text-align:center; padding-bottom:95px; }
     .external-preview p { max-width:650px; margin:9px auto 25px; color:var(--muted); }
-    .external-preview h2,.case-social-previews h2 { margin:10px 0 25px; }
+    .external-preview h2 { margin:10px 0 25px; }
     .website-frame { position:relative; height:min(55vw,550px); min-height:350px; margin:0 auto 25px; overflow:hidden; border:1px solid #7a7190; border-radius:17px; box-shadow:var(--shadow); background:linear-gradient(125deg,#514e72,#1b1e36); }
     .website-frame iframe { width:100%; height:100%; border:0; background:white; }
-    .case-social-previews .social-grid { text-align:left; margin-top:25px; }
     @media(max-width:700px) {
       .site-header .nav { padding-block:10px; }
       .cosmic-sticky { min-height:540px; }
@@ -323,19 +318,73 @@
       .hero .actions { margin-top:16px; }
       .scroll-cue { display:none; }
     }
+    .project-picker-toggle { min-height:44px; }
+    .project-picker-menu { width:min(350px,90vw); }
+    .picker-group-label { margin:10px 13px 2px; font-size:.64rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#ffd393; }
+    .picker-all { border-bottom:1px solid #ffffff26; margin-bottom:7px; }
+    .project-filters { display:flex; flex-wrap:wrap; gap:9px; margin:23px 0 36px; }
+    .project-filter { min-height:44px; padding:9px 17px; border-radius:100px; border:1px solid #807b93; background:#181a34b8; color:#f4eaf1; font:650 .84rem system-ui,sans-serif; cursor:pointer; }
+    .project-filter:hover,.project-filter[aria-pressed="true"] { border-color:#ffd393; color:#17182c; background:#ffd393; }
+    .project-group { margin:0 0 56px; }
+    .project-group h3 { margin:0 0 17px; color:#fff8f2; }
+    .project-group p { max-width:650px; color:#ded2e3; margin:0 0 21px; }
+    .project-art.has-image { display:block; background:#18253a; }
+    .project-art.has-image::before,.project-art.has-image::after { display:none; }
+    .project-art.has-image img { width:100%; height:100%; min-height:175px; object-fit:cover; object-position:center 26%; display:block; }
+    .social-preview { min-height:175px; justify-content:space-between; }
+    .social-preview .social-preview-top { border-bottom:0; }
+    .social-preview-links { padding-top:0; }
+    .social-preview-links a { min-height:40px; }
+    .photo-section { padding-top:20px; }
+    .photo-gallery { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); grid-auto-rows:150px; gap:14px; }
+    .photo-tile { grid-column:span 4; grid-row:span 2; position:relative; width:100%; min-width:0; border:1px solid #ffffff38; border-radius:18px; overflow:hidden; padding:0; background:#2a2c42; color:#fff; cursor:zoom-in; text-align:left; }
+    .photo-tile:first-child { grid-column:span 7; grid-row:span 3; }
+    .photo-tile:nth-child(2) { grid-column:span 5; grid-row:span 3; }
+    .photo-tile:nth-child(4) { grid-column:span 5; }
+    .photo-tile:nth-child(5) { grid-column:span 3; }
+    .photo-tile img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease; }
+    .photo-tile:nth-child(1) img { object-position:center 35%; }
+    .photo-tile:nth-child(2) img { object-position:center 32%; }
+    .photo-tile:nth-child(5) img { object-position:center 20%; }
+    .photo-tile:hover img,.photo-tile:focus-visible img { transform:scale(1.045); }
+    .photo-tile span { position:absolute; inset:auto 0 0; padding:34px 18px 14px; font-size:.86rem; font-weight:750; line-height:1.3; background:linear-gradient(transparent,#0c1029e8); }
+    .photo-dialog { width:min(1000px,94vw); max-height:94svh; padding:16px; border:1px solid #b7aac2; border-radius:20px; background:#161a30; color:#fff6f0; box-shadow:0 30px 110px #02020db0; }
+    .photo-dialog::backdrop { background:#050615dd; backdrop-filter:blur(7px); }
+    .photo-dialog figure { margin:0; text-align:center; }
+    .photo-dialog img { display:block; max-width:100%; max-height:70svh; margin:auto; border-radius:10px; object-fit:contain; }
+    .photo-dialog figcaption { padding:11px 38px 5px; font-size:.9rem; color:#e7dbea; }
+    .photo-close { position:absolute; right:19px; top:16px; width:44px; height:44px; z-index:1; border-radius:50%; border:1px solid #ffffffa8; background:#11142edc; color:white; cursor:pointer; font-size:1.6rem; }
+    .photo-controls { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px 4px 0; }
+    .photo-controls button { min-height:44px; border:1px solid #aaa3bb; border-radius:100px; padding:8px 16px; background:#242944; color:#fff5ee; cursor:pointer; }
+    .photo-controls button:hover,.photo-close:hover { background:#3b3e5f; }
+    .dme-showcase { padding-bottom:70px; }
+    .dme-showcase figure { margin:0; overflow:hidden; border-radius:16px; border:1px solid #ffffff3f; background:#f7f8f9; }
+    .dme-showcase img { width:100%; height:auto; display:block; }
+    .dme-showcase figcaption { padding:14px 19px; background:#22263f; color:#eae0ea; font-size:.83rem; }
+    .site-header a:focus-visible,.site-header button:focus-visible,.photo-tile:focus-visible,.project-filter:focus-visible { outline-color:#ffd393; }
+    @media(max-width:700px) {
+      .photo-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:155px; gap:9px; }
+      .photo-tile,.photo-tile:first-child,.photo-tile:nth-child(2),.photo-tile:nth-child(4) { grid-column:span 1; grid-row:span 2; }
+      .photo-tile:first-child { grid-column:span 2; }
+      .photo-tile:last-child { grid-column:span 1; grid-row:span 2; }
+      .project-picker-menu { left:-60px; }
+      .project-filters { gap:7px; }
+      .project-filter { font-size:.76rem; padding-inline:12px; }
+    }
+    @media(prefers-reduced-motion:reduce) { .photo-tile img { transition:none; } }
   </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <nav class="nav shell" aria-label="Main navigation">
-      <a class="wordmark" href="#/">Milo Rowley<span> ✳</span></a>
+      <a class="wordmark" href="/">Milo Rowley<span> ✳</span></a>
       <div class="nav-links">
-        <a href="#/" data-nav="home">Home</a>
-        <div class="project-picker" id="project-picker"><button class="project-picker-toggle" id="project-picker-toggle" type="button" data-nav="projects" aria-label="Projects menu" aria-expanded="false" aria-controls="project-picker-menu">Projects <span aria-hidden="true">⌄</span></button><div class="project-picker-menu" id="project-picker-menu" aria-label="Choose a project" hidden><span class="project-picker-highlight" aria-hidden="true"></span><div id="project-picker-options"></div></div></div>
-        <a href="#/about" data-nav="about">About</a>
-        <a href="#/resume" data-nav="resume">Résumé</a>
-        <a class="nav-contact" href="#/contact" data-nav="contact">Connect ↗</a>
+        <a href="/" data-nav="home">Home</a>
+        <div class="project-picker" id="project-picker"><button class="project-picker-toggle" id="project-picker-toggle" type="button" data-nav="projects" aria-label="Projects menu" aria-haspopup="true" aria-expanded="false" aria-controls="project-picker-menu">Projects</button><div class="project-picker-menu" id="project-picker-menu" aria-label="Choose a project" hidden><span class="project-picker-highlight" aria-hidden="true"></span><div id="project-picker-options"></div></div></div>
+        <a href="/about" data-nav="about">About</a>
+        <a href="/resume" data-nav="resume">Résumé</a>
+        <a class="nav-contact" href="/contact" data-nav="contact">Connect ↗</a>
       </div>
     </nav>
   </header>
@@ -353,7 +402,7 @@
             <span class="eyebrow">Creative work with purpose</span>
             <h1>Look. Listen. <em>Love.</em></h1>
             <p class="lead">I’m Milo Rowley. I work across storytelling, digital projects, and community media to make useful things and help good ideas reach people.</p>
-            <div class="actions"><a class="button primary" href="#/projects">Explore my projects <span aria-hidden="true">↗</span></a><a class="button ghost" href="#/about">Get to know me</a></div>
+            <div class="actions"><a class="button primary" href="/projects">Explore my projects <span aria-hidden="true">↗</span></a><a class="button ghost" href="/about">Get to know me</a></div>
           </div>
           <div class="nova-copy" aria-hidden="true">Find your next horizon.</div>
           <div class="scroll-cue" aria-hidden="true">Go Supernova <span>↓</span></div>
@@ -362,22 +411,23 @@
       <section class="section shell" aria-labelledby="featured-title">
         <div class="section-head"><div><span class="eyebrow">Selected work</span><h2 id="featured-title">A few places my work has gone.</h2></div><p>From social storytelling to practical tools, each project starts with people.</p></div>
         <div class="project-grid" id="featured-grid"></div>
-        <div class="actions"><a class="button ghost" href="#/projects">See all projects <span aria-hidden="true">↗</span></a></div>
+        <div class="actions"><a class="button ghost" href="/projects">See all projects <span aria-hidden="true">↗</span></a></div>
       </section>
       <section class="section dark-panel" aria-labelledby="social-title"><div class="shell"><div class="section-head"><div><span class="eyebrow">Around the web</span><h2 id="social-title">Find the work in the wild.</h2></div><p>SupernovaSunrise lives on Instagram and Facebook; below are other channels I’ve helped with, too.</p></div><div class="social-grid" id="home-social"></div></div></section>
-      <section class="section shell" aria-labelledby="about-teaser-title"><div class="about-grid"><div><span class="eyebrow">A little about me</span><h2 id="about-teaser-title">Curiosity, care, and follow-through.</h2></div><div><p>My experience spans creative communication, service, and systems. I’ve helped with community media, written family histories, and developed a relational database to move a durable medical equipment library’s filing and checkout process into a digital system.</p><p>I’m drawn to work that makes information easier to use and stories easier to share.</p><a class="button ghost" href="#/about">More about me <span aria-hidden="true">↗</span></a></div></div></section>
-      <section class="section shell" aria-labelledby="home-contact-title"><div class="contact-panel"><div><span class="eyebrow">Let’s connect</span><h2 id="home-contact-title">Have a project in mind?</h2><p>I’m interested in thoughtful collaborations and opportunities to make useful, human-centered work.</p></div><a class="button primary" href="#/contact">Ways to connect <span aria-hidden="true">↗</span></a></div></section>
+      <section class="section shell" aria-labelledby="about-teaser-title"><div class="about-grid"><div><span class="eyebrow">A little about me</span><h2 id="about-teaser-title">Curiosity, care, and follow-through.</h2></div><div><p>My experience spans creative communication, service, and systems. I’ve helped with community media, written family histories, and developed a relational database to move a durable medical equipment library’s filing and checkout process into a digital system.</p><p>I’m drawn to work that makes information easier to use and stories easier to share.</p><a class="button ghost" href="/about">More about me <span aria-hidden="true">↗</span></a></div></div></section>
+      <section class="section shell" aria-labelledby="home-contact-title"><div class="contact-panel"><div><span class="eyebrow">Let’s connect</span><h2 id="home-contact-title">Have a project in mind?</h2><p>I’m interested in thoughtful collaborations and opportunities to make useful, human-centered work.</p></div><a class="button primary" href="/contact">Ways to connect <span aria-hidden="true">↗</span></a></div></section>
     </div>
     <div class="view" id="projects-view" hidden>
       <section class="page-hero"><div class="shell"><span class="eyebrow">Portfolio / Projects</span><h1>Ideas made real, together.</h1><p>Creative projects, communication work, and systems built with a purpose. Explore the stories and follow the links to the public work.</p></div></section>
-      <section class="section shell" aria-labelledby="projects-title"><h2 id="projects-title" class="serif" style="font-size:2rem;margin-bottom:15px">Project directory</h2><p class="projects-intro">Each card opens a project page. Select a project to see the details, try the database preview, or visit the public work.</p><div class="project-grid" id="all-projects"></div></section>
+      <section class="section shell" aria-labelledby="projects-title"><h2 id="projects-title" class="serif" style="font-size:2rem;margin-bottom:15px">Project directory</h2><p class="projects-intro">Browse by kind of work. Each project shows what I contributed and links to the work when it is public.</p><div class="project-filters" id="project-filters" role="group" aria-label="Filter projects"></div><div id="all-projects"></div></section>
     </div>
     <div class="view" id="about-view" hidden>
       <section class="page-hero"><div class="shell"><span class="eyebrow">About / Milo</span><h1>Thoughtful work starts with people.</h1><p>I care about how ideas are communicated, how tools serve their communities, and how stories bring people closer.</p></div></section>
-      <section class="section shell about-grid" aria-label="About Milo"><div><span class="eyebrow">My approach</span><h2>Listen closely. Make it useful.</h2></div><div><p>I’m Milo Rowley, a creator and collaborator whose work has moved between social media, podcasting, writing, and a practical database project. The common thread is making information and experiences more meaningful for the people who use them.</p><p>My service experience has included work with FamilySearch, Flathead Food Bank, NWMT Veteran’s Food Pantry, and DREAM Adaptive Recreation. I value work that gives people dignity, connection, and a clearer path forward.</p><div class="note"><p>Want a fuller picture of my background? <a href="#/resume">Read my résumé</a> or download the PDF there.</p></div></div></section>
+      <section class="section shell about-grid" aria-label="About Milo"><div><span class="eyebrow">My approach</span><h2>Listen closely. Make it useful.</h2></div><div><p>I’m Milo Rowley, a creator and collaborator whose work has moved between social media, podcasting, writing, and a practical database project. The common thread is making information and experiences more meaningful for the people who use them.</p><p>My service experience has included work with FamilySearch, Flathead Food Bank, NWMT Veteran’s Food Pantry, and DREAM Adaptive Recreation. I value work that gives people dignity, connection, and a clearer path forward.</p><div class="note"><p>Want a fuller picture of my background? <a href="/resume">Read my résumé</a> or download the PDF there.</p></div></div></section>
+      <section class="section shell photo-section" aria-labelledby="photo-gallery-title"><div class="section-head"><div><span class="eyebrow">Beyond the work</span><h2 id="photo-gallery-title">A few moments that feel like me.</h2></div><p>Music, motion, and moments outdoors. Select a photo for a closer look; use the arrow keys to move through the gallery.</p></div><div class="photo-gallery" id="photo-gallery"></div></section>
     </div>
     <div class="view" id="resume-view" hidden>
-      <section class="page-hero"><div class="shell"><span class="eyebrow">Experience / Résumé</span><h1>Work with curiosity and care.</h1><p>Communications, quality assurance, systems, and service have all shaped the way I work.</p><div class="actions resume-actions"><a class="button primary" href="assets/Richard_Milo_Rowley_Resume.pdf" download>Download résumé (PDF) ↓</a><a class="button ghost" href="assets/Richard_Milo_Rowley_Resume.pdf" target="_blank" rel="noopener noreferrer">View PDF ↗</a></div></div></section>
+      <section class="page-hero"><div class="shell"><span class="eyebrow">Experience / Résumé</span><h1>Work with curiosity and care.</h1><p>Communications, quality assurance, systems, and service have all shaped the way I work.</p><div class="actions resume-actions"><a class="button primary" href="/assets/Richard_Milo_Rowley_Resume.pdf" download>Download résumé (PDF) ↓</a><a class="button ghost" href="/assets/Richard_Milo_Rowley_Resume.pdf" target="_blank" rel="noopener noreferrer">View PDF ↗</a></div></div></section>
       <section class="section shell resume-layout" aria-label="Résumé highlights">
         <div class="resume-summary"><span class="eyebrow">Profile</span><h2>A practical and creative perspective.</h2><p>Communications and quality assurance experience across AI evaluation, academic marketing, documentation, and community service. I bring structured judgment, clear writing, and attention to the people a project serves.</p><div class="resume-skills"><span>AI evaluation</span><span>Social media</span><span>Writing</span><span>Quality assurance</span><span>Database work</span><span>Public speaking</span></div></div>
         <div class="resume-history"><h2>Selected experience</h2>
@@ -391,11 +441,12 @@
     </div>
     <div class="view" id="contact-view" hidden>
       <section class="page-hero"><div class="shell"><span class="eyebrow">Connect / Collaborate</span><h1>Let’s make something meaningful.</h1><p>Interested in working together, sharing an opportunity, or following along? Here are the places to find me and the projects I’ve supported.</p></div></section>
-      <section class="section dark-panel" aria-labelledby="contact-links-title"><div class="shell"><div class="section-head"><div><span class="eyebrow">Links</span><h2 id="contact-links-title">Around the web.</h2></div><p>Reach me directly, explore my work, or follow a project I’ve contributed to.</p></div><div class="contact-direct"><a class="button primary" href="mailto:richardrowss@gmail.com">Email me ↗</a><a class="button ghost" href="https://www.linkedin.com/in/milo-rowley" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="button ghost" href="https://github.com/SupernovaSunrise" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="button ghost" href="#/resume">Résumé ↗</a></div><div class="social-grid" id="contact-social"></div></div></section>
+      <section class="section dark-panel" aria-labelledby="contact-links-title"><div class="shell"><div class="section-head"><div><span class="eyebrow">Links</span><h2 id="contact-links-title">Around the web.</h2></div><p>Reach me directly, explore my work, or follow a project I’ve contributed to.</p></div><div class="contact-direct"><a class="button primary" href="mailto:richardrowss@gmail.com">Email me ↗</a><a class="button ghost" href="https://www.linkedin.com/in/milo-rowley" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="button ghost" href="https://github.com/SupernovaSunrise" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="button ghost" href="/resume">Résumé ↗</a></div><div class="social-grid" id="contact-social"></div></div></section>
     </div>
     <div class="view" id="case-view" hidden>
-      <section class="case-hero"><div class="shell"><a class="case-nav" href="#/projects">← All projects</a><span class="eyebrow" id="case-category"></span><h1 id="case-title"></h1><p id="case-summary"></p></div></section>
+      <section class="case-hero"><div class="shell"><a class="case-nav" href="/projects">← All projects</a><span class="eyebrow" id="case-category"></span><h1 id="case-title"></h1><p id="case-summary"></p></div></section>
       <div class="shell case-content"><article><h2>The project</h2><p id="case-context"></p><h2 style="margin-top:45px">My contribution</h2><p id="case-role"></p></article><aside class="case-side"><h3>Explore the work</h3><div id="case-links"></div></aside></div>
+      <section class="shell dme-showcase" id="dme-showcase" hidden aria-labelledby="dme-showcase-title"><div class="section-head"><div><span class="eyebrow">The real application</span><h2 id="dme-showcase-title">Mendure DME in action.</h2></div><p>A view from the desktop program showing daily guest counts and monthly equipment activity.</p></div><figure><img src="/assets/photos/mendure-dashboard.webp" alt="Mendure DME dashboard showing guests per day, items checked out, and monthly averages" width="1910" height="1031" loading="lazy" decoding="async"><figcaption>The desktop dashboard, shown separately from the interactive sample below.</figcaption></figure></section>
       <section class="demo-wrap shell" id="dme-demo" aria-labelledby="demo-heading" hidden>
         <div class="demo-panel">
           <span class="eyebrow">Interactive demonstration</span><h2 id="demo-heading">A library, connected.</h2>
@@ -409,13 +460,13 @@
         </div>
       </section>
       <section class="shell external-preview" id="scistrive-preview" hidden aria-labelledby="scistrive-preview-heading"><span class="eyebrow">Live website</span><h2 id="scistrive-preview-heading">Explore SciStrive.</h2><p>Preview the public site below. If the site prevents embedding, open it in a new tab.</p><div class="website-frame"><iframe title="SciStrive website preview" loading="lazy" referrerpolicy="no-referrer" src="https://scistrive.com/"></iframe></div><a class="button ghost" href="https://scistrive.com/" target="_blank" rel="noopener noreferrer">Open SciStrive ↗</a></section>
-      <section class="shell case-social-previews" id="case-social-previews" hidden aria-labelledby="case-social-title"><span class="eyebrow">Across channels</span><h2 id="case-social-title">See the work where it lives.</h2><div class="social-grid" id="case-social-grid"></div></section>
     </div>
-    <div class="view" id="not-found-view" hidden><div class="shell not-found"><span class="eyebrow">Page not found</span><h1>Let’s head back.</h1><a class="button primary" href="#/projects">Explore projects</a></div></div>
+    <div class="view" id="not-found-view" hidden><div class="shell not-found"><span class="eyebrow">Page not found</span><h1>Let’s head back.</h1><a class="button primary" href="/projects">Explore projects</a></div></div>
   </main>
-  <footer class="site-footer"><div class="shell footer-row"><span>© <span id="year"></span> Milo Rowley · Made with curiosity and care.</span><span><a href="#/projects">Projects</a> · <a id="personal-footer-link" href="https://www.instagram.com/supernovasunrise/" target="_blank" rel="noopener noreferrer">@supernovasunrise ↗</a></span></div></footer>
+  <dialog class="photo-dialog" id="photo-dialog" aria-label="Photo gallery"><button class="photo-close" id="photo-close" type="button" aria-label="Close photo">×</button><figure><img id="photo-dialog-image" alt=""><figcaption id="photo-dialog-caption"></figcaption></figure><div class="photo-controls"><button type="button" id="photo-prev" aria-label="Previous photo">← Previous</button><span id="photo-count" aria-live="polite"></span><button type="button" id="photo-next" aria-label="Next photo">Next →</button></div></dialog>
+  <footer class="site-footer"><div class="shell footer-row"><span>© <span id="year"></span> Milo Rowley · Made with curiosity and care.</span><span><a href="/projects">Projects</a> · <a id="personal-footer-link" href="https://www.instagram.com/supernovasunrise/" target="_blank" rel="noopener noreferrer">@supernovasunrise ↗</a></span></div></footer>
   <div class="ambient-sky" aria-hidden="true"><div class="ambient-aurora"></div><canvas id="star-field"></canvas><div class="ambient-words">LOOK. LISTEN.<br>LOVE.</div></div>
-  <script src="assets/prismatic-burst.js"></script>
+  <script src="/assets/prismatic-burst.js"></script>
   <script>
     const baseProjects = [
       { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'Utah FCCLA media and events, led as vice president of social media.', context:'Utah FCCLA gave me an opportunity to bring student leadership, communication, and events together. I coordinated media and events across Utah.', role:'I served as Utah FCCLA vice president of social media, coordinated media and events, and earned a national ranking for leadership.', links:[], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳' },
@@ -430,41 +481,74 @@
     const projects = baseProjects;
     function escapeHTML(value) { return String(value ?? '').replace(/[&<>"']/g,ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
     function safeURL(value) { try { const u = new URL(value); return u.protocol === 'https:' ? u.href : ''; } catch (_) { return ''; } }
+    const projectGroups = [
+      { id:'digital', title:'Digital tools & client work', description:'Practical systems and websites shaped around real needs.', slugs:['dme-library','scistrive'] },
+      { id:'media', title:'Communication & media', description:'Campaigns, community stories, and conversations that reach people.', slugs:['fccla-ut','hands-of-the-lord','as-the-savior-would','supernovasunrise'] },
+      { id:'creative', title:'Writing & live experiences', description:'Personal stories and experiences made together.', slugs:['family-history','beware-the-hog'] }
+    ];
     function card(p) {
       const [bg,orb,ink] = p.colors;
-      return `<article class="project-card"><div class="project-art" style="--art-bg:${bg};--art-orb:${orb};--art-text:${ink}" aria-hidden="true"><span>${escapeHTML(p.glyph)}</span></div><div class="card-body"><span class="tag">${escapeHTML(p.category)}</span><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.summary)}</p><a class="card-link" href="#/projects/${encodeURIComponent(p.slug)}" aria-label="Explore ${escapeHTML(p.title)}">Explore project ↗</a></div></article>`;
+      const image=p.slug==='dme-library' ? '<img src="/assets/photos/mendure-dashboard.webp" alt="" width="1910" height="1031" loading="lazy" decoding="async">' : `<span>${escapeHTML(p.glyph)}</span>`;
+      return `<article class="project-card"><div class="project-art ${p.slug==='dme-library'?'has-image':''}" style="--art-bg:${bg};--art-orb:${orb};--art-text:${ink}" aria-hidden="true">${image}</div><div class="card-body"><span class="tag">${escapeHTML(p.category)}</span><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.summary)}</p><a class="card-link" href="/projects/${encodeURIComponent(p.slug)}" aria-label="Explore ${escapeHTML(p.title)}">Explore project ↗</a></div></article>`;
     }
     const mediaProfiles = [
-      {slug:'supernovasunrise',name:'SupernovaSunrise',caption:'My personal creative page',preview:'instagram',platforms:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']]},
-      {slug:'hands-of-the-lord',name:'Hands of the Lord',caption:'Service and volunteer stories',preview:'instagram',platforms:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/p/Hands-of-the-Lord-100091913612468/']]},
-      {slug:'beware-the-hog',name:'Beware the Hog',caption:'Live performance and thrift event',preview:'instagram',platforms:[['Instagram','https://www.instagram.com/beware_the_hog/']]},
-      {slug:'as-the-savior-would',name:'As the Savior Would',caption:'Service missionary podcast',preview:'instagram',platforms:[['Instagram','https://www.instagram.com/as.the.savior.would/'],['YouTube','https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg'],['Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']]}
+      {slug:'supernovasunrise',name:'SupernovaSunrise',caption:'My personal creative page',platforms:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']]},
+      {slug:'hands-of-the-lord',name:'Hands of the Lord',caption:'Service and volunteer stories',platforms:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/p/Hands-of-the-Lord-100091913612468/']]},
+      {slug:'beware-the-hog',name:'Beware the Hog',caption:'Live performance and thrift event',platforms:[['Instagram','https://www.instagram.com/beware_the_hog/']]},
+      {slug:'as-the-savior-would',name:'As the Savior Would',caption:'Service missionary podcast',platforms:[['Instagram','https://www.instagram.com/as.the.savior.would/'],['YouTube','https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg'],['Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']]}
     ];
-    function socialPreview(profile) {
-      const channel = profile.platforms.find(([platform]) => platform === (profile.preview === 'facebook' ? 'Facebook' : profile.preview === 'youtube' ? 'YouTube' : 'Instagram'));
-      const url = safeURL(channel?.[1]);
-      let media;
-      if(profile.preview === 'instagram') {
-        const handle = url ? new URL(url).pathname.split('/').filter(Boolean)[0] : profile.slug;
-        media = `<blockquote class="instagram-media" data-instgrm-permalink="${escapeHTML(url)}" data-instgrm-version="14"><a class="instagram-fallback" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer"><span class="profile-label">Instagram profile</span><strong>@${escapeHTML(handle)}</strong><span class="profile-link">View ${escapeHTML(profile.name)} on Instagram ↗</span></a></blockquote>`;
-      } else {
-        const frame = profile.preview === 'facebook'
-          ? `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(url)}&tabs=timeline&width=500&height=300&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false`
-          : 'https://www.youtube-nocookie.com/embed/videoseries?list=UUkclXkaImNbSIiN30d2BWfg';
-        media = `<div class="social-preview-media"><span>${escapeHTML(profile.name)}</span><small>${profile.preview === 'facebook' ? 'Facebook page preview' : 'YouTube channel videos'}</small></div><iframe class="live-preview" title="${escapeHTML(profile.name)} ${profile.preview === 'facebook' ? 'Facebook timeline' : 'YouTube videos'}" loading="lazy" src="${escapeHTML(frame)}" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a class="preview-fallback" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">Open ${escapeHTML(profile.name)} on ${profile.preview === 'facebook' ? 'Facebook' : 'YouTube'} ↗</a>`;
-      }
+    function socialCard(profile) {
       const links = profile.platforms.map(([platform,url]) => `<a href="${escapeHTML(safeURL(url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(platform)} ↗</a>`).join('');
-      const note = profile.preview === 'instagram' ? 'Instagram preview depends on the profile’s embed settings.' : 'If the live preview is unavailable, use the channel link.';
-      return `<article class="social-preview"><div class="social-preview-top"><span class="tag">${profile.preview === 'youtube'?'Podcast':profile.preview === 'facebook'?'Facebook preview':'Instagram preview'}</span><h3>${escapeHTML(profile.name)}</h3><p>${escapeHTML(profile.caption)}</p></div>${media}<div class="social-preview-links">${links}</div><div class="social-preview-note">${escapeHTML(note)}</div></article>`;
+      return `<article class="social-preview"><div class="social-preview-top"><h3>${escapeHTML(profile.name)}</h3><p>${escapeHTML(profile.caption)}</p></div><div class="social-preview-links">${links}</div></article>`;
+    }
+    function renderProjectDirectory(group='all') {
+      document.querySelectorAll('.project-filter').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.group===group)));
+      document.getElementById('all-projects').innerHTML = projectGroups.filter(item=>group==='all'||item.id===group).map(item=>`<section class="project-group" aria-labelledby="group-${item.id}"><h3 id="group-${item.id}">${escapeHTML(item.title)}</h3><p>${escapeHTML(item.description)}</p><div class="project-grid">${item.slugs.map(slug=>projects.find(p=>p.slug===slug)).filter(Boolean).map(card).join('')}</div></section>`).join('');
     }
     function renderLists() {
       document.getElementById('featured-grid').innerHTML = ['scistrive','dme-library','hands-of-the-lord','supernovasunrise'].map(slug => projects.find(p => p.slug === slug)).filter(Boolean).map(card).join('');
-      document.getElementById('all-projects').innerHTML = projects.map(card).join('');
-      for(const id of ['home-social','contact-social']) document.getElementById(id).innerHTML = mediaProfiles.map(socialPreview).join('');
-      document.getElementById('project-picker-options').innerHTML = '<a href="#/projects">All projects</a>' + projects.map(p => `<a href="#/projects/${encodeURIComponent(p.slug)}">${escapeHTML(p.title)}</a>`).join('');
+      document.getElementById('project-filters').innerHTML = [{id:'all',title:'All projects'},...projectGroups].map(group=>`<button type="button" class="project-filter" data-group="${group.id}" aria-pressed="${group.id==='all'}">${escapeHTML(group.title)}</button>`).join('');
+      renderProjectDirectory();
+      for(const id of ['home-social','contact-social']) document.getElementById(id).innerHTML = mediaProfiles.map(socialCard).join('');
+      document.getElementById('project-picker-options').innerHTML = '<a class="picker-all" href="/projects">All projects</a>' + projectGroups.map(group=>`<div class="picker-group"><p class="picker-group-label">${escapeHTML(group.title)}</p>${group.slugs.map(slug=>projects.find(p=>p.slug===slug)).filter(Boolean).map(p=>`<a href="/projects/${encodeURIComponent(p.slug)}">${escapeHTML(p.title)}</a>`).join('')}</div>`).join('');
     }
-    function refreshInstagramEmbeds() { if(window.instgrm?.Embeds?.process) window.instgrm.Embeds.process(); }
     renderLists();
+    document.getElementById('project-filters').addEventListener('click',event=>{
+      const button=event.target.closest('button[data-group]');
+      if(button) renderProjectDirectory(button.dataset.group);
+    });
+    const photos = [
+      { src:'/assets/photos/roller-skating.webp', width:1100, height:825, alt:'Milo roller skating beside a ramp on a sunny day', caption:'Finding room for movement and play.' },
+      { src:'/assets/photos/violin-outdoors.webp', width:1100, height:825, alt:'Milo playing violin in an open field', caption:'Music is one of the ways I connect with people.' },
+      { src:'/assets/photos/adaptive-waterski.webp', width:535, height:951, alt:'Milo water skiing on a lake', caption:'An afternoon on the water.' },
+      { src:'/assets/photos/roller-closeup.webp', width:534, height:951, alt:'Milo reaching toward the camera with roller skates', caption:'A closer look at life on wheels.' },
+      { src:'/assets/photos/reading-portrait.webp', width:149, height:265, alt:'Milo seated outside and reading', caption:'A quieter moment outside.' }
+    ];
+    document.getElementById('photo-gallery').innerHTML=photos.map((p,i)=>`<button class="photo-tile" type="button" data-photo="${i}" aria-label="View photo ${i+1} of ${photos.length}: ${escapeHTML(p.alt)}"><img src="${p.src}" alt="${escapeHTML(p.alt)}" width="${p.width}" height="${p.height}" loading="lazy" decoding="async"><span>${escapeHTML(p.caption)}</span></button>`).join('');
+    const photoDialog=document.getElementById('photo-dialog');
+    let photoIndex=0;
+    function showPhoto(index) {
+      photoIndex=(index+photos.length)%photos.length;
+      const photo=photos[photoIndex];
+      const image=document.getElementById('photo-dialog-image');
+      image.src=photo.src;
+      image.alt=photo.alt;
+      document.getElementById('photo-dialog-caption').textContent=photo.caption;
+      document.getElementById('photo-count').textContent=`${photoIndex+1} / ${photos.length}`;
+    }
+    document.getElementById('photo-gallery').addEventListener('click',event=>{
+      const tile=event.target.closest('[data-photo]');
+      if(!tile) return;
+      showPhoto(Number(tile.dataset.photo));
+      photoDialog.showModal();
+    });
+    document.getElementById('photo-close').addEventListener('click',()=>photoDialog.close());
+    document.getElementById('photo-prev').addEventListener('click',()=>showPhoto(photoIndex-1));
+    document.getElementById('photo-next').addEventListener('click',()=>showPhoto(photoIndex+1));
+    photoDialog.addEventListener('click',event=>{if(event.target===photoDialog) photoDialog.close();});
+    photoDialog.addEventListener('keydown',event=>{
+      if(event.key==='ArrowLeft'||event.key==='ArrowRight') { event.preventDefault(); showPhoto(photoIndex+(event.key==='ArrowLeft'?-1:1)); }
+    });
     document.getElementById('year').textContent = new Date().getFullYear();
     const picker = document.getElementById('project-picker');
     const pickerButton = document.getElementById('project-picker-toggle');
@@ -564,15 +648,18 @@
     });
     renderDemo();
     const views = [...document.querySelectorAll('.view')];
-    function route() {
-      const path = decodeURIComponent(location.hash.slice(1) || '/');
+    if(location.hash.startsWith('#/')) history.replaceState(null,'',location.hash.slice(1));
+    function route({focus=false}={}) {
+      const path = decodeURIComponent(location.pathname.replace(/\/+$/,'') || '/');
       const parts = path.split('/').filter(Boolean);
       let name = 'home';
+      let activeProject;
       if(parts.length === 1 && ['projects','about','resume','contact'].includes(parts[0])) name = parts[0];
       else if(parts.length === 2 && parts[0] === 'projects') {
         const p = projects.find(x => x.slug === parts[1]);
         if(p) {
           name = 'case';
+          activeProject=p;
           document.getElementById('case-category').textContent = p.category;
           document.getElementById('case-title').textContent = p.title;
           document.getElementById('case-summary').textContent = p.summary;
@@ -581,25 +668,42 @@
           const links = p.links.filter(([,url]) => safeURL(url));
           document.getElementById('case-links').innerHTML = links.length ? links.map(([label,url]) => `<a href="${escapeHTML(safeURL(url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} ↗</a>`).join('') : '<p>No public link available for this project.</p>';
           document.getElementById('dme-demo').hidden = p.slug !== 'dme-library';
+          document.getElementById('dme-showcase').hidden = p.slug !== 'dme-library';
           document.getElementById('scistrive-preview').hidden = p.slug !== 'scistrive';
-          const preview = mediaProfiles.find(profile => profile.slug === p.slug);
-          document.getElementById('case-social-previews').hidden = !preview;
-          document.getElementById('case-social-grid').innerHTML = preview ? socialPreview(preview) : '';
         } else name = 'not-found';
       } else if(parts.length) name = 'not-found';
       views.forEach(v => v.hidden = v.id !== `${name}-view`);
-      requestAnimationFrame(refreshInstagramEmbeds);
       document.querySelectorAll('[data-nav]').forEach(a => {
         const active = a.dataset.nav === (name === 'case' ? 'projects' : name);
         if(active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
       });
       const title = name === 'case' ? document.getElementById('case-title').textContent : ({home:'Portfolio',projects:'Projects',about:'About',resume:'Résumé',contact:'Connect','not-found':'Page not found'})[name];
       document.title = `${title} — Milo Rowley`;
+      const descriptions={home:'Milo Rowley works across communication, community media, storytelling, and practical digital tools. Explore selected work and ways to connect.',projects:'Browse Milo Rowley’s digital tools, client websites, communication work, podcasts, writing, and live experiences.',about:'Meet Milo Rowley: a communicator, collaborator, musician, and creator whose work connects people and practical ideas.',resume:'Explore Milo Rowley’s experience in communication, quality assurance, community service, and digital tools.',contact:'Connect with Milo Rowley about communication, community projects, and creative collaborations.'};
+      const description=activeProject ? `${activeProject.summary} ${activeProject.role}` : (descriptions[name]||'Explore the portfolio and work of Milo Rowley.');
+      const canonical=`https://supernovasunrise.netlify.app${name==='not-found'?'/':path}`;
+      document.querySelector('meta[name="description"]').content=description;
+      document.querySelector('meta[property="og:title"]').content=document.title;
+      document.querySelector('meta[property="og:description"]').content=description;
+      document.querySelector('meta[property="og:url"]').content=canonical;
+      document.querySelector('meta[property="og:image"]').content=`https://supernovasunrise.netlify.app/assets/photos/${activeProject?.slug==='dme-library'?'mendure-dashboard.webp':'violin-outdoors.webp'}`;
+      document.querySelector('meta[property="og:image:alt"]').content=activeProject?.slug==='dme-library'?'Mendure DME dashboard showing library activity':'Milo playing violin outdoors';
+      document.querySelector('link[rel="canonical"]').href=canonical;
       document.body.dataset.cosmos = name === 'home' ? 'hidden' : 'visible';
       closePicker();
       window.scrollTo(0,0);
+      if(focus) document.getElementById('main').focus({preventScroll:true});
       requestAnimationFrame(scheduleSunrise);
     }
+    document.addEventListener('click',event=>{
+      const link=event.target.closest('a[href^="/"]');
+      if(!link || event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target || link.hasAttribute('download')) return;
+      event.preventDefault();
+      const destination=new URL(link.href);
+      if(destination.pathname===location.pathname) { closePicker(); return; }
+      history.pushState(null,'',destination.pathname);
+      route({focus:true});
+    });
     const stage = document.getElementById('sunrise-stage');
     const scene = document.querySelector('.ambient-sky');
     scene.prepend(stage.querySelector('.cosmic-sky'));
@@ -680,11 +784,10 @@
     window.addEventListener('resize',scheduleSunrise);
     window.addEventListener('resize',sizeCanvases);
     reducedMotion.addEventListener('change',scheduleSunrise);
-    window.addEventListener('hashchange',route);
+    window.addEventListener('popstate',()=>route({focus:true}));
     route();
     scheduleSunrise();
     particleFrame=requestAnimationFrame(drawParticles);
   </script>
-  <script async src="https://www.instagram.com/embed.js" onload="if(window.instgrm?.Embeds?.process) window.instgrm.Embeds.process()"></script>
 </body>
 </html>
