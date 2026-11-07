@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <meta name="description" content="Milo Rowley works across communication, community media, storytelling, and practical digital tools. Explore selected projects, experience, and ways to connect.">
-  <link rel="canonical" href="https://supernovasunrise.netlify.app/">
+  <link rel="canonical" href="https://supernovasunrise.space/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/photos/reading-portrait.webp">
   <link rel="manifest" href="/site.webmanifest">
@@ -20,15 +20,15 @@
   <meta property="og:site_name" content="Milo Rowley">
   <meta property="og:title" content="Milo Rowley | Communication, creative work &amp; digital projects">
   <meta property="og:description" content="Explore Milo Rowley's work in storytelling, service media, and practical digital projects.">
-  <meta property="og:url" content="https://supernovasunrise.netlify.app/">
-  <meta property="og:image" content="https://supernovasunrise.netlify.app/assets/photos/violin-outdoors.webp">
+  <meta property="og:url" content="https://supernovasunrise.space/">
+  <meta property="og:image" content="https://supernovasunrise.space/assets/photos/violin-outdoors.webp">
   <meta property="og:image:alt" content="Milo playing violin outdoors">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://supernovasunrise.netlify.app/assets/photos/violin-outdoors.webp">
+  <meta name="twitter:image" content="https://supernovasunrise.space/assets/photos/violin-outdoors.webp">
   <meta property="og:image:width" content="1100">
   <meta property="og:image:height" content="825">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Milo Rowley","url":"https://supernovasunrise.netlify.app/"},{"@type":"Person","name":"Milo Rowley","url":"https://supernovasunrise.netlify.app/","description":"Communication, storytelling, community media, and practical digital projects.","image":"https://supernovasunrise.netlify.app/assets/photos/reading-portrait.webp","sameAs":["https://www.instagram.com/supernovasunrise/","https://www.facebook.com/supernovasunrise","https://www.linkedin.com/in/milo-rowley","https://github.com/SupernovaSunrise"]}]}</script>
-  <script defer data-domain="supernovasunrise.netlify.app" src="https://plausible.io/js/script.manual.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Milo Rowley","url":"https://supernovasunrise.space/"},{"@type":"Person","name":"Milo Rowley","url":"https://supernovasunrise.space/","description":"Communication, storytelling, community media, and practical digital projects.","image":"https://supernovasunrise.space/assets/photos/reading-portrait.webp","sameAs":["https://www.instagram.com/supernovasunrise/","https://www.facebook.com/supernovasunrise","https://www.linkedin.com/in/milo-rowley","https://github.com/SupernovaSunrise"]}]}</script>
+  <script defer data-domain="supernovasunrise.space" src="https://plausible.io/js/script.manual.js"></script>
   <title>Milo Rowley | Communication, creative work &amp; digital projects</title>
   <style>
     :root {
@@ -430,9 +430,22 @@
       --shadow:0 20px 55px #02030cc9; --card-border:#3A3D66;
     }
     html[data-theme="light"]{
-      --bg:#FFF6E8; --bg2:#F3E7D8; --paper:#FFFFFF; --ink:#211D33; --muted:#5E5570; --line:#E4D6C6; --gold:#E9A93B; --gold-ink:#211D33;
-      --shadow:0 18px 45px rgba(90,60,20,.14); --card-border:#E7D9C6;
+      --bg:#FFF6E8; --bg2:#F3E7D8; --paper:#FFFFFF; --ink:#1E1A2E; --muted:#4B415F; --line:#D8C6AF; --gold:#D98E1F; --gold-ink:#1E1A2E;
+      --shadow:0 18px 45px rgba(90,60,20,.20); --card-border:#D9C7AC;
     }
+    html[data-theme="light"] .tag{ color:#8A6420; }
+    html[data-theme="light"] .eyebrow{ color:#7A5A18; }
+    html[data-theme="light"] .project-card p, html[data-theme="light"] .social-preview-top p{ color:#413954; }
+    html[data-theme="light"] .section-head p, html[data-theme="light"] .about-grid p, html[data-theme="light"] .case-content p, html[data-theme="light"] .page-hero p, html[data-theme="light"] .case-hero p{ color:#3A3150; text-shadow:0 1px 10px rgba(255,246,232,.98); }
+    html[data-theme="light"] .section-head h2{ text-shadow:0 1px 12px rgba(255,246,232,.98); }
+    html[data-theme="light"] .demo-intro, html[data-theme="light"] .demo-footnote, html[data-theme="light"] .demo-status{ color:#3A3150; }
+    html[data-theme="light"] .demo-item p, html[data-theme="light"] .resume-summary p, html[data-theme="light"] .resume-entry p, html[data-theme="light"] .resume-education p{ color:#413954; }
+    html[data-theme="light"] .project-group p, html[data-theme="light"] .projects-intro{ color:#3A3150; text-shadow:0 1px 10px rgba(255,246,232,.98); }
+    html[data-theme="light"] .project-group h3{ color:#1E1A2E; text-shadow:0 1px 10px rgba(255,246,232,.98); }
+    html[data-theme="light"] .photo-tile span{ text-shadow:none; }
+    html[data-theme="light"] .site-footer{ color:#413954; border-top-color:var(--card-border); }
+    html[data-theme="light"] .social-preview-top h3, html[data-theme="light"] .project-card h3{ color:#1E1A2E; }
+    html[data-theme="light"] .case-side p, html[data-theme="light"] .case-side a{ color:#413954; }
     body{ background:var(--bg); color:var(--ink); font-family:var(--ui); transition:background .4s ease, color .4s ease; }
     h1,h2,h3,.wordmark{ font-family:var(--display); }
     .eyebrow{ font-family:var(--mono); letter-spacing:.22em; }
@@ -977,12 +990,12 @@
       document.title = `${title} — Milo Rowley`;
       const descriptions={home:'Milo Rowley works across communication, community media, storytelling, and practical digital tools. Explore selected work and ways to connect.',projects:'Browse Milo Rowley’s digital tools, client websites, communication work, podcasts, writing, and live experiences.',about:'Meet Milo Rowley: a communicator, collaborator, musician, and creator whose work connects people and practical ideas.',resume:'Explore Milo Rowley’s experience in communication, quality assurance, community service, and digital tools.',contact:'Connect with Milo Rowley about communication, community projects, and creative collaborations.',now:'What Milo Rowley is doing now — service, study, podcasting, and the Mendure DME library system.'};
       const description=activeProject ? `${activeProject.summary} ${activeProject.role}` : (descriptions[name]||'Explore the portfolio and work of Milo Rowley.');
-      const canonical=`https://supernovasunrise.netlify.app${name==='not-found'?'/':path}`;
+      const canonical=`https://supernovasunrise.space${name==='not-found'?'/':path}`;
       document.querySelector('meta[name="description"]').content=description;
       document.querySelector('meta[property="og:title"]').content=document.title;
       document.querySelector('meta[property="og:description"]').content=description;
       document.querySelector('meta[property="og:url"]').content=canonical;
-      document.querySelector('meta[property="og:image"]').content=`https://supernovasunrise.netlify.app${activeProject?.og ? activeProject.og : '/assets/photos/violin-outdoors.webp'}`;
+      document.querySelector('meta[property="og:image"]').content=`https://supernovasunrise.space${activeProject?.og ? activeProject.og : '/assets/photos/violin-outdoors.webp'}`;
       document.querySelector('meta[property="og:image:alt"]').content=activeProject?.ogAlt || 'Milo playing violin outdoors';
       document.querySelector('link[rel="canonical"]').href=canonical;
       document.body.dataset.cosmos = name === 'home' ? 'hidden' : 'visible';

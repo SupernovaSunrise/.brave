@@ -10,7 +10,7 @@ const content = source.slice(source.indexOf('    const baseProjects = ['), sourc
 const groups = source.slice(source.indexOf('    const projectGroups = ['), source.indexOf('    function card(p)'));
 const {baseProjects, projectGroups} = vm.runInNewContext(`${content}\n${groups}\n({baseProjects, projectGroups})`);
 const bySlug = new Map(baseProjects.map(project => [project.slug, project]));
-const site = 'https://supernovasunrise.netlify.app';
+const site = 'https://supernovasunrise.space';
 const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const descriptions = {
   projects:'Browse Milo Rowley’s digital tools, client websites, communication work, podcasts, writing, and live experiences.',

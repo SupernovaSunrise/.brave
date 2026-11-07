@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://supernovasunrise.netlify.app/sitemap.xml
+Sitemap: https://supernovasunrise.space/sitemap.xml
