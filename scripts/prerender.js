@@ -21,12 +21,20 @@ const descriptions = {
 const headings = {projects:'Projects',about:'About',resume:'Résumé',contact:'Connect'};
 const cardDims = project => project.slug==='dme-library' ? ' width="4121" height="1031"' : project.slug==='scistrive' ? ' width="960" height="960"' : project.slug==='as-the-savior-would' ? ' width="800" height="800"' : ' width="1200" height="630"';
 const cards = items => items.map(project => {
+  const projHref = `/projects/${escape(encodeURIComponent(project.slug))}`;
+  const img = project.preview
+    ? `<a class="preview-link" href="${projHref}"><img src="${escape(project.preview.src)}" alt="${escape(project.preview.alt)}"${cardDims(project)} loading="lazy" decoding="async"></a>`
+    : `<a class="preview-link" href="${projHref}"><span class="preview-glyph">${escape(project.glyph)}</span></a>`;
+  const social = project.links && project.links.length ? project.links[0][1] : '';
+  const badge = project.preview?.badge
+    ? (social ? `<a class="preview-badge" href="${escape(social)}" target="_blank" rel="noopener noreferrer">${escape(project.preview.badge)} ↗</a>` : `<span class="preview-badge">${escape(project.preview.badge)}</span>`)
+    : '';
   const art = project.preview
-    ? `<div class="project-art has-image"><span class="project-preview"><img src="${escape(project.preview.src)}" alt="${escape(project.preview.alt)}"${cardDims(project)} loading="lazy" decoding="async">${project.preview.badge?`<span class="preview-badge">${escape(project.preview.badge)}</span>`:''}</span></div>`
-    : `<div class="project-art" style="--art-bg:${escape(project.colors[0])};--art-orb:${escape(project.colors[1])};--art-text:${escape(project.colors[2])}" aria-hidden="true"><span>${escape(project.glyph)}</span></div>`;
-  return `<article class="project-card">${art}<div class="card-body"><span class="tag">${escape(project.category)}</span><h3>${escape(project.title)}</h3><p>${escape(project.summary)}</p><a class="card-link" href="/projects/${escape(project.slug)}">Explore project ↗</a></div></article>`;
+    ? `<div class="project-art has-image"><span class="project-preview">${img}${badge}</span></div>`
+    : `<div class="project-art" style="--art-bg:${escape(project.colors[0])};--art-orb:${escape(project.colors[1])};--art-text:${escape(project.colors[2])}"><span class="project-preview">${img}${badge}</span></div>`;
+  return `<article class="project-card">${art}<div class="card-body"><span class="tag">${escape(project.category)}</span><h3>${escape(project.title)}</h3><p>${escape(project.summary)}</p><a class="card-link" href="${projHref}">Explore project ↗</a></div></article>`;
 }).join('');
-const featured=['scistrive','dme-library','hands-of-the-lord','supernovasunrise'].map(slug=>bySlug.get(slug));
+const featured=['hands-of-the-lord','as-the-savior-would','dme-library','scistrive'].map(slug=>bySlug.get(slug));
 const base=source.replace('<div class="project-grid" id="featured-grid"></div>',`<div class="project-grid" id="featured-grid">${cards(featured)}</div>`);
 
 function render(page) {
