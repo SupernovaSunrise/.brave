@@ -1,0 +1,52 @@
+name: Perf + a11y
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build site
+        run: bash scripts/build.sh
+      - name: Serve dist
+        run: |
+          npx --yes serve dist -l 3000 &
+          sleep 6
+          curl -fsS http://localhost:3000/ > /dev/null
+        timeout: 2m
+      - name: Lighthouse (a11y + SEO + best-practices)
+        run: |
+          npx --yes lighthouse http://localhost:3000 \
+            --only-categories=accessibility,seo,best-practices \
+            --output=json --output-path=lighthouse.json \
+            --chrome-flags="--headless --no-sandbox" \
+            --quiet
+          node -e "const r=require('./lighthouse.json'); const c=r.categories; console.log(c); const ok=c.accessibility.score>=0.9 && c.seo.score>=0.85; if(!ok){ console.error('Scores below threshold'); process.exit(1); } console.log('Lighthouse thresholds passed.')"
+      - name: axe (WCAG 2AA)
+        run: |
+          npx --yes @axe-core/cli http://localhost:3000 \
+            --tags wcag2aa \
+            --save axe.json \
+            --exit
+        continue-on-error: true
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: perf-reports
+          if-no-files-found: ignore
+          path: |
+            lighthouse.json
+            axe.json

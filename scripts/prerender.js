@@ -70,6 +70,7 @@ function render(page) {
         .replace('<div id="case-preview-body"></div>',`<div id="case-preview-body"><figure><img src="${escape(project.preview.src)}" alt="${escape(project.preview.alt)}" loading="lazy" decoding="async"><figcaption>${escape(project.preview.alt)}</figcaption></figure></div>`);
     }
     if(project.slug==='dme-library') html=html.replace('id="dme-demo" aria-labelledby="demo-heading" hidden','id="dme-demo" aria-labelledby="demo-heading"');
+    if(['scistrive','dme-library','as-the-savior-would'].includes(project.slug)) html=html.replace('id="case-video" hidden','id="case-video"');
     if(project.slug==='as-the-savior-would') html=html.replace('id="podcast-preview" hidden','id="podcast-preview"');
     const ogImage = project.og ? `${site}${project.og}` : `${site}/assets/photos/violin-outdoors.webp`;
     const ogAlt = project.ogAlt || 'Milo playing violin outdoors';
