@@ -1,8 +1,9 @@
-/* Supernova v3 — cinematic high-fidelity engine.
+/* Supernova v4 — full-page cinematic engine.
    WebGL: 6-octave domain-warped nebula, filament ridges, RT-instability shock shell,
    sunrise horizon + reflection, ACES tone map, film grain, chromatic aberration.
    2D ejecta: 1800 additive sparks with trails + shock-front alignment.
-   Three acts (scroll): collapse -> detonation -> remnant/dawn.
+   Fixed full-page backdrop; three acts drive by hero scroll, then drift
+   pans the camera through the remnant for the rest of the page.
    Dark = deep-space supernova. Light = dawn sky, pastel watercolor nebula.
    Pointer gravity + click flare. Reduced-motion = calm static frame. */
 (() => {
@@ -22,6 +23,7 @@
     uniform float u_flash;
     uniform float u_theme; // 0 dark, 1 light
     uniform float u_intensity;
+    uniform float u_drift; // 0..1 page scroll — camera pan through remnant
     out vec4 color;
 
     float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453123); }
@@ -80,9 +82,10 @@
       // reflection streaks
       float streak = pow(max(0., .5 + .5*sin(cuv.x*55. + fbm(vec2(cuv.x*4., t*.4))*8.)), 6.) * seaRef;
 
-      // --- nebula: domain-warped FBM + filaments ---
-      vec2 warp = vec2(fbm(cuv*3.2 + vec2(t*.035, 0.)),
-                       fbm(cuv*3.2 + vec2(5.2, 1.3) - t*.025));
+      // --- nebula: domain-warped FBM + filaments (drift pans camera) ---
+      vec2 driftOff = vec2(u_drift*.55, u_drift*.32);
+      vec2 warp = vec2(fbm(cuv*3.2 + vec2(t*.035, 0.) + driftOff),
+                       fbm(cuv*3.2 + vec2(5.2, 1.3) - t*.025 + driftOff));
       vec2 dp = cuv*4.2 + 7.*warp;
       float neb = fbm(dp);
       float fil = ridged(cuv*5.5 + 9.*warp);
@@ -204,7 +207,7 @@
           buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
           gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
           const loc = gl.getAttribLocation(program, 'position');
-          ['u_res','u_pointer','u_time','u_progress','u_flash','u_theme','u_intensity'].forEach(n => uni[n] = gl.getUniformLocation(program, n));
+          ['u_res','u_pointer','u_time','u_progress','u_flash','u_theme','u_intensity','u_drift'].forEach(n => uni[n] = gl.getUniformLocation(program, n));
           uni._loc = loc;
         }
       }
@@ -212,7 +215,7 @@
 
     const ctx = canvas2d ? canvas2d.getContext('2d') : null;
 
-    let progress = 0, intensity = 1, flash = 0, startTime = performance.now();
+    let progress = 0, drift = 0, intensity = 1, flash = 0, startTime = performance.now();
     let px = 0, py = 0, tpx = 0, tpy = 0, hover = 0, hoverTarget = 0;
     let raf = 0, lastPaint = 0, lastProgress = -1;
     const sparks = [];
@@ -271,6 +274,7 @@
         gl.uniform1f(uni.u_flash, flash);
         gl.uniform1f(uni.u_theme, isLight() ? 1 : 0);
         gl.uniform1f(uni.u_intensity, intensity * env);
+        gl.uniform1f(uni.u_drift, drift);
         gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
       }
@@ -351,6 +355,7 @@
 
     return {
       setProgress(v) { progress = Math.max(0, Math.min(1, v)); },
+      setDrift(v) { drift = Math.max(0, Math.min(1, v)); },
       pulse() { flash = Math.min(1, flash + .55); },
       destroy() {
         cancelAnimationFrame(raf);
