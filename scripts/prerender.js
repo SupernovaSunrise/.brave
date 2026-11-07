@@ -16,9 +16,10 @@ const descriptions = {
   projects:'Browse Milo Rowley’s digital tools, client websites, communication work, podcasts, writing, and live experiences.',
   about:'Meet Milo Rowley: a communicator, collaborator, musician, and creator whose work connects people and practical ideas.',
   resume:'Explore Milo Rowley’s experience in communication, quality assurance, community service, and digital tools.',
-  contact:'Connect with Milo Rowley about communication, community projects, and creative collaborations.'
+  contact:'Connect with Milo Rowley about communication, community projects, and creative collaborations.',
+  now:'What Milo Rowley is doing now — service, study, podcasting, and the Mendure DME library system.'
 };
-const headings = {projects:'Projects',about:'About',resume:'Résumé',contact:'Connect'};
+const headings = {projects:'Projects',about:'About',resume:'Résumé',contact:'Connect',now:'Now'};
 const cardDims = project => project.slug==='dme-library' ? ' width="4121" height="1031"' : project.slug==='scistrive' ? ' width="960" height="960"' : project.slug==='as-the-savior-would' ? ' width="800" height="800"' : ' width="1200" height="630"';
 const cards = items => items.map(project => {
   const projHref = `/projects/${escape(encodeURIComponent(project.slug))}`;
@@ -60,6 +61,8 @@ function render(page) {
       .replace('<p id="case-summary"></p>',`<p id="case-summary">${escape(project.summary)}</p>`)
       .replace('<p id="case-context"></p>',`<p id="case-context">${escape(project.context)}</p>`)
       .replace('<p id="case-role"></p>',`<p id="case-role">${escape(project.role)}</p>`)
+      .replace('<p id="case-outcome"></p>',`<p id="case-outcome">${escape(project.outcome||'')}</p>`)
+      .replace('<div class="case-metrics" id="case-metrics" role="list"></div>',`<div class="case-metrics" id="case-metrics" role="list">${(project.metrics||[]).map(([v,l])=>`<div class="metric" role="listitem"><b>${escape(v)}</b><span>${escape(l)}</span></div>`).join('')}</div>`)
       .replace('<div id="case-links"></div>',`<div id="case-links">${project.links.map(([label,link])=>`<a href="${escape(link)}" target="_blank" rel="noopener noreferrer">${escape(label)} ↗</a>`).join('')}</div>`);
     if(project.preview){
       html=html.replace('id="case-preview" hidden','id="case-preview"')
