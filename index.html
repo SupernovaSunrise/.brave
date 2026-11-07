@@ -587,20 +587,35 @@
       <div class="shell case-content"><article><h2>The project</h2><p id="case-context"></p><h2 style="margin-top:45px">My contribution</h2><p id="case-role"></p></article><aside class="case-side"><h3>Explore the work</h3><div id="case-links"></div></aside></div>
       <section class="shell case-preview" id="case-preview" hidden aria-labelledby="case-preview-heading"><div class="section-head"><div><span class="eyebrow">Preview</span><h2 id="case-preview-heading">See it in context.</h2></div><p id="case-preview-caption"></p></div><div id="case-preview-body"></div></section>
       <section class="shell case-preview" id="podcast-preview" hidden aria-labelledby="podcast-preview-heading"><div class="section-head"><div><span class="eyebrow">Listen</span><h2 id="podcast-preview-heading">Hear an episode.</h2></div><p>Official Spotify and Apple Podcasts players — cover art pulled from the live podcast feeds.</p></div><div class="embed-frame" style="margin-bottom:18px"><iframe title="As the Savior Would on Spotify" loading="lazy" height="152" src="https://open.spotify.com/embed/show/0N50Bv2tXqzNEHB7u2cdAW?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="preview-actions"><a class="button ghost" href="https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384" target="_blank" rel="noopener noreferrer">Apple Podcasts ↗</a><a class="button ghost" href="https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a class="button ghost" href="https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW" target="_blank" rel="noopener noreferrer">Spotify ↗</a></div></section>
-      <section class="shell dme-showcase" id="dme-showcase" hidden aria-labelledby="dme-showcase-title"><div class="section-head"><div><span class="eyebrow">The real application</span><h2 id="dme-showcase-title">Mendure DME in action.</h2></div><p>A view from the desktop program showing daily guest counts and monthly equipment activity.</p></div><figure><img src="/assets/photos/previews/mendure-dashboard.webp" alt="Mendure DME dashboard showing guests per day, items checked out, and monthly averages" width="4121" height="1031" loading="lazy" decoding="async"><figcaption>The desktop dashboard, shown separately from the interactive sample below.</figcaption></figure></section>
       <section class="demo-wrap shell" id="dme-demo" aria-labelledby="demo-heading" hidden>
         <div class="demo-panel">
-          <span class="eyebrow">Interactive demonstration</span><h2 id="demo-heading">A library, connected.</h2>
-          <p class="demo-intro">An interactive browser adaptation of <a href="https://github.com/SupernovaSunrise/Relational-Database" target="_blank" rel="noopener noreferrer">Mendure DME ↗</a>, the real Electron and SQLite project. Choose a fictional customer, then check out equipment to see linked records and the 120-day return date.</p>
-          <p class="demo-schema">The actual schema connects <code>loans.customer_id → customers.id</code> and <code>loans.equipment_id → equipment.equipment_id</code>. Equipment IDs follow <code>AA-0000</code>; a returned item sets <code>returned_date</code>.</p>
-          <div class="demo-toolbar"><label for="demo-borrower">Customer<select id="demo-borrower"><option value="1">Alex Rivera · #1</option><option value="2">Jordan Lee · #2</option><option value="3">Sam Patel · #3</option></select></label><label for="demo-search">Find equipment<input id="demo-search" type="search" placeholder="Search equipment or ID"></label><button id="demo-reset" type="button">Reset sample data</button></div>
+          <span class="eyebrow">Interactive demonstration · SQLite-accurate</span><h2 id="demo-heading">A library, connected.</h2>
+          <p class="demo-intro">A faithful browser adaptation of <a href="https://github.com/SupernovaSunrise/Relational-Database" target="_blank" rel="noopener noreferrer">Mendure DME ↗</a> — same tables, same rules. Pick a customer (phone + ZIP validated, like the real app), select one or more items, check out, then sign the digital agreement. Loans stay *pending* until signed.</p>
+          <p class="demo-schema">Real schema: <code>customers(id, name, phone, zip_code, date_added)</code> · <code>equipment(equipment_id PK, item_name)</code> · <code>loans(customer_id FK, equipment_id FK, checked_out_date, due_date, returned_date, agreement_pending)</code> · <code>customer_agreements</code> · <code>checkout_log</code> — Equipment IDs match <code>AA-0000</code>; due is checkout + <code>120</code> business days (Mon–Fri minus federal holidays).</p>
+          <div class="demo-toolbar">
+            <label for="demo-borrower">Customer (name · phone · ZIP)<select id="demo-borrower"></select></label>
+            <label for="demo-checkout-date">Checkout date<input id="demo-checkout-date" type="date"></label>
+            <label for="demo-search">Find equipment (ID or name)<input id="demo-search" type="search" placeholder="Search equipment_id or item_name"></label>
+            <button id="demo-checkout" type="button">Check out selected</button>
+            <button id="demo-reset" type="button">Reset sample data</button>
+          </div>
           <div class="demo-inventory" id="demo-inventory"></div>
-          <div class="demo-history"><h3>Loans</h3><table><thead><tr><th scope="col">Loan</th><th scope="col">Equipment</th><th scope="col">Customer</th><th scope="col">Due date</th><th scope="col">Status / action</th></tr></thead><tbody id="demo-history-rows"></tbody></table></div>
+          <div class="demo-history" id="demo-ledger"><h3>Loan ledger</h3><table><thead><tr><th scope="col">Loan</th><th scope="col">Equipment (equipment_id)</th><th scope="col">Customer (phone)</th><th scope="col">Checked out</th><th scope="col">Due (120 business days)</th><th scope="col">Agreement</th><th scope="col">Action</th></tr></thead><tbody id="demo-history-rows"></tbody></table></div>
+          <div class="demo-history" id="demo-agreement-box" hidden>
+            <h3>Digital agreement — witness + signature</h3>
+            <p class="demo-footnote">Mirroring <code>customer_agreements</code>: waiver + digital signature, witness name, agreed date. Until signed, loans keep <code>agreement_pending = 1</code>.</p>
+            <div class="demo-toolbar" style="margin-top:12px">
+              <label>Witness name<input id="demo-witness" type="text" placeholder="Volunteer name"></label>
+              <label style="flex:.7 1 200px"><input id="demo-waiver" type="checkbox" style="width:auto"> Waiver agreed</label>
+              <label style="flex:.7 1 200px"><input id="demo-signature" type="checkbox" style="width:auto"> Digital signature agreed</label>
+              <button id="demo-sign" type="button">Sign agreements</button>
+              <button id="demo-cancel-pending" type="button">Cancel pending checkout</button>
+            </div>
+          </div>
           <p class="demo-status" id="demo-status" role="status" aria-live="polite"></p>
-          <p class="demo-footnote">This browser adaptation uses fictional records and the public repository’s schema and rules. The real product is an offline desktop app with SQLite, account access, and signed checkout agreements; no live records are loaded here.</p>
+          <p class="demo-footnote">Faithful to <code>src/main/features/{customers,equipment,loans}.js</code> + <code>src/shared/business-logic.js</code>: phone needs 10 digits, ZIP 5 digits, duplicate phones rejected, equipment IDs upper-cased to <code>AA-0000</code>, due rolls past weekends + observed federal holidays, <code>extend</code> recalculates from today, <code>return</code> stamps <code>returned_date</code>. Fictional records only; the real app is offline Electron + SQLite (WAL) with login + reports + Excel/CSV import-export.</p>
         </div>
       </section>
-      <section class="shell external-preview" id="scistrive-preview" hidden aria-labelledby="scistrive-preview-heading"><span class="eyebrow">Live website</span><h2 id="scistrive-preview-heading">Explore SciStrive.</h2><p>A screenshot of the current homepage (captured from the live site) — plus the live site below. If embedding is blocked, open it in a new tab.</p><div class="website-frame" style="height:auto"><img src="/assets/photos/previews/scistrive-site.webp" alt="Screenshot of SciStrive homepage showing 'Compliance Simplified. Quality assured.'" width="960" height="960" loading="lazy" decoding="async" style="width:100%;height:auto;display:block"></div><div class="website-frame"><iframe title="SciStrive website preview" loading="lazy" referrerpolicy="no-referrer" src="https://scistrive.com/"></iframe></div><a class="button ghost" href="https://scistrive.com/" target="_blank" rel="noopener noreferrer">Open SciStrive ↗</a></section>
     </div>
     <div class="view" id="not-found-view" hidden><div class="shell not-found"><span class="eyebrow">Page not found</span><h1>Let’s head back.</h1><a class="button primary" href="/projects">Explore projects</a></div></div>
   </main>
@@ -610,7 +625,7 @@
   <script src="/assets/supernova.js"></script>
   <script>
     const baseProjects = [
-      { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'Utah FCCLA media and events, led as vice president of social media.', context:'Utah FCCLA gave me an opportunity to bring student leadership, communication, and events together. I coordinated media and events across Utah.', role:'I served as Utah FCCLA vice president of social media, coordinated media and events, and earned a national ranking for leadership.', links:[], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳', preview:{src:'/assets/photos/previews/fccla-ut.svg', alt:'FCCLA UT social media preview — Utah student leadership', badge:'Utah FCCLA'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'Preview artwork for the project' },
+      { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'Utah FCCLA media and events, led as vice president of social media.', context:'Utah FCCLA gave me an opportunity to bring student leadership, communication, and events together. I coordinated media and events across Utah.', role:'I served as Utah FCCLA vice president of social media, coordinated media and events, and earned a national ranking for leadership.', links:[['Utah FCCLA','https://www.utahfccla.org/'],['Facebook','https://www.facebook.com/p/Utah-Fccla-100064542558915/']], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳', preview:{src:'/assets/photos/previews/fccla-ut.svg', alt:'FCCLA UT social media preview — Utah student leadership', badge:'Utah FCCLA'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'Preview artwork for the project' },
       { slug:'supernovasunrise', title:'SupernovaSunrise', category:'Personal expression / Social media', summary:'My personal creative page on Instagram and Facebook.', context:'SupernovaSunrise is my personal space for creative expression on Instagram and Facebook. The invitation “Come unto me, all ye ends of the earth” stays with me and shapes the warmth and welcome I hope this space conveys.', role:'I created and run the page, shaping its voice, visual direction, and posts.', links:[['Instagram','https://www.instagram.com/supernovasunrise/'],['Facebook','https://www.facebook.com/supernovasunrise']], colors:['#f4c5b4','#f49177','#693354'], glyph:'✦', preview:{src:'/assets/photos/previews/supernovasunrise.svg', alt:'SupernovaSunrise Instagram and Facebook preview with @supernovasunrise handle', badge:'@supernovasunrise'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'SupernovaSunrise preview artwork' },
       { slug:'hands-of-the-lord', title:'Hands of the Lord', category:'Service / Community media', summary:'Service and volunteer stories shared by service missionaries.', context:'Hands of the Lord is service and volunteer centered content run by service missionaries. It shares opportunities and stories rooted in helping others.', role:'I contributed creative work, with my largest contributions in organization, leadership, and operations.', links:[['Instagram','https://www.instagram.com/hands.of.the.lord/'],['Facebook','https://www.facebook.com/p/Hands-of-the-Lord-100091913612468/']], colors:['#dab4b8','#af7886','#422d4a'], glyph:'✶', preview:{src:'/assets/photos/previews/hands-of-the-lord.svg', alt:'Hands of the Lord service media preview with @hands.of.the.lord handle', badge:'@hands.of.the.lord'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'Hands of the Lord preview artwork' },
       { slug:'as-the-savior-would', title:'As the Savior Would', category:'Podcast / Storytelling', summary:'A service missionary podcast about following Jesus Christ through meaningful service.', context:'As the Savior Would is a podcast produced by service missionaries. It shares conversations about discipleship, faith, and service.', role:'I hosted the podcast, guiding conversations about service and discipleship.', links:[['Instagram','https://www.instagram.com/as.the.savior.would/'],['YouTube channel','https://www.youtube.com/channel/UCkclXkaImNbSIiN30d2BWfg'],['Listen on Apple Podcasts','https://podcasts.apple.com/us/podcast/as-the-savior-would/id1816423384'],['Listen on Spotify','https://open.spotify.com/show/0N50Bv2tXqzNEHB7u2cdAW']], colors:['#edc996','#b97d72','#483650'], glyph:'♫', preview:{src:'/assets/photos/previews/as-the-savior-would-cover.webp', alt:'As the Savior Would podcast cover art — blue circle with "As the Savior Would — A Hands of the Lord Podcast"', badge:'Listen now'}, og:'/assets/photos/previews/as-the-savior-would-cover.webp', ogAlt:'As the Savior Would podcast cover art' },
@@ -623,9 +638,9 @@
     function escapeHTML(value) { return String(value ?? '').replace(/[&<>"']/g,ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
     function safeURL(value) { try { const u = new URL(value); return u.protocol === 'https:' ? u.href : ''; } catch (_) { return ''; } }
     const projectGroups = [
-      { id:'digital', title:'Digital tools & client work', description:'Practical systems and websites shaped around real needs.', slugs:['dme-library','scistrive'] },
-      { id:'media', title:'Communication & media', description:'Campaigns, community stories, and conversations that reach people.', slugs:['fccla-ut','hands-of-the-lord','as-the-savior-would','supernovasunrise'] },
-      { id:'creative', title:'Writing & live experiences', description:'Personal stories and experiences made together.', slugs:['family-history','beware-the-hog'] }
+      { id:'media', title:'Communication & media', description:'Campaigns, community stories, and conversations that reach people.', slugs:['hands-of-the-lord','as-the-savior-would','supernovasunrise','fccla-ut'] },
+      { id:'creative', title:'Writing & live experiences', description:'Personal stories and experiences made together.', slugs:['family-history','beware-the-hog'] },
+      { id:'digital', title:'Digital tools & client work', description:'Practical systems and websites shaped around real needs.', slugs:['dme-library','scistrive'] }
     ];
     function card(p) {
       const [bg,orb,ink] = p.colors;
@@ -725,72 +740,162 @@
     document.addEventListener('keydown',e => { if(e.key==='Escape' && !pickerMenu.hidden) { closePicker(); pickerButton.focus(); } });
     pickerMenu.addEventListener('click',e => { if(e.target.closest('a')) closePicker(); });
 
-    // Browser adaptation of the public Mendure DME schema and 120-day due-date rule.
-    // Sample people and equipment below are fictional and never leave this browser.
+    // Faithful port of src/main/features/* + src/shared/business-logic.js (same rules).
+    // Fictional rows only; never leaves this browser. Tables mirror db.js CREATE TABLE.
     const demoEquipment = [
-      {id:'MO-1001',name:'Rollator walker',type:'Mobility'},
-      {id:'BA-1002',name:'Shower chair',type:'Bathroom safety'},
-      {id:'BA-1003',name:'Transfer bench',type:'Bathroom safety'},
-      {id:'MO-1004',name:'Transport wheelchair',type:'Mobility'},
-      {id:'HO-1005',name:'Bed rail',type:'Home safety'},
-      {id:'MO-1006',name:'Walking cane',type:'Mobility'}
+      {id:'MO-1001',name:'Rollator walker',verified:''},
+      {id:'BA-1002',name:'Shower chair',verified:''},
+      {id:'BA-1003',name:'Transfer bench',verified:''},
+      {id:'MO-1004',name:'Transport wheelchair',verified:''},
+      {id:'HO-1005',name:'Bed rail',verified:''},
+      {id:'MO-1006',name:'Walking cane',verified:''}
     ];
-    const demoCustomers = [{id:1,name:'Alex Rivera'},{id:2,name:'Jordan Lee'},{id:3,name:'Sam Patel'}];
+    const demoCustomers = [
+      {id:1,name:'Alex Rivera',phone:'(406) 555-0101',zip:'59901',dateAdded:'2025-01-12'},
+      {id:2,name:'Jordan Lee',phone:'(406) 555-0142',zip:'59935',dateAdded:'2025-02-03'},
+      {id:3,name:'Sam Patel',phone:'(406) 555-0177',zip:'59901',dateAdded:'2025-03-21'}
+    ];
+    const CHECKOUT_PERIOD_DAYS = 120;
+    const EQUIPMENT_ID_PATTERN = /^[A-Z]{2}-\d{4}$/;
     const localISO = () => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
     const addDays = (iso,days) => { const [y,m,d]=iso.split('-').map(Number); return new Date(Date.UTC(y,m-1,d+days)).toISOString().slice(0,10); };
-    const weekday = iso => { const [y,m,d]=iso.split('-').map(Number); return new Date(Date.UTC(y,m-1,d)).getUTCDay(); };
+    // business-logic.js: pythonWeekday Mon=0..Sun=6; business = wd<5 minus observed federal holidays
+    const pyWeekday = iso => { const [y,m,d]=iso.split('-').map(Number); return (new Date(Date.UTC(y,m-1,d)).getUTCDay()+6)%7; };
+    const weekday = pyWeekday;
+    function toIso(y,m,d) { return new Date(Date.UTC(y,m-1,d)).toISOString().slice(0,10); }
+    function nthWeekdayOfMonth(year, month, weekday, n) {
+      const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+      const matches = [];
+      for (let day = 1; day <= daysInMonth; day++) if (pyWeekday(toIso(year, month, day)) === weekday) matches.push(day);
+      return toIso(year, month, matches[n - 1]);
+    }
+    function lastWeekdayOfMonth(year, month, weekday) {
+      const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+      const matches = [];
+      for (let day = 1; day <= daysInMonth; day++) if (pyWeekday(toIso(year, month, day)) === weekday) matches.push(day);
+      return toIso(year, month, matches[matches.length - 1]);
+    }
     function federalHolidays(year) {
-      const observed=iso => weekday(iso)===6?addDays(iso,-1):weekday(iso)===0?addDays(iso,1):iso;
-      const nth=(month,day,n) => { let count=0; for(let date=1;date<=31;date++) { const d=new Date(Date.UTC(year,month-1,date)); if(d.getUTCMonth()!==month-1) break; if(d.getUTCDay()===day && ++count===n) return d.toISOString().slice(0,10); } };
-      const last=(month,day) => { for(let date=31;date>=1;date--) { const d=new Date(Date.UTC(year,month-1,date)); if(d.getUTCMonth()===month-1 && d.getUTCDay()===day) return d.toISOString().slice(0,10); } };
-      return [observed(`${year}-01-01`),nth(1,1,3),nth(2,1,3),last(5,1),observed(`${year}-06-19`),observed(`${year}-07-04`),nth(9,1,1),nth(10,1,2),observed(`${year}-11-11`),nth(11,4,4),observed(`${year}-12-25`)];
+      const MONDAY = 0, SATURDAY = 5, SUNDAY = 6;
+      const observed = iso => pyWeekday(iso) === SATURDAY ? addDays(iso, -1) : pyWeekday(iso) === SUNDAY ? addDays(iso, 1) : iso;
+      const set = new Set();
+      set.add(observed(toIso(year, 1, 1)));
+      set.add(nthWeekdayOfMonth(year, 1, MONDAY, 3));
+      set.add(nthWeekdayOfMonth(year, 2, MONDAY, 3));
+      set.add(lastWeekdayOfMonth(year, 5, MONDAY));
+      set.add(observed(toIso(year, 6, 19)));
+      set.add(observed(toIso(year, 7, 4)));
+      set.add(nthWeekdayOfMonth(year, 9, MONDAY, 1));
+      set.add(nthWeekdayOfMonth(year, 10, MONDAY, 2));
+      set.add(observed(toIso(year, 11, 11)));
+      set.add(nthWeekdayOfMonth(year, 11, MONDAY, 4));
+      set.add(observed(toIso(year, 12, 25)));
+      return set;
     }
-    function calculateDueDate(iso) {
-      let date=addDays(iso,120);
-      const holidays=new Set([Number(iso.slice(0,4)),Number(date.slice(0,4)),Number(date.slice(0,4))+1].flatMap(federalHolidays));
-      while(weekday(date)===0 || weekday(date)===6 || holidays.has(date)) date=addDays(date,1);
-      return date;
+    function allHolidaysForSpan(startIso, days) {
+      const set = new Set();
+      const end = addDays(startIso, days + 60);
+      for (let y = Number(startIso.slice(0, 4)); y <= Number(end.slice(0, 4)); y++)
+        for (const h of federalHolidays(y)) set.add(h);
+      return set;
     }
-    const initialDemoLoans = [{id:1,equipmentId:'BA-1002',customerId:2,checkedOutDate:localISO(),dueDate:calculateDueDate(localISO()),returnedDate:null}];
-    let demoLoans = structuredClone(initialDemoLoans), nextDemoLoan=2;
+    function isBusinessDay(iso, holidays) { return pyWeekday(iso) < 5 && !holidays.has(iso); }
+    function calculateDueDate(checkoutDate, checkoutPeriodDays = CHECKOUT_PERIOD_DAYS) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(checkoutDate)) return '';
+      const raw = addDays(checkoutDate, checkoutPeriodDays);
+      const holidays = allHolidaysForSpan(checkoutDate, checkoutPeriodDays + 30);
+      let due = raw;
+      while (!isBusinessDay(due, holidays)) due = addDays(due, 1);
+      return due;
+    }
+    function normalizePhone(phone) { const d = String(phone ?? '').replace(/\D/g, ''); return d.length === 11 && d.startsWith('1') ? d.slice(1) : d; }
+    function formatPhone(phone) { const d = normalizePhone(phone); return d.length !== 10 ? phone : `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`; }
+    const activeLoanFor = equipmentId => demoLoans.find(x => x.equipmentId === equipmentId && !x.returnedDate);
+    const initialDemoLoans = [];
+    let demoLoans = structuredClone(initialDemoLoans), nextDemoLoan = 1;
+    const selected = new Set();
     const demoStatus = document.getElementById('demo-status');
     function renderDemo() {
-      const query=document.getElementById('demo-search').value.trim().toLowerCase();
-      const visible=demoEquipment.filter(item => `${item.name} ${item.id} ${item.type}`.toLowerCase().includes(query));
+      const query=document.getElementById('demo-search').value.trim().toUpperCase();
+      const visible=demoEquipment.filter(item => `${item.id} ${item.name}`.toUpperCase().includes(query));
       document.getElementById('demo-inventory').innerHTML=visible.length?visible.map(item => {
-        const loan=demoLoans.find(x => x.equipmentId===item.id && !x.returnedDate);
+        const loan=activeLoanFor(item.id);
         const customer=loan && demoCustomers.find(x => x.id===loan.customerId);
-        return `<article class="demo-item"><span class="tag">${escapeHTML(item.id)} · ${escapeHTML(item.type)}</span><h3>${escapeHTML(item.name)}</h3><p class="${loan?'borrowed':'available'}">${loan?`On loan to ${escapeHTML(customer.name)} · due ${loan.dueDate}`:'Available for checkout'}</p><button type="button" data-demo-checkout="${escapeHTML(item.id)}" ${loan?'disabled':''}>${loan?'Checked out':'Check out item'}</button></article>`;
+        const checked = selected.has(item.id);
+        const status = loan ? (loan.agreementPending ? 'Pending agreement' : 'Active loan') : 'Available';
+        const sub = loan ? `On loan to ${customer.name} · due ${loan.dueDate}` : (item.verified ? `Verified ${item.verified}` : 'date_verified: —');
+        return `<article class="demo-item"><span class="tag">${escapeHTML(item.id)} · ${status}</span><h3>${escapeHTML(item.name)}</h3><p class="${loan?'borrowed':'available'}">${escapeHTML(sub)}</p><p><label style="display:inline-flex;gap:8px;align-items:center;font-size:.85rem"><input type="checkbox" data-demo-select="${escapeHTML(item.id)}" ${loan||checked?'':''} ${loan?'disabled':''} ${checked?'checked':''}> Select for checkout</label></p></article>`;
       }).join(''):'<p>No equipment matches your search.</p>';
-      document.getElementById('demo-history-rows').innerHTML=[...demoLoans].reverse().map(loan => {
+      document.getElementById('demo-history-rows').innerHTML=demoLoans.length?[...demoLoans].reverse().map(loan => {
         const equipment=demoEquipment.find(x => x.id===loan.equipmentId);
         const customer=demoCustomers.find(x => x.id===loan.customerId);
-        return `<tr><td>#${loan.id}</td><td>${escapeHTML(equipment.name)}<br><small>${escapeHTML(equipment.id)}</small></td><td>${escapeHTML(customer.name)}<br><small>#${customer.id}</small></td><td>${loan.dueDate}</td><td>${loan.returnedDate?`Returned ${loan.returnedDate}`:`<button type="button" data-demo-return="${loan.id}">Return item</button>`}</td></tr>`;
-      }).join('');
+        const agreement = loan.agreementPending ? `Pending · ${loan.agreementDate||'awaiting signature'}` : (loan.agreementDate ? `Signed ${loan.agreementDate}` : 'Signed');
+        const action = loan.returnedDate
+          ? `Returned ${loan.returnedDate}`
+          : `<button type="button" data-demo-return="${loan.id}">Return</button> <button type="button" data-demo-extend="${loan.id}" ${loan.agreementPending?'disabled':''}>Extend</button>`;
+        return `<tr><td>#${loan.id}</td><td>${escapeHTML(equipment?equipment.name:loan.equipmentId)}<br><small>${escapeHTML(loan.equipmentId)}</small></td><td>${escapeHTML(customer?customer.name:'—')}<br><small>${escapeHTML(customer?customer.phone:'')} · #${loan.customerId}</small></td><td>${loan.checkedOutDate}</td><td>${loan.dueDate}</td><td>${escapeHTML(agreement)}</td><td>${action}</td></tr>`;
+      }).join(''):'<tr><td colspan="7">No loans yet — check out an item above.</td></tr>';
+      const pending=demoLoans.filter(x => x.agreementPending && !x.returnedDate);
+      const box=document.getElementById('demo-agreement-box');
+      box.hidden = pending.length === 0;
+      document.getElementById('demo-cancel-pending').disabled = pending.length === 0;
     }
     document.getElementById('demo-search').addEventListener('input',renderDemo);
-    document.getElementById('demo-inventory').addEventListener('click',event => {
-      const button=event.target.closest('[data-demo-checkout]'); if(!button || button.disabled) return;
-      const equipmentId=button.dataset.demoCheckout;
-      if(demoLoans.some(loan => loan.equipmentId===equipmentId && !loan.returnedDate)) return;
+    document.getElementById('demo-inventory').addEventListener('change',event => {
+      const box=event.target.closest('[data-demo-select]'); if(!box) return;
+      const id=box.dataset.demoSelect;
+      if(box.checked) selected.add(id); else selected.delete(id);
+    });
+    document.getElementById('demo-checkout').addEventListener('click',() => {
       const customerId=Number(document.getElementById('demo-borrower').value);
-      const checkedOutDate=localISO(), dueDate=calculateDueDate(checkedOutDate);
-      demoLoans.push({id:nextDemoLoan++,equipmentId,customerId,checkedOutDate,dueDate,returnedDate:null});
-      demoStatus.textContent=`${demoEquipment.find(x=>x.id===equipmentId).name} checked out to ${demoCustomers.find(x=>x.id===customerId).name}; due ${dueDate}.`;
+      const ids=[...selected].filter(id => !activeLoanFor(id));
+      if(!ids.length){ demoStatus.textContent='Select at least one available item.'; return; }
+      const customer=demoCustomers.find(x => x.id===customerId);
+      if(!customer || normalizePhone(customer.phone).length < 10 || !/^\d{5}$/.test(customer.zip)){ demoStatus.textContent='Invalid customer: phone needs 10 digits, ZIP 5 digits.'; return; }
+      const dateInput=document.getElementById('demo-checkout-date').value;
+      const checkedOutDate=/^\d{4}-\d{2}-\d{2}$/.test(dateInput)?dateInput:localISO();
+      const dueDate=calculateDueDate(checkedOutDate)||checkedOutDate;
+      for(const equipmentId of ids){
+        const equipment=demoEquipment.find(x => x.id===equipmentId);
+        demoLoans.push({id:nextDemoLoan++,equipmentId,customerId,itemName:equipment.name,customerName:customer.name,customerPhone:customer.phone,checkedOutDate,dueDate,returnedDate:null,agreementData:null,agreementDate:null,agreementPending:1});
+        equipment.verified=checkedOutDate;
+      }
+      selected.clear();
+      demoStatus.textContent=`${ids.length} item(s) checked out to ${customer.name} (${customer.phone}); due ${dueDate}. Agreements pending — sign below or cancel.`;
+      renderDemo();
+    });
+    document.getElementById('demo-sign').addEventListener('click',() => {
+      const pending=demoLoans.filter(x => x.agreementPending && !x.returnedDate);
+      if(!pending.length){ demoStatus.textContent='No pending agreements.'; return; }
+      if(!document.getElementById('demo-waiver').checked || !document.getElementById('demo-signature').checked){ demoStatus.textContent='Please check both waiver and digital signature.'; return; }
+      const witness=document.getElementById('demo-witness').value.trim()||'—';
+      const today=localISO();
+      pending.forEach(loan => { loan.agreementPending=0; loan.agreementDate=today; loan.agreementData=`${witness} · ${today}`; });
+      demoStatus.textContent=`${pending.length} agreement(s) signed ${today} (witness ${witness}). Loans are now active.`;
+      renderDemo();
+    });
+    document.getElementById('demo-cancel-pending').addEventListener('click',() => {
+      const before=demoLoans.length;
+      demoLoans=demoLoans.filter(x => !(x.agreementPending && !x.returnedDate));
+      demoStatus.textContent=`Checkout cancelled — ${before-demoLoans.length} pending loan(s) removed.`;
       renderDemo();
     });
     document.getElementById('demo-history-rows').addEventListener('click',event => {
-      const button=event.target.closest('[data-demo-return]'); if(!button) return;
-      const loan=demoLoans.find(x=>x.id===Number(button.dataset.demoReturn)); if(!loan || loan.returnedDate) return;
-      loan.returnedDate=localISO();
-      demoStatus.textContent=`${demoEquipment.find(x=>x.id===loan.equipmentId).name} returned and available again.`;
-      renderDemo();
+      const ret=event.target.closest('[data-demo-return]');
+      const ext=event.target.closest('[data-demo-extend]');
+      if(ret){ const loan=demoLoans.find(x=>x.id===Number(ret.dataset.demoReturn)); if(!loan||loan.returnedDate) return;
+        loan.returnedDate=localISO(); demoStatus.textContent=`${loan.itemName} (${loan.equipmentId}) returned ${loan.returnedDate}.`; renderDemo(); return; }
+      if(ext){ const loan=demoLoans.find(x=>x.id===Number(ext.dataset.demoExtend)); if(!loan||loan.returnedDate||loan.agreementPending) return;
+        loan.dueDate=calculateDueDate(localISO())||loan.dueDate; demoStatus.textContent=`Return date extended to ${loan.dueDate}.`; renderDemo(); }
     });
     document.getElementById('demo-reset').addEventListener('click',() => {
-      demoLoans=structuredClone(initialDemoLoans); nextDemoLoan=2;
+      demoLoans=structuredClone(initialDemoLoans); nextDemoLoan=1; selected.clear();
       document.getElementById('demo-search').value=''; document.getElementById('demo-borrower').value='1';
+      document.getElementById('demo-checkout-date').value=localISO();
       demoStatus.textContent='Sample data restored.'; renderDemo();
     });
+    document.getElementById('demo-borrower').innerHTML=demoCustomers.map(c => `<option value="${c.id}">${escapeHTML(c.name)} · ${escapeHTML(c.phone)} · ${escapeHTML(c.zip)}</option>`).join('');
+    document.getElementById('demo-checkout-date').value=localISO();
     renderDemo();
     const views = [...document.querySelectorAll('.view')];
     if(location.hash.startsWith('#/')) history.replaceState(null,'',location.hash.slice(1));
@@ -820,8 +925,6 @@
           } else { cp.hidden=true; cb.innerHTML=''; }
           document.getElementById('podcast-preview').hidden = p.slug !== 'as-the-savior-would';
           document.getElementById('dme-demo').hidden = p.slug !== 'dme-library';
-          document.getElementById('dme-showcase').hidden = p.slug !== 'dme-library';
-          document.getElementById('scistrive-preview').hidden = p.slug !== 'scistrive';
         } else name = 'not-found';
       } else if(parts.length) name = 'not-found';
       views.forEach(v => v.hidden = v.id !== `${name}-view`);
@@ -924,20 +1027,31 @@
     const clamp = value => Math.max(0, Math.min(1, value));
     const smooth = (start, end, value) => { const t = clamp((value - start) / (end - start)); return t * t * (3 - 2 * t); };
     let framePending = false;
-    function updateSunrise() {
+    // Time-triggered supernova timeline (plays on load, not scroll-proportional).
+    // 0–1.2s collapse · 1.2–4.5s detonation · 4.5–7s remnant settle · then slow infinite drift.
+    const T0 = performance.now();
+    function timeProgress(now) {
+      if (reducedMotion.matches) return 1;
+      const e = (now - T0) / 1000;
+      if (e < 1.2) return smooth(0, 1.2, e) * .18;
+      if (e < 4.5) return .18 + smooth(1.2, 4.5, e) * .67;
+      return .85 + smooth(4.5, 7, e) * .15;
+    }
+    function timeDrift(now) {
+      if (reducedMotion.matches) return .35;
+      const e = (now - T0) / 1000;
+      // slow pan through the remnant, looping gently
+      return clamp(.1 + (e * .006) % .8);
+    }
+    function updateSunrise(now = performance.now()) {
       framePending = false;
       const home = !document.getElementById('home-view').hidden;
-      const heroDistance = Math.max(1, stage.offsetHeight - innerHeight);
-      // hero scroll drives the 3 acts; page scroll drives drift (camera pans through remnant)
-      const heroProgress = home ? clamp(-stage.getBoundingClientRect().top / heroDistance) : 1;
-      const pageTotal = Math.max(1, document.documentElement.scrollHeight - innerHeight);
-      const pageProgress = clamp(scrollY / pageTotal);
-      // non-home views start in remnant (cooling nebula) but still drift on scroll
-      const progress = home ? heroProgress : Math.max(heroProgress, .55 + pageProgress * .45);
-      const drift = home
-        ? clamp((pageProgress - heroProgress * .12) * 1.15)
-        : pageProgress;
-      const fade = smooth(.10, .38, progress);
+      const progress = timeProgress(now);
+      const drift = timeDrift(now);
+      const scrollFade = home ? smooth(.10, .38, clamp(scrollY / Math.max(1, innerHeight))) : 1;
+      const timeFade = home ? smooth(4, 6, (now - T0) / 1000) : 1;
+      const heroFade = Math.max(scrollFade, timeFade * (home ? 1 : 0));
+      const fade = heroFade;
       const finish = smooth(.72, 1, progress);
       // keep legacy vars for ambient/edge states
       scene.style.setProperty('--sun-y', `${62 - 12 * smooth(.1, .52, progress)}%`);
@@ -958,6 +1072,13 @@
       heroCopy.inert = fade > .97;
     }
     function scheduleSunrise() { if (!framePending) { framePending = true; requestAnimationFrame(updateSunrise); } }
+    // continuous time tick for the supernova timeline (reduced-motion: static remnant)
+    function tick(now) {
+      if (document.hidden) { requestAnimationFrame(tick); return; }
+      updateSunrise(now);
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
     window.addEventListener('scroll', scheduleSunrise, { passive: true });
     window.addEventListener('resize', scheduleSunrise);
     window.addEventListener('resize', sizeStar);
