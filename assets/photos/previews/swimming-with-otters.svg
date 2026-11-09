@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Swimming With Otters band preview">
+  <defs>
+    <radialGradient id="bg" cx="72%" cy="62%" r="85%">
+      <stop offset="0%" stop-color="#E9D5BC"/>
+      <stop offset="42%" stop-color="#5C9AA0"/>
+      <stop offset="100%" stop-color="#241B35"/>
+    </radialGradient>
+    <radialGradient id="orb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF6E8"/>
+      <stop offset="100%" stop-color="#5C9AA0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#101228"/>
+  <rect width="1200" height="630" fill="url(#bg)" opacity=".95"/>
+  <circle cx="890" cy="320" r="185" fill="url(#orb)"/>
+  <circle cx="890" cy="320" r="235" fill="none" stroke="#fff" stroke-opacity=".4"/>
+  <circle cx="890" cy="320" r="295" fill="none" stroke="#fff" stroke-opacity=".18"/>
+  <path d="M70 420 Q 220 360 360 420 T 620 420" fill="none" stroke="#ffd393" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+  <path d="M70 450 Q 220 390 360 450 T 620 450" fill="none" stroke="#ffffff" stroke-width="3" opacity=".5"/>
+  <text x="70" y="150" font-family="Georgia, serif" font-size="15" letter-spacing="6" fill="#ffe3bd" font-weight="bold">MUSIC / BAND</text>
+  <text x="70" y="245" font-family="Georgia, serif" font-size="72" fill="#fff8f0">Swimming</text>
+  <text x="70" y="325" font-family="Georgia, serif" font-size="72" fill="#ffd393">With Otters ♪</text>
+  <text x="70" y="385" font-family="system-ui, sans-serif" font-size="27" fill="#fff4ec">Songs with Aaron Montoya</text>
+  <text x="70" y="435" font-family="system-ui, sans-serif" font-size="22" fill="#fff4ec" opacity=".85">May Flowers · Sky · Cannonball! and more.</text>
+  <rect x="70" y="480" width="330" height="64" rx="32" fill="#101228" opacity=".88"/>
+  <text x="235" y="523" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#ffd393" font-weight="700">Listen below ↓</text>
+</svg>
