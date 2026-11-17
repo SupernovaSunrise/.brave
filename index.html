@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#060712">
+  <meta name="view-transition" content="same-origin">
   <script>(function(){try{var t=localStorage.getItem('sn-theme');if(!t){t='dark';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark'}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +39,13 @@
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .42s; animation-timing-function: cubic-bezier(.2,.8,.2,1); }
+    ::view-transition-old(root) { animation-name: vt-fade-out; }
+    ::view-transition-new(root) { animation-name: vt-fade-in; }
+    @keyframes vt-fade-out { from { opacity:1; transform:scale(1); } to { opacity:0; transform:scale(.985); } }
+    @keyframes vt-fade-in { from { opacity:0; transform:scale(1.015); } to { opacity:1; transform:scale(1); } }
+    @media(prefers-reduced-motion:reduce){ ::view-transition-group(*) { animation-duration:0s !important; } }
     body { margin: 0; background: var(--cream); color: var(--ink); font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     h1, h2, h3, p { margin-top: 0; }
     h1, h2, h3, .wordmark, .serif { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
@@ -466,6 +474,9 @@
     h1,h2,h3,.wordmark{ font-family:var(--display); }
     .eyebrow{ font-family:var(--mono); letter-spacing:.22em; }
     .nav-links .theme-toggle{ display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:9px 16px; border-radius:100px; border:1px solid #ffffff32; background:#ffffff14; color:#F4EAF1; font:600 .85rem var(--ui); cursor:pointer; }
+    .nav-links .sound-toggle{ display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:9px 16px; border-radius:100px; border:1px solid #ffffff32; background:#ffffff14; color:#F4EAF1; font:600 .85rem var(--ui); cursor:pointer; }
+    .nav-links .sound-toggle:hover{ background:#ffffff22; }
+    html[data-theme="light"] .nav-links .sound-toggle{ border-color:var(--card-border); background:#ffffffaa; color:var(--ink); }
     .nav-links .theme-toggle:hover{ background:#ffffff22; }
     html[data-theme="light"] .nav-links .theme-toggle{ border-color:var(--card-border); background:#ffffffaa; color:var(--ink); }
     .supernova-stage{ overflow:hidden; }
@@ -571,6 +582,7 @@
         <a href="/about" data-nav="about">About</a>
         <a href="/resume" data-nav="resume">Résumé</a>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark theme" aria-pressed="false"><span aria-hidden="true" class="theme-icon">☀︎</span><span class="theme-label">Light</span></button>
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Toggle sound effects" aria-pressed="false"><span aria-hidden="true" class="sound-icon">♪̸</span><span class="sound-label">Sound off</span></button>
         <a class="nav-contact" href="/contact" data-nav="contact">Connect ↗</a>
       </div>
     </nav>
@@ -704,6 +716,7 @@
 <div class="ambient-sky" aria-hidden="true" style="display:none"></div>
   <script src="/assets/supernova.js"></script>
   <script src="/assets/starfield-game.js"></script>
+  <script src="/assets/sound.js"></script>
   <script>
     const baseProjects = [
       { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'Utah FCCLA media and events, led as vice president of social media.', context:'Utah FCCLA gave me an opportunity to bring student leadership, communication, and events together. I coordinated media and events across Utah.', role:'I served as Utah FCCLA vice president of social media, coordinated media and events, and earned a national ranking for leadership.', outcome:'Coordinated statewide media and events as VP of Social Media; the team earned a national ranking for leadership. The work taught me how voice and cadence move a community, not just a feed.', metrics:[['VP Social Media','Utah FCCLA leadership role'],['National ranking','FCCLA leadership competition']], links:[['Utah FCCLA','https://www.utahfccla.org/'],['Facebook','https://www.facebook.com/p/Utah-Fccla-100064542558915/']], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳', preview:{src:'/assets/photos/previews/fccla-ut.svg', alt:'FCCLA UT social media preview — Utah student leadership', badge:'Utah FCCLA'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'Preview artwork for the project' },
