@@ -416,6 +416,14 @@
     .album-lists h3 { margin:0 0 8px; font-size:1.05rem; }
     .album-lists ol { margin:0; padding-left:22px; color:var(--muted); line-height:1.7; font-size:.9rem; }
     @media(max-width:700px){ .album-lists{ grid-template-columns:1fr; } }
+    .starfield-wrap { position:relative; width:100%; height:min(62vw,520px); min-height:360px; border-radius:20px; overflow:hidden; border:1px solid #ffffff3f; background:#0a0d20; }
+    .starfield-wrap canvas { width:100%; height:100%; display:block; }
+    .starfield-overlay { position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; }
+    .starfield-overlay .sf-card { pointer-events:auto; background:rgba(10,13,32,.78); border:1px solid #ffffff3f; border-radius:18px; padding:28px 32px; text-align:center; max-width:min(90%,460px); backdrop-filter:blur(10px); }
+    .starfield-overlay .sf-card h2 { margin:0 0 8px; color:#fff8f0; font-size:1.9rem; }
+    .starfield-overlay .sf-card p { margin:6px 0; color:#e7dfec; font-size:.95rem; }
+    .starfield-overlay .sf-hint { color:#ffd393; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; }
+    @media(prefers-reduced-motion:reduce){ .starfield-wrap canvas { display:none; } .starfield-overlay .sf-card p::after { content:' (motion disabled — animation paused)'; } }
     .case-metrics { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:18px; max-width:690px; }
     .case-metrics .metric { border:1px solid var(--card-border); border-radius:12px; padding:14px 16px; background:rgba(255,255,255,.06); }
     .case-metrics b { display:block; font-family:var(--display); font-size:1.35rem; color:var(--gold); }
@@ -685,12 +693,17 @@
         <div><p><strong>Serving:</strong> service missionary (Kalispell, MT, through Jan 2027), building the Mendure DME library system for veterans and families.</p><p><strong>Studying:</strong> B.S. Communication: Public Relations at BYU–Idaho (in progress); Associate in Science, UVU (2024).</p><p><strong>Creating:</strong> hosting <em>As the Savior Would</em>, running @supernovasunrise, and this portfolio — a time-played supernova around real work.</p><div class="note"><p>Best way to reach me: <a href="/contact">connect page</a> or email <a href="mailto:richardrowss@gmail.com">richardrowss@gmail.com</a>.</p></div></div>
       </section>
     </div>
+    <div class="view" id="starfield-view" hidden>
+      <section class="page-hero"><div class="shell"><span class="eyebrow">Easter egg · Hidden route</span><h1>Starfield.</h1><p>Arrow keys / WASD to steer. Dodge the rocks, collect stardust. Space or click to start. Score saved locally.</p></div></section>
+      <section class="section shell" style="padding-block:40px 90px"><div class="starfield-wrap"><canvas id="starfield-canvas" aria-label="Starfield dodge game" tabindex="0"></canvas><div id="starfield-overlay" class="starfield-overlay" aria-live="polite"></div></div></section>
+    </div>
     <div class="view" id="not-found-view" hidden><div class="shell not-found"><span class="eyebrow">Page not found</span><h1>Let’s head back.</h1><a class="button primary" href="/projects">Explore projects</a></div></div>
   </main>
   <dialog class="photo-dialog" id="photo-dialog" aria-label="Photo gallery"><button class="photo-close" id="photo-close" type="button" aria-label="Close photo">×</button><figure><img id="photo-dialog-image" alt=""><figcaption id="photo-dialog-caption"></figcaption></figure><div class="photo-controls"><button type="button" id="photo-prev" aria-label="Previous photo">← Previous</button><span id="photo-count" aria-live="polite"></span><button type="button" id="photo-next" aria-label="Next photo">Next →</button></div></dialog>
   <footer class="site-footer"><div class="shell footer-row"><span>© <span id="year"></span> Milo Rowley · Made with curiosity and care.</span><span><a href="/projects">Projects</a> · <a href="/now">Now</a> · <a id="personal-footer-link" href="https://www.instagram.com/supernovasunrise/" target="_blank" rel="noopener noreferrer">@supernovasunrise ↗</a></span></div></footer>
 <div class="ambient-sky" aria-hidden="true" style="display:none"></div>
   <script src="/assets/supernova.js"></script>
+  <script src="/assets/starfield-game.js"></script>
   <script>
     const baseProjects = [
       { slug:'fccla-ut', title:'FCCLA UT', category:'Social media / Student leadership', summary:'Utah FCCLA media and events, led as vice president of social media.', context:'Utah FCCLA gave me an opportunity to bring student leadership, communication, and events together. I coordinated media and events across Utah.', role:'I served as Utah FCCLA vice president of social media, coordinated media and events, and earned a national ranking for leadership.', outcome:'Coordinated statewide media and events as VP of Social Media; the team earned a national ranking for leadership. The work taught me how voice and cadence move a community, not just a feed.', metrics:[['VP Social Media','Utah FCCLA leadership role'],['National ranking','FCCLA leadership competition']], links:[['Utah FCCLA','https://www.utahfccla.org/'],['Facebook','https://www.facebook.com/p/Utah-Fccla-100064542558915/']], colors:['#edbdab','#ed8064','#4c304c'], glyph:'✳', preview:{src:'/assets/photos/previews/fccla-ut.svg', alt:'FCCLA UT social media preview — Utah student leadership', badge:'Utah FCCLA'}, og:'/assets/photos/previews/scistrive-og.webp', ogAlt:'Preview artwork for the project' },
@@ -980,7 +993,7 @@
       const parts = path.split('/').filter(Boolean);
       let name = 'home';
       let activeProject;
-      if(parts.length === 1 && ['projects','about','resume','contact','now'].includes(parts[0])) name = parts[0];
+      if(parts.length === 1 && ['projects','about','resume','contact','now','starfield'].includes(parts[0])) name = parts[0];
       else if(parts.length === 2 && parts[0] === 'projects') {
         const p = projects.find(x => x.slug === parts[1]);
         if(p) {
@@ -1014,9 +1027,9 @@
         const active = a.dataset.nav === (name === 'case' ? 'projects' : name);
         if(active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
       });
-      const title = name === 'case' ? document.getElementById('case-title').textContent : ({home:'Portfolio',projects:'Projects',about:'About',resume:'Résumé',contact:'Connect',now:'Now','not-found':'Page not found'})[name];
+      const title = name === 'case' ? document.getElementById('case-title').textContent : ({home:'Portfolio',projects:'Projects',about:'About',resume:'Résumé',contact:'Connect',now:'Now',starfield:'Starfield','not-found':'Page not found'})[name];
       document.title = `${title} — Milo Rowley`;
-      const descriptions={home:'Milo Rowley works across communication, community media, storytelling, and practical digital tools. Explore selected work and ways to connect.',projects:'Browse Milo Rowley’s digital tools, client websites, communication work, podcasts, writing, and live experiences.',about:'Meet Milo Rowley: a communicator, collaborator, musician, and creator whose work connects people and practical ideas.',resume:'Explore Milo Rowley’s experience in communication, quality assurance, community service, and digital tools.',contact:'Connect with Milo Rowley about communication, community projects, and creative collaborations.',now:'What Milo Rowley is doing now — service, study, podcasting, and the Mendure DME library system.'};
+      const descriptions={home:'Milo Rowley works across communication, community media, storytelling, and practical digital tools. Explore selected work and ways to connect.',projects:'Browse Milo Rowley’s digital tools, client websites, communication work, podcasts, writing, and live experiences.',about:'Meet Milo Rowley: a communicator, collaborator, musician, and creator whose work connects people and practical ideas.',resume:'Explore Milo Rowley’s experience in communication, quality assurance, community service, and digital tools.',contact:'Connect with Milo Rowley about communication, community projects, and creative collaborations.',now:'What Milo Rowley is doing now — service, study, podcasting, and the Mendure DME library system.',starfield:'Starfield — a hidden dodge game in Milo Rowley’s portfolio.'};
       const description=activeProject ? `${activeProject.summary} ${activeProject.role}` : (descriptions[name]||'Explore the portfolio and work of Milo Rowley.');
       const canonical=`https://supernovasunrise.space${name==='not-found'?'/':path}`;
       document.querySelector('meta[name="description"]').content=description;
